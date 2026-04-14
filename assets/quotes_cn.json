@@ -1,721 +1,2375 @@
 [
-  {"content": "人生就像骑自行车，要保持平衡就得往前走。", "author": "阿尔伯特·爱因斯坦", "source": "", "category": 0, "tags": "人生,平衡,自行车"},
-  {"content": "不要试图成为一个成功的人，而要成为一个有价值的人。", "author": "阿尔伯特·爱因斯坦", "source": "", "category": 0, "tags": "成功,价值"},
-  {"content": "想象力比知识更重要。", "author": "阿尔伯特·爱因斯坦", "source": "", "category": 0, "tags": "想象力,知识"},
-  {"content": "一个人的价值，在于他贡献了什么，而不在于他取得了什么。", "author": "阿尔伯特·爱因斯坦", "source": "", "category": 0, "tags": "价值,贡献"},
-  {"content": "教育就是当一个人忘记了在学校所学的一切之后剩下的东西。", "author": "阿尔伯特·爱因斯坦", "source": "", "category": 0, "tags": "教育,学校"},
-  {"content": "生活就像一面镜子，你笑它也笑，你哭它也哭。", "author": "查尔斯·卓别林", "source": "", "category": 0, "tags": "生活,镜子"},
-  {"content": "我们唯一需要恐惧的就是恐惧本身。", "author": "富兰克林·罗斯福", "source": "", "category": 0, "tags": "恐惧"},
-  {"content": "不要问你的国家能为你做什么，问问你能为你的国家做什么。", "author": "约翰·肯尼迪", "source": "", "category": 0, "tags": "国家,贡献"},
-  {"content": "我成功的秘诀是从不试图证明自己是对的。", "author": "亨利·福特", "source": "", "category": 0, "tags": "成功,秘诀"},
-  {"content": "如果你能梦想到它，你就能实现它。", "author": "华特·迪士尼", "source": "", "category": 0, "tags": "梦想,实现"},
-  {"content": "千里之行，始于足下。", "author": "老子", "source": "道德经", "category": 0, "tags": "千里之行,足下"},
-  {"content": "道可道，非常道；名可名，非常名。", "author": "老子", "source": "道德经", "category": 0, "tags": "道,道德经"},
-  {"content": "上善若水，水善利万物而不争。", "author": "老子", "source": "道德经", "category": 0, "tags": "上善若水,不争"},
-  {"content": "知人者智，自知者明。", "author": "老子", "source": "道德经", "category": 0, "tags": "自知,明智"},
-  {"content": "为学日益，为道日损。", "author": "老子", "source": "道德经", "category": 0, "tags": "为学,为道"},
-  {"content": "知足者富，强行者有志。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "大成若缺，其用不弊。大盈若冲，其用不穷。", "author": "老子", "source": "道德经", "category": 0, "tags": "大成,大盈"},
-  {"content": "祸兮福之所倚，福兮祸之所伏。", "author": "老子", "source": "道德经", "category": 0, "tags": "祸福,相依"},
-  {"content": "天网恢恢，疏而不漏。", "author": "老子", "source": "道德经", "category": 0, "tags": "天网,疏而不漏"},
-  {"content": "信言不美，美言不信。", "author": "老子", "source": "道德经", "category": 0, "tags": "信言,美言"},
-  {"content": "知足者富。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "夫唯不争，故天下莫能与之争。", "author": "老子", "source": "道德经", "category": 0, "tags": "不争,莫能争"},
-  {"content": "飘风不终朝，骤雨不终日。", "author": "老子", "source": "道德经", "category": 0, "tags": "飘风,骤雨"},
-  {"content": "曲则全，枉则直，洼则盈。", "author": "老子", "source": "道德经", "category": 0, "tags": "曲全,枉直"},
-  {"content": "轻诺必寡信，多易必多难。", "author": "老子", "source": "道德经", "category": 0, "tags": "轻诺,寡信"},
-  {"content": "天下皆知美之为美，斯恶已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,恶"},
-  {"content": "出生入死。", "author": "老子", "source": "道德经", "category": 0, "tags": "出生入死"},
-  {"content": "金玉满堂，莫之能守。", "author": "老子", "source": "道德经", "category": 0, "tags": "金玉,满堂"},
-  {"content": "知足者富，强行者有志。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,强行"},
-  {"content": "为学日益，为道日损，损之又损，以至于无为。", "author": "老子", "source": "道德经", "category": 0, "tags": "为学,为道,无为"},
-  {"content": "不出户，知天下；不窥牖，见天道。", "author": "老子", "source": "道德经", "category": 0, "tags": "不出户,知天下"},
-  {"content": "胜人者有力，自胜者强。", "author": "老子", "source": "道德经", "category": 0, "tags": "胜人,自胜"},
-  {"content": "知足者富，不知足者贵。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "祸兮福之所倚，福兮祸之所伏。", "author": "老子", "source": "道德经", "category": 0, "tags": "祸福,倚伏"},
-  {"content": "天之道，损有余而补不足。人之道，则不然，损不足以奉有余。", "author": "老子", "source": "道德经", "category": 0, "tags": "天之道,人之道"},
-  {"content": "甚爱必大费，多藏必厚亡。", "author": "老子", "source": "道德经", "category": 0, "tags": "甚爱,多藏"},
-  {"content": "知足者，富也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "罪莫大于可欲，祸莫大于不知足。", "author": "老子", "source": "道德经", "category": 0, "tags": "可欲,不知足"},
-  {"content": "民之从事，常于几成而败之。慎终如始，则无败事。", "author": "老子", "source": "道德经", "category": 0, "tags": "慎终如始"},
-  {"content": "天下皆知美之为美，斯恶已；皆知善之为善，斯不善已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,善,恶"},
-  {"content": "上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之。", "author": "老子", "source": "道德经", "category": 0, "tags": "上士,中士,下士"},
-  {"content": "明道若昧，进道若退，夷道若纇。", "author": "老子", "source": "道德经", "category": 0, "tags": "明道,进道"},
-  {"content": "大方无隅，大器晚成，大音希声，大象无形。", "author": "老子", "source": "道德经", "category": 0, "tags": "大方,大器,大音,大象"},
-  {"content": "为学日益，为道日损。", "author": "老子", "source": "道德经", "category": 0, "tags": "为学,为道"},
-  {"content": "善为士者，不武；善战者，不怒；善胜敌者，不与。", "author": "老子", "source": "道德经", "category": 0, "tags": "善为士,善战"},
-  {"content": "天下莫柔弱于水，而攻坚强者莫之能胜。", "author": "老子", "source": "道德经", "category": 0, "tags": "柔弱,水"},
-  {"content": "我有三宝，持而保之：一曰慈，二曰俭，三曰不敢为天下先。", "author": "老子", "source": "道德经", "category": 0, "tags": "三宝,慈,俭"},
-  {"content": "祸兮，福之所倚；福兮，祸之所伏。", "author": "老子", "source": "道德经", "category": 0, "tags": "祸福,倚伏"},
-  {"content": "知足者，富也；知止者，久也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,知止"},
-  {"content": "知人者智，自知者明。胜人者有力，自胜者强。", "author": "老子", "source": "道德经", "category": 0, "tags": "知人,自知"},
-  {"content": "上善若水，水善利万物而不争。", "author": "老子", "source": "道德经", "category": 0, "tags": "上善若水"},
-  {"content": "甚爱必大费，多藏必厚亡。", "author": "老子", "source": "道德经", "category": 0, "tags": "甚爱,多藏"},
-  {"content": "知足者， 富也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "为学日益，为道日损，损之又损，以至于无为，无为而无不为。", "author": "老子", "source": "道德经", "category": 0, "tags": "无为,无不为"},
-  {"content": "企者不立，跨者不行。", "author": "老子", "source": "道德经", "category": 0, "tags": "企者,跨者"},
-  {"content": "曲则全，枉则直，洼则盈，敝则新。", "author": "老子", "source": "道德经", "category": 0, "tags": "曲全,枉直"},
-  {"content": "飘风不终朝，骤雨不终日。孰为此者？天地。", "author": "老子", "source": "道德经", "category": 0, "tags": "飘风,骤雨"},
-  {"content": "知足者，富也；不知足者，虽富而贫。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富贫"},
-  {"content": "名与身孰亲？身与货孰多？得与亡孰病？", "author": "老子", "source": "道德经", "category": 0, "tags": "名,身,货"},
-  {"content": "甚爱必大费，多藏必厚亡。故知足不辱，知止不殆，可以长久。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足不辱,知止不殆"},
-  {"content": "大成若缺，其用不弊；大盈若冲，其用不穷。", "author": "老子", "source": "道德经", "category": 0, "tags": "大成,大盈"},
-  {"content": "祸兮，福之所倚；福兮，祸之所伏。", "author": "老子", "source": "道德经", "category": 0, "tags": "祸福,倚伏"},
-  {"content": "知足者，富也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "天网恢恢，疏而不失。", "author": "老子", "source": "道德经", "category": 0, "tags": "天网,恢恢"},
-  {"content": "信言不美，美言不信。善者不辩，辩者不善。", "author": "老子", "source": "道德经", "category": 0, "tags": "信言,美言"},
-  {"content": "知人者智，自知者明。", "author": "老子", "source": "道德经", "category": 0, "tags": "知人,自知"},
-  {"content": "胜人者有力，自胜者强。", "author": "老子", "source": "道德经", "category": 0, "tags": "胜人,自胜"},
-  {"content": "知足者富，强行者有志。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,强行"},
-  {"content": "夫轻诺必寡信，多易必多难。", "author": "老子", "source": "道德经", "category": 0, "tags": "轻诺,寡信"},
-  {"content": "天下皆知美之为美，斯恶已；皆知善之为善，斯不善已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,善"},
-  {"content": "和大怨，必有余怨，安可以为善？", "author": "老子", "source": "道德经", "category": 0, "tags": "和大怨"},
-  {"content": "小国寡民，使有什伯之器而不用，使民重死而不远徙。", "author": "老子", "source": "道德经", "category": 0, "tags": "小国寡民"},
-  {"content": "天之道，损有余而补不足。", "author": "老子", "source": "道德经", "category": 0, "tags": "天之道"},
-  {"content": "人之道，损不足以奉有余。", "author": "老子", "source": "道德经", "category": 0, "tags": "人之道"},
-  {"content": "天之道，利而不害；圣人之道，为而不争。", "author": "老子", "source": "道德经", "category": 0, "tags": "天之道,圣人之道"},
-  {"content": "上士闻道，勤而行之。", "author": "老子", "source": "道德经", "category": 0, "tags": "上士,闻道"},
-  {"content": "中士闻道，若存若亡。", "author": "老子", "source": "道德经", "category": 0, "tags": "中士,闻道"},
-  {"content": "下士闻道，大笑之。不笑不足以为道。", "author": "老子", "source": "道德经", "category": 0, "tags": "下士,闻道"},
-  {"content": "明道若昧，进道若退，夷道若纇。", "author": "老子", "source": "道德经", "category": 0, "tags": "明道,昧"},
-  {"content": "上德若谷，大白若辱。", "author": "老子", "source": "道德经", "category": 0, "tags": "上德,若谷"},
-  {"content": "广德若不足，建德若偷。", "author": "老子", "source": "道德经", "category": 0, "tags": "广德,建德"},
-  {"content": "质真若渝，大方无隅。", "author": "老子", "source": "道德经", "category": 0, "tags": "质真,大方"},
-  {"content": "大器晚成，大音希声，大象无形。", "author": "老子", "source": "道德经", "category": 0, "tags": "大器,大音,大象"},
-  {"content": "道隐无名，夫唯道善贷且成。", "author": "老子", "source": "道德经", "category": 0, "tags": "道隐,无名"},
-  {"content": "为学日益，为道日损。损之又损，以至于无为，无为而无不为。", "author": "老子", "source": "道德经", "category": 0, "tags": "无为,无不为"},
-  {"content": "天下皆知美之为美，斯恶已；皆知善之为善，斯不善已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,善,恶"},
-  {"content": "故立天子，置三公，虽有拱璧以先驷马，不如坐进此道。", "author": "老子", "source": "道德经", "category": 0, "tags": "天子,三公"},
-  {"content": "古之所以贵此道者何？不曰求以得，有罪以免邪？", "author": "老子", "source": "道德经", "category": 0, "tags": "贵此道"},
-  {"content": "为而不争，夫唯不争，故天下莫能与之争。", "author": "老子", "source": "道德经", "category": 0, "tags": "为而不争"},
-  {"content": "知足者，富也；知止者，久也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,知止"},
-  {"content": "罪莫大于可欲，祸莫大于不知足。", "author": "老子", "source": "道德经", "category": 0, "tags": "可欲,不知足"},
-  {"content": "咎莫大于欲得，祸莫大于不知足。", "author": "老子", "source": "道德经", "category": 0, "tags": "欲得,不知足"},
-  {"content": "知足之足，常足矣。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足之足"},
-  {"content": "不出户，知天下；不窥牖，见天道。其出弥远，其知弥少。", "author": "老子", "source": "道德经", "category": 0, "tags": "不出户,知天下"},
-  {"content": "是以圣人不行而知，不见而名，不为而成。", "author": "老子", "source": "道德经", "category": 0, "tags": "不行,不见,不为"},
-  {"content": "为学日益，为道日损。损之又损，以至于无为。", "author": "老子", "source": "道德经", "category": 0, "tags": "为学,为道,无为"},
-  {"content": "绝学无忧，唯之与阿，相去几何？", "author": "老子", "source": "道德经", "category": 0, "tags": "绝学,无忧"},
-  {"content": "曲则全，枉则直，洼则盈，敝则新，少则得，多则惑。", "author": "老子", "source": "道德经", "category": 0, "tags": "曲全,枉直"},
-  {"content": "是以圣人抱一为天下式。", "author": "老子", "source": "道德经", "category": 0, "tags": "抱一,天下式"},
-  {"content": "自见者不明，自是者不彰，自伐者无功，自矜者不长。", "author": "老子", "source": "道德经", "category": 0, "tags": "自见,自是"},
-  {"content": "有物混成，先天地生。寂兮寥兮，独立不改。", "author": "老子", "source": "道德经", "category": 0, "tags": "有物混成"},
-  {"content": "天下皆知美之为美，斯恶已；皆知善之为善，斯不善已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,善,恶"},
-  {"content": "上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之。", "author": "老子", "source": "道德经", "category": 0, "tags": "上士,中士,下士"},
-  {"content": "知足者，富也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "为学日益，为道日损。", "author": "老子", "source": "道德经", "category": 0, "tags": "为学,为道"},
-  {"content": "道可道，非常道。名可名，非常名。", "author": "老子", "source": "道德经", "category": 0, "tags": "道,常道"},
-  {"content": "上善若水，水善利万物而不争。", "author": "老子", "source": "道德经", "category": 0, "tags": "上善若水"},
-  {"content": "知人者智，自知者明。", "author": "老子", "source": "道德经", "category": 0, "tags": "知人,自知"},
-  {"content": "信言不美，美言不信。", "author": "老子", "source": "道德经", "category": 0, "tags": "信言,美言"},
-  {"content": "大成若缺，其用不弊。大盈若冲，其用不穷。", "author": "老子", "source": "道德经", "category": 0, "tags": "大成,大盈"},
-  {"content": "飘风不终朝，骤雨不终日。", "author": "老子", "source": "道德经", "category": 0, "tags": "飘风,骤雨"},
-  {"content": "祸兮福之所倚，福兮祸之所伏。", "author": "老子", "source": "道德经", "category": 0, "tags": "祸福"},
-  {"content": "天网恢恢，疏而不漏。", "author": "老子", "source": "道德经", "category": 0, "tags": "天网"},
-  {"content": "甚爱必大费，多藏必厚亡。", "author": "老子", "source": "道德经", "category": 0, "tags": "甚爱,多藏"},
-  {"content": "知足者富，强行者有志。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,强行"},
-  {"content": "夫唯不争，故天下莫能与之争。", "author": "老子", "source": "道德经", "category": 0, "tags": "不争"},
-  {"content": "曲则全，枉则直，洼则盈。", "author": "老子", "source": "道德经", "category": 0, "tags": "曲全,枉直"},
-  {"content": "轻诺必寡信，多易必多难。", "author": "老子", "source": "道德经", "category": 0, "tags": "轻诺,寡信"},
-  {"content": "天下皆知美之为美，斯恶已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,恶"},
-  {"content": "出生入死。", "author": "老子", "source": "道德经", "category": 0, "tags": "出生入死"},
-  {"content": "金玉满堂，莫之能守。", "author": "老子", "source": "道德经", "category": 0, "tags": "金玉,满堂"},
-  {"content": "不出户，知天下；不窥牖，见天道。", "author": "老子", "source": "道德经", "category": 0, "tags": "不出户"},
-  {"content": "胜人者有力，自胜者强。", "author": "老子", "source": "道德经", "category": 0, "tags": "胜人,自胜"},
-  {"content": "知足者富，不知足者贵。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,贵"},
-  {"content": "天之道，损有余而补不足。", "author": "老子", "source": "道德经", "category": 0, "tags": "天之道"},
-  {"content": "人之道，则不然，损不足以奉有余。", "author": "老子", "source": "道德经", "category": 0, "tags": "人之道"},
-  {"content": "甚爱必大费，多藏必厚亡。", "author": "老子", "source": "道德经", "category": 0, "tags": "甚爱,多藏"},
-  {"content": "知足者，富也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "罪莫大于可欲，祸莫大于不知足。", "author": "老子", "source": "道德经", "category": 0, "tags": "可欲,不知足"},
-  {"content": "民之从事，常于几成而败之。慎终如始，则无败事。", "author": "老子", "source": "道德经", "category": 0, "tags": "慎终如始"},
-  {"content": "上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之。", "author": "老子", "source": "道德经", "category": 0, "tags": "上士,中士,下士"},
-  {"content": "明道若昧，进道若退，夷道若纇。", "author": "老子", "source": "道德经", "category": 0, "tags": "明道,昧"},
-  {"content": "大白若辱，大方无隅。", "author": "老子", "source": "道德经", "category": 0, "tags": "大白,大方"},
-  {"content": "大器晚成，大音希声，大象无形。", "author": "老子", "source": "道德经", "category": 0, "tags": "大器,大音,大象"},
-  {"content": "道隐无名，夫唯道善贷且成。", "author": "老子", "source": "道德经", "category": 0, "tags": "道隐,无名"},
-  {"content": "善为士者，不武；善战者，不怒；善胜敌者，不与。", "author": "老子", "source": "道德经", "category": 0, "tags": "善为士,善战"},
-  {"content": "天下莫柔弱于水，而攻坚强者莫之能胜。", "author": "老子", "source": "道德经", "category": 0, "tags": "柔弱,水"},
-  {"content": "我有三宝，持而保之：一曰慈，二曰俭，三曰不敢为天下先。", "author": "老子", "source": "道德经", "category": 0, "tags": "三宝,慈,俭"},
-  {"content": "知足者， 富也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "企者不立，跨者不行。", "author": "老子", "source": "道德经", "category": 0, "tags": "企者,跨者"},
-  {"content": "曲则全，枉则直，洼则盈，敝则新。", "author": "老子", "source": "道德经", "category": 0, "tags": "曲全,枉直"},
-  {"content": "飘风不终朝，骤雨不终日。孰为此者？天地。", "author": "老子", "source": "道德经", "category": 0, "tags": "飘风,骤雨"},
-  {"content": "知足者，富也；不知足者，虽富而贫。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富贫"},
-  {"content": "名与身孰亲？身与货孰多？得与亡孰病？", "author": "老子", "source": "道德经", "category": 0, "tags": "名,身,货"},
-  {"content": "甚爱必大费，多藏必厚亡。故知足不辱，知止不殆，可以长久。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足不辱,知止不殆"},
-  {"content": "大成若缺，其用不弊；大盈若冲，其用不穷。", "author": "老子", "source": "道德经", "category": 0, "tags": "大成,大盈"},
-  {"content": "祸兮，福之所倚；福兮，祸之所伏。", "author": "老子", "source": "道德经", "category": 0, "tags": "祸福,倚伏"},
-  {"content": "知足者，富也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "天网恢恢，疏而不失。", "author": "老子", "source": "道德经", "category": 0, "tags": "天网,恢恢"},
-  {"content": "信言不美，美言不信。善者不辩，辩者不善。", "author": "老子", "source": "道德经", "category": 0, "tags": "信言,美言"},
-  {"content": "知人者智，自知者明。", "author": "老子", "source": "道德经", "category": 0, "tags": "知人,自知"},
-  {"content": "胜人者有力，自胜者强。", "author": "老子", "source": "道德经", "category": 0, "tags": "胜人,自胜"},
-  {"content": "知足者富，强行者有志。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,强行"},
-  {"content": "夫轻诺必寡信，多易必多难。", "author": "老子", "source": "道德经", "category": 0, "tags": "轻诺,寡信"},
-  {"content": "天下皆知美之为美，斯恶已；皆知善之为善，斯不善已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,善"},
-  {"content": "和大怨，必有余怨，安可以为善？", "author": "老子", "source": "道德经", "category": 0, "tags": "和大怨"},
-  {"content": "小国寡民，使有什伯之器而不用，使民重死而不远徙。", "author": "老子", "source": "道德经", "category": 0, "tags": "小国寡民"},
-  {"content": "天之道，损有余而补不足。", "author": "老子", "source": "道德经", "category": 0, "tags": "天之道"},
-  {"content": "人之道，损不足以奉有余。", "author": "老子", "source": "道德经", "category": 0, "tags": "人之道"},
-  {"content": "天之道，利而不害；圣人之道，为而不争。", "author": "老子", "source": "道德经", "category": 0, "tags": "天之道,圣人之道"},
-  {"content": "上士闻道，勤而行之。", "author": "老子", "source": "道德经", "category": 0, "tags": "上士,闻道"},
-  {"content": "中士闻道，若存若亡。", "author": "老子", "source": "道德经", "category": 0, "tags": "中士,闻道"},
-  {"content": "下士闻道，大笑之。不笑不足以为道。", "author": "老子", "source": "道德经", "category": 0, "tags": "下士,闻道"},
-  {"content": "明道若昧，进道若退，夷道若纇。", "author": "老子", "source": "道德经", "category": 0, "tags": "明道,昧"},
-  {"content": "上德若谷，大白若辱。", "author": "老子", "source": "道德经", "category": 0, "tags": "上德,若谷"},
-  {"content": "广德若不足，建德若偷。", "author": "老子", "source": "道德经", "category": 0, "tags": "广德,建德"},
-  {"content": "质真若渝，大方无隅。", "author": "老子", "source": "道德经", "category": 0, "tags": "质真,大方"},
-  {"content": "大器晚成，大音希声，大象无形。", "author": "老子", "source": "道德经", "category": 0, "tags": "大器,大音,大象"},
-  {"content": "道隐无名，夫唯道善贷且成。", "author": "老子", "source": "道德经", "category": 0, "tags": "道隐,无名"},
-  {"content": "知足者， 富也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "祸兮，福之所倚；福兮，祸之所伏。", "author": "老子", "source": "道德经", "category": 0, "tags": "祸福,倚伏"},
-  {"content": "天网恢恢，疏而不漏。", "author": "老子", "source": "道德经", "category": 0, "tags": "天网"},
-  {"content": "信言不美，美言不信。", "author": "老子", "source": "道德经", "category": 0, "tags": "信言,美言"},
-  {"content": "知人者智，自知者明。", "author": "老子", "source": "道德经", "category": 0, "tags": "知人,自知"},
-  {"content": "胜人者有力，自胜者强。", "author": "老子", "source": "道德经", "category": 0, "tags": "胜人,自胜"},
-  {"content": "知足者富，强行者有志。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,强行"},
-  {"content": "夫轻诺必寡信，多易必多难。", "author": "老子", "source": "道德经", "category": 0, "tags": "轻诺,寡信"},
-  {"content": "天下皆知美之为美，斯恶已；皆知善之为善，斯不善已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,善,恶"},
-  {"content": "和大怨，必有余怨，安可以为善？", "author": "老子", "source": "道德经", "category": 0, "tags": "和大怨"},
-  {"content": "小国寡民，使有什伯之器而不用，使民重死而不远徙。", "author": "老子", "source": "道德经", "category": 0, "tags": "小国寡民"},
-  {"content": "天之道，损有余而补不足。", "author": "老子", "source": "道德经", "category": 0, "tags": "天之道"},
-  {"content": "人之道，损不足以奉有余。", "author": "老子", "source": "道德经", "category": 0, "tags": "人之道"},
-  {"content": "天之道，利而不害；圣人之道，为而不争。", "author": "老子", "source": "道德经", "category": 0, "tags": "天之道,圣人之道"},
-  {"content": "上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之。", "author": "老子", "source": "道德经", "category": 0, "tags": "上士,中士,下士"},
-  {"content": "明道若昧，进道若退，夷道若纇。", "author": "老子", "source": "道德经", "category": 0, "tags": "明道,昧"},
-  {"content": "上德若谷，大白若辱。", "author": "老子", "source": "道德经", "category": 0, "tags": "上德,若谷"},
-  {"content": "广德若不足，建德若偷。", "author": "老子", "source": "道德经", "category": 0, "tags": "广德,建德"},
-  {"content": "质真若渝，大方无隅。", "author": "老子", "source": "道德经", "category": 0, "tags": "质真,大方"},
-  {"content": "大器晚成，大音希声，大象无形。", "author": "老子", "source": "道德经", "category": 0, "tags": "大器,大音,大象"},
-  {"content": "道隐无名，夫唯道善贷且成。", "author": "老子", "source": "道德经", "category": 0, "tags": "道隐,无名"},
-  {"content": "知足者， 富也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "祸兮，福之所倚；福兮，祸之所伏。", "author": "老子", "source": "道德经", "category": 0, "tags": "祸福,倚伏"},
-  {"content": "天网恢恢，疏而不漏。", "author": "老子", "source": "道德经", "category": 0, "tags": "天网"},
-  {"content": "信言不美，美言不信。", "author": "老子", "source": "道德经", "category": 0, "tags": "信言,美言"},
-  {"content": "知人者智，自知者明。", "author": "老子", "source": "道德经", "category": 0, "tags": "知人,自知"},
-  {"content": "胜人者有力，自胜者强。", "author": "老子", "source": "道德经", "category": 0, "tags": "胜人,自胜"},
-  {"content": "知足者富，强行者有志。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,强行"},
-  {"content": "甚爱必大费，多藏必厚亡。", "author": "老子", "source": "道德经", "category": 0, "tags": "甚爱,多藏"},
-  {"content": "知足者， 富也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,富"},
-  {"content": "罪莫大于可欲，祸莫大于不知足。", "author": "老子", "source": "道德经", "category": 0, "tags": "可欲,不知足"},
-  {"content": "咎莫大于欲得，祸莫大于不知足。", "author": "老子", "source": "道德经", "category": 0, "tags": "欲得,不知足"},
-  {"content": "知足之足，常足矣。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足之足"},
-  {"content": "不出户，知天下；不窥牖，见天道。其出弥远，其知弥少。", "author": "老子", "source": "道德经", "category": 0, "tags": "不出户,知天下"},
-  {"content": "是以圣人不行而知，不见而名，不为而成。", "author": "老子", "source": "道德经", "category": 0, "tags": "不行,不见,不为"},
-  {"content": "为学日益，为道日损。损之又损，以至于无为，无为而无不为。", "author": "老子", "source": "道德经", "category": 0, "tags": "无为,无不为"},
-  {"content": "天下皆知美之为美，斯恶已；皆知善之为善，斯不善已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,善,恶"},
-  {"content": "故立天子，置三公，虽有拱璧以先驷马，不如坐进此道。", "author": "老子", "source": "道德经", "category": 0, "tags": "天子,三公"},
-  {"content": "古之所以贵此道者何？不曰求以得，有罪以免邪？", "author": "老子", "source": "道德经", "category": 0, "tags": "贵此道"},
-  {"content": "为而不争，夫唯不争，故天下莫能与之争。", "author": "老子", "source": "道德经", "category": 0, "tags": "为而不争"},
-  {"content": "知足者，富也；知止者，久也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,知止"},
-  {"content": "罪莫大于可欲，祸莫大于不知足。", "author": "老子", "source": "道德经", "category": 0, "tags": "可欲,不知足"},
-  {"content": "咎莫大于欲得，祸莫大于不知足。", "author": "老子", "source": "道德经", "category": 0, "tags": "欲得,不知足"},
-  {"content": "知足之足，常足矣。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足之足"},
-  {"content": "不出户，知天下；不窥牖，见天道。其出弥远，其知弥少。", "author": "老子", "source": "道德经", "category": 0, "tags": "不出户,知天下"},
-  {"content": "是以圣人不行而知，不见而名，不为而成。", "author": "老子", "source": "道德经", "category": 0, "tags": "不行,不见,不为"},
-  {"content": "为学日益，为道日损。损之又损，以至于无为，无为而无不为。", "author": "老子", "source": "道德经", "category": 0, "tags": "无为,无不为"},
-  {"content": "天下皆知美之为美，斯恶已；皆知善之为善，斯不善已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,善,恶"},
-  {"content": "故立天子，置三公，虽有拱璧以先驷马，不如坐进此道。", "author": "老子", "source": "道德经", "category": 0, "tags": "天子,三公"},
-  {"content": "古之所以贵此道者何？不曰求以得，有罪以免邪？", "author": "老子", "source": "道德经", "category": 0, "tags": "贵此道"},
-  {"content": "为而不争，夫唯不争，故天下莫能与之争。", "author": "老子", "source": "道德经", "category": 0, "tags": "为而不争"},
-  {"content": "知足者，富也；知止者，久也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,知止"},
-  {"content": "罪莫大于可欲，祸莫大于不知足。", "author": "老子", "source": "道德经", "category": 0, "tags": "可欲,不知足"},
-  {"content": "咎莫大于欲得，祸莫大于不知足。", "author": "老子", "source": "道德经", "category": 0, "tags": "欲得,不知足"},
-  {"content": "知足之足，常足矣。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足之足"},
-  {"content": "不出户，知天下；不窥牖，见天道。其出弥远，其知弥少。", "author": "老子", "source": "道德经", "category": 0, "tags": "不出户,知天下"},
-  {"content": "是以圣人不行而知，不见而名，不为而成。", "author": "老子", "source": "道德经", "category": 0, "tags": "不行,不见,不为"},
-  {"content": "为学日益，为道日损。损之又损，以至于无为，无为而无不为。", "author": "老子", "source": "道德经", "category": 0, "tags": "无为,无不为"},
-  {"content": "天下皆知美之为美，斯恶已；皆知善之为善，斯不善已。", "author": "老子", "source": "道德经", "category": 0, "tags": "美,善,恶"},
-  {"content": "故立天子，置三公，虽有拱璧以先驷马，不如坐进此道。", "author": "老子", "source": "道德经", "category": 0, "tags": "天子,三公"},
-  {"content": "古之所以贵此道者何？不曰求以得，有罪以免邪？", "author": "老子", "source": "道德经", "category": 0, "tags": "贵此道"},
-  {"content": "为而不争，夫唯不争，故天下莫能与之争。", "author": "老子", "source": "道德经", "category": 0, "tags": "为而不争"},
-  {"content": "知足者，富也；知止者，久也。", "author": "老子", "source": "道德经", "category": 0, "tags": "知足,知止"},
-  {"content": "大学之道，在明明德，在亲民，在止于至善。", "author": "曾子", "source": "大学", "category": 0, "tags": "大学之道,明明德"},
-  {"content": "知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。", "author": "曾子", "source": "大学", "category": 0, "tags": "知止,定静"},
-  {"content": "物有本末，事有终始。知所先后，则近道矣。", "author": "曾子", "source": "大学", "category": 0, "tags": "本末,终始"},
-  {"content": "古之欲明明德于天下者，先治其国；欲治其国者，先齐其家。", "author": "曾子", "source": "大学", "category": 0, "tags": "明明德,治国"},
-  {"content": "欲齐其家者，先修其身；欲修其身者，先正其心。", "author": "曾子", "source": "大学", "category": 0, "tags": "齐家,修身"},
-  {"content": "欲正其心者，先诚其意；欲诚其意者，先致其知。", "author": "曾子", "source": "大学", "category": 0, "tags": "正心,诚意"},
-  {"content": "致知在格物。物格而后知至，知至而后意诚。", "author": "曾子", "source": "大学", "category": 0, "tags": "致知,格物"},
-  {"content": "所谓诚其意者，毋自欺也。如恶恶臭，如好好色。", "author": "曾子", "source": "大学", "category": 0, "tags": "诚意,自欺"},
-  {"content": "此谓诚于中，形于外，故君子必慎其独也。", "author": "曾子", "source": "大学", "category": 0, "tags": "诚中,形外"},
-  {"content": "富润屋，德润身，心广体胖。", "author": "曾子", "source": "大学", "category": 0, "tags": "富润屋,德润身"},
-  {"content": "君子必慎其独也。", "author": "曾子", "source": "大学", "category": 0, "tags": "慎独"},
-  {"content": "为人君，止于仁；为人臣，止于敬；为人子，止于孝；为人父，止于慈。", "author": "曾子", "source": "大学", "category": 0, "tags": "仁,敬,孝,慈"},
-  {"content": "与国人交，止于信。", "author": "曾子", "source": "大学", "category": 0, "tags": "交友,信"},
-  {"content": "所谓修身在正其心者，身有所忿懥，则不得其正。", "author": "曾子", "source": "大学", "category": 0, "tags": "修身,正心"},
-  {"content": "有所恐惧，则不得其正；有所好乐，则不得其正。", "author": "曾子", "source": "大学", "category": 0, "tags": "恐惧,好乐"},
-  {"content": "心不在焉，视而不见，听而不闻，食而不知其味。", "author": "曾子", "source": "大学", "category": 0, "tags": "心不在焉"},
-  {"content": "此谓修身在正其心。", "author": "曾子", "source": "大学", "category": 0, "tags": "修身,正心"},
-  {"content": "齐其家在修其身者，人之其所亲爱而辟焉。", "author": "曾子", "source": "大学", "category": 0, "tags": "齐家,修身"},
-  {"content": "之其所贱恶而辟焉，之其所畏敬而辟焉，之其所哀矜而辟焉。", "author": "曾子", "source": "大学", "category": 0, "tags": "贱恶,畏敬"},
-  {"content": "之其所敖惰而辟焉，故好而知其恶，恶而知其美者，天下鲜矣。", "author": "曾子", "source": "大学", "category": 0, "tags": "敖惰,鲜矣"},
-  {"content": "故谚有之曰：人莫知其子之恶，莫知其苗之硕。", "author": "曾子", "source": "大学", "category": 0, "tags": "知子恶,知苗硕"},
-  {"content": "此谓身不修，不可以齐其家。", "author": "曾子", "source": "大学", "category": 0, "tags": "修身,齐家"},
-  {"content": "所谓治国必先齐其家者，其家不可教而能教人者，无之。", "author": "曾子", "source": "大学", "category": 0, "tags": "治国,齐家"},
-  {"content": "故君子不出家而成教于国。", "author": "曾子", "source": "大学", "category": 0, "tags": "不出家,成教"},
-  {"content": "孝者，所以事君也；弟者，所以事长也；慈者，所以使众也。", "author": "曾子", "source": "大学", "category": 0, "tags": "孝,弟,慈"},
-  {"content": "康诰曰：如保赤子。心诚求之，虽不中不远矣。", "author": "曾子", "source": "大学", "category": 0, "tags": "如保赤子"},
-  {"content": "未有学养子而后嫁者也。", "author": "曾子", "source": "大学", "category": 0, "tags": "学养子"},
-  {"content": "一家仁，一国兴仁；一家让，一国兴让。", "author": "曾子", "source": "大学", "category": 0, "tags": "一家仁,一国兴仁"},
-  {"content": "一人贪戾，一国作乱。其机如此。", "author": "曾子", "source": "大学", "category": 0, "tags": "贪戾,作乱"},
-  {"content": "此谓一言偾事，一人定国。", "author": "曾子", "source": "大学", "category": 0, "tags": "一言偾事"},
-  {"content": "尧舜帅天下以仁，而民从之；桀纣帅天下以暴，而民从之。", "author": "曾子", "source": "大学", "category": 0, "tags": "尧舜,桀纣"},
-  {"content": "其所令反其所好，而民不从。", "author": "曾子", "source": "大学", "category": 0, "tags": "所令,所好"},
-  {"content": "是故君子有诸己而后求诸人，无诸己而后非诸人。", "author": "曾子", "source": "大学", "category": 0, "tags": "有诸己,求诸人"},
-  {"content": "所藏乎身不恕，而能喻诸人者，未之有也。", "author": "曾子", "source": "大学", "category": 0, "tags": "藏乎身,恕"},
-  {"content": "故治国在齐其家。", "author": "曾子", "source": "大学", "category": 0, "tags": "治国,齐家"},
-  {"content": "诗云：桃之夭夭，其叶蓁蓁。之子于归，宜其家人。", "author": "曾子", "source": "大学", "category": 0, "tags": "桃夭,家人"},
-  {"content": "宜其家人，而后可以教国人。", "author": "曾子", "source": "大学", "category": 0, "tags": "宜家人,教国人"},
-  {"content": "诗云：宜兄宜弟。宜兄宜弟，而后可以教国人。", "author": "曾子", "source": "大学", "category": 0, "tags": "宜兄宜弟"},
-  {"content": "诗云：其仪不忒，正是四国。其为父子兄弟足法，而后民法之也。", "author": "曾子", "source": "大学", "category": 0, "tags": "其仪不忒"},
-  {"content": "此谓治国在齐其家。", "author": "曾子", "source": "大学", "category": 0, "tags": "治国,齐家"},
-  {"content": "所谓平天下在治其国者，上老老而民兴孝。", "author": "曾子", "source": "大学", "category": 0, "tags": "平天下,老老"},
-  {"content": "上长长而民兴弟，上恤孤而民不倍。", "author": "曾子", "source": "大学", "category": 0, "tags": "长长,恤孤"},
-  {"content": "所恶于上，毋以使下；所恶于下，毋以事上。", "author": "曾子", "source": "大学", "category": 0, "tags": "所恶,上下"},
-  {"content": "大学之道，在明明德，在亲民，在止于至善。", "author": "曾子", "source": "大学", "category": 0, "tags": "大学之道,明明德"},
-  {"content": "知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。", "author": "曾子", "source": "大学", "category": 0, "tags": "知止,定静"},
-  {"content": "物有本末，事有终始。知所先后，则近道矣。", "author": "曾子", "source": "大学", "category": 0, "tags": "本末,终始"},
-  {"content": "古之欲明明德于天下者，先治其国；欲治其国者，先齐其家。", "author": "曾子", "source": "大学", "category": 0, "tags": "明明德,治国"},
-  {"content": "欲齐其家者，先修其身；欲修其身者，先正其心。", "author": "曾子", "source": "大学", "category": 0, "tags": "齐家,修身"},
-  {"content": "欲正其心者，先诚其意；欲诚其意者，先致其知。", "author": "曾子", "source": "大学", "category": 0, "tags": "正心,诚意"},
-  {"content": "致知在格物。物格而后知至，知至而后意诚。", "author": "曾子", "source": "大学", "category": 0, "tags": "致知,格物"},
-  {"content": "为人君，止于仁；为人臣，止于敬；为人子，止于孝；为人父，止于慈。", "author": "曾子", "source": "大学", "category": 0, "tags": "仁,敬,孝,慈"},
-  {"content": "与国人交，止于信。", "author": "曾子", "source": "大学", "category": 0, "tags": "交友,信"},
-  {"content": "君子必慎其独也。", "author": "曾子", "source": "大学", "category": 0, "tags": "慎独"},
-  {"content": "富润屋，德润身，心广体胖。", "author": "曾子", "source": "大学", "category": 0, "tags": "富润屋,德润身"},
-  {"content": "所谓诚其意者，毋自欺也。", "author": "曾子", "source": "大学", "category": 0, "tags": "诚意,自欺"},
-  {"content": "如恶恶臭，如好好色，此之谓自谦。", "author": "曾子", "source": "大学", "category": 0, "tags": "恶恶臭,好好色"},
-  {"content": "故君子必慎其独也。", "author": "曾子", "source": "大学", "category": 0, "tags": "慎独"},
-  {"content": "小人闲居为不善，无所不至。见君子而后厌然，掩其不善，而著其善。", "author": "曾子", "source": "大学", "category": 0, "tags": "小人,闲居"},
-  {"content": "人之视己，如见其肺肝然，则何益矣？", "author": "曾子", "source": "大学", "category": 0, "tags": "视己,肺肝"},
-  {"content": "此谓诚于中，形于外，故君子必慎其独也。", "author": "曾子", "source": "大学", "category": 0, "tags": "诚中,形外"},
-  {"content": "曾子曰：十目所视，十手所指，其严乎！", "author": "曾子", "source": "大学", "category": 0, "tags": "十目所视"},
-  {"content": "富润屋，德润身，心广体胖。故君子必诚其意。", "author": "曾子", "source": "大学", "category": 0, "tags": "富润屋,诚其意"},
-  {"content": "君子有大道，必忠信以得之，骄泰以失之。", "author": "曾子", "source": "大学", "category": 0, "tags": "君子大道,忠信"},
-  {"content": "生财有大道：生之者众，食之者寡，为之者疾，用之者舒，则财恒足矣。", "author": "曾子", "source": "大学", "category": 2, "tags": "生财大道"},
-  {"content": "仁者以财发身，不仁者以身发财。", "author": "曾子", "source": "大学", "category": 2, "tags": "仁者,发身"},
-  {"content": "未有上好仁而下不好义者也，未有好义其事不终者也。", "author": "曾子", "source": "大学", "category": 0, "tags": "好仁,好义"},
-  {"content": "未有府库财，非其财者也。", "author": "曾子", "source": "大学", "category": 0, "tags": "府库财"},
-  {"content": "孟献子曰：畜马乘，不察于鸡豚；伐冰之家，不畜牛羊。", "author": "曾子", "source": "大学", "category": 0, "tags": "畜马乘,伐冰"},
-  {"content": "百乘之家，不畜聚敛之臣。与其有聚敛之臣，宁有盗臣。", "author": "曾子", "source": "大学", "category": 0, "tags": "百乘之家,聚敛"},
-  {"content": "此谓国不以利为利，以义为利也。", "author": "曾子", "source": "大学", "category": 0, "tags": "以义为利"},
-  {"content": "长国家而务财用者，必自小人矣。", "author": "曾子", "source": "大学", "category": 0, "tags": "长国家,务财用"},
-  {"content": "彼为善之，小人之使为国家，菑害并至。", "author": "曾子", "source": "大学", "category": 0, "tags": "为善,菑害"},
-  {"content": "虽有小大缓急，相倾相毁，相破坏，断断兮如一说乎！", "author": "曾子", "source": "大学", "category": 0, "tags": "相倾相毁"},
-  {"content": "道得众则得国，失众则失国。", "author": "曾子", "source": "大学", "category": 0, "tags": "得众,失众"},
-  {"content": "是故君子先慎乎德。有德此有人，有人此有土，有土此有财，有财此有用。", "author": "曾子", "source": "大学", "category": 0, "tags": "先慎乎德"},
-  {"content": "德者本也，财者末也。", "author": "曾子", "source": "大学", "category": 0, "tags": "德本,财末"},
-  {"content": "外本内末，争民施夺。是故财聚则民散，财散则民聚。", "author": "曾子", "source": "大学", "category": 0, "tags": "外本内末,财散民聚"},
-  {"content": "是故言悖而出者，亦悖而入；货悖而入者，亦悖而出。", "author": "曾子", "source": "大学", "category": 0, "tags": "悖出,悖入"},
-  {"content": "此谓治国在齐其家。", "author": "曾子", "source": "大学", "category": 0, "tags": "治国,齐家"},
-  {"content": "所谓平天下在治其国者，上老老而民兴孝。", "author": "曾子", "source": "大学", "category": 0, "tags": "平天下,老老"},
-  {"content": "上长长而民兴弟，上恤孤而民不倍。", "author": "曾子", "source": "大学", "category": 0, "tags": "长长,恤孤"},
-  {"content": "所恶于上，毋以使下；所恶于下，毋以事上。", "author": "曾子", "source": "大学", "category": 0, "tags": "所恶,上下"},
-  {"content": "所恶于右，毋以交于左；所恶于左，毋以交于右。", "author": "曾子", "source": "大学", "category": 0, "tags": "所恶,左右"},
-  {"content": "此之谓絜矩之道。", "author": "曾子", "source": "大学", "category": 0, "tags": "絜矩之道"},
-  {"content": "所恶于上，毋以使下；所恶于下，毋以事上；所恶于前，毋以先后；所恶于后，毋以从前。", "author": "曾子", "source": "大学", "category": 0, "tags": "絜矩之道"},
-  {"content": "所恶于右，毋以交于左；所恶于左，毋以交于右。此之谓絜矩之道。", "author": "曾子", "source": "大学", "category": 0, "tags": "絜矩之道"},
-  {"content": "民之所好好之，民之所恶恶之，此之谓民之父母。", "author": "曾子", "source": "大学", "category": 0, "tags": "民之父母"},
-  {"content": "道得众则得国，失众则失国。是故君子先慎乎德。", "author": "曾子", "source": "大学", "category": 0, "tags": "得众,慎德"},
-  {"content": "有德此有人，有人此有土，有土此有财，有财此有用。", "author": "曾子", "source": "大学", "category": 0, "tags": "德,人,土,财"},
-  {"content": "德者本也，财者末也。外本内末，争民施夺。", "author": "曾子", "source": "大学", "category": 0, "tags": "德本,财末"},
-  {"content": "是故财聚则民散，财散则民聚。", "author": "曾子", "source": "大学", "category": 0, "tags": "财聚,财散"},
-  {"content": "言悖而出者，亦悖而入；货悖而入者，亦悖而出。", "author": "曾子", "source": "大学", "category": 0, "tags": "悖出,悖入"},
-  {"content": "仁者以财发身，不仁者以身发财。", "author": "曾子", "source": "大学", "category": 2, "tags": "仁者发身,以身发财"},
-  {"content": "未有上好仁而下不好义者也，未有好义其事不终者也。", "author": "曾子", "source": "大学", "category": 0, "tags": "好仁,好义"},
-  {"content": "未有府库财，非其财者也。", "author": "曾子", "source": "大学", "category": 0, "tags": "府库财"},
-  {"content": "孟献子曰：畜马乘，不察于鸡豚；伐冰之家，不畜牛羊。", "author": "曾子", "source": "大学", "category": 0, "tags": "畜马乘,伐冰"},
-  {"content": "百乘之家，不畜聚敛之臣。与其有聚敛之臣，宁有盗臣。", "author": "曾子", "source": "大学", "category": 0, "tags": "百乘之家,聚敛"},
-  {"content": "此谓国不以利为利，以义为利也。", "author": "曾子", "source": "大学", "category": 0, "tags": "以义为利"},
-  {"content": "长国家而务财用者，必自小人矣。", "author": "曾子", "source": "大学", "category": 0, "tags": "长国家,务财用"},
-  {"content": "大学之道，在明明德，在亲民，在止于至善。", "author": "曾子", "source": "大学", "category": 0, "tags": "大学之道"},
-  {"content": "知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。", "author": "曾子", "source": "大学", "category": 0, "tags": "知止,定静"},
-  {"content": "物有本末，事有终始。知所先后，则近道矣。", "author": "曾子", "source": "大学", "category": 0, "tags": "本末,终始"},
-  {"content": "古之欲明明德于天下者，先治其国；欲治其国者，先齐其家。", "author": "曾子", "source": "大学", "category": 0, "tags": "明明德,治国"},
-  {"content": "欲齐其家者，先修其身；欲修其身者，先正其心。", "author": "曾子", "source": "大学", "category": 0, "tags": "齐家,修身"},
-  {"content": "欲正其心者，先诚其意；欲诚其意者，先致其知。", "author": "曾子", "source": "大学", "category": 0, "tags": "正心,诚意"},
-  {"content": "致知在格物。物格而后知至，知至而后意诚。", "author": "曾子", "source": "大学", "category": 0, "tags": "致知,格物"},
-  {"content": "为人君，止于仁；为人臣，止于敬；为人子，止于孝；为人父，止于慈。", "author": "曾子", "source": "大学", "category": 0, "tags": "仁,敬,孝,慈"},
-  {"content": "与国人交，止于信。", "author": "曾子", "source": "大学", "category": 0, "tags": "交友,信"},
-  {"content": "君子必慎其独也。", "author": "曾子", "source": "大学", "category": 0, "tags": "慎独"},
-  {"content": "富润屋，德润身，心广体胖。", "author": "曾子", "source": "大学", "category": 0, "tags": "富润屋,德润身"},
-  {"content": "学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "学而时习"},
-  {"content": "巧言令色，鲜矣仁。", "author": "孔子", "source": "论语", "category": 0, "tags": "巧言令色"},
-  {"content": "吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "三省吾身"},
-  {"content": "弟子入则孝，出则弟，谨而信，泛爱众，而亲仁。", "author": "孔子", "source": "论语", "category": 0, "tags": "入孝出弟"},
-  {"content": "行有余力，则以学文。", "author": "孔子", "source": "论语", "category": 0, "tags": "行有余力"},
-  {"content": "君子务本，本立而道生。孝弟也者，其为仁之本与！", "author": "孔子", "source": "论语", "category": 0, "tags": "君子务本"},
-  {"content": "其为人也孝弟，而好犯上者，鲜矣；不好犯上，而好作乱者，未之有也。", "author": "孔子", "source": "论语", "category": 0, "tags": "孝弟,犯上"},
-  {"content": "君子食无求饱，居无求安，敏于事而慎于言，就有道而正焉，可谓好学也已。", "author": "孔子", "source": "论语", "category": 0, "tags": "食无求饱"},
-  {"content": "贫而无谄，富而无骄，可矣；未若贫而乐，富而好礼者也。", "author": "孔子", "source": "论语", "category": 0, "tags": "贫而无谄"},
-  {"content": "诗三百，一言以蔽之，曰：思无邪。", "author": "孔子", "source": "论语", "category": 0, "tags": "诗三百,思无邪"},
-  {"content": "为政以德，譬如北辰，居其所而众星共之。", "author": "孔子", "source": "论语", "category": 0, "tags": "为政以德"},
-  {"content": "道之以政，齐之以刑，民免而无耻；道之以德，齐之以礼，有耻且格。", "author": "孔子", "source": "论语", "category": 0, "tags": "道之以德"},
-  {"content": "吾十有五而志于学，三十而立，四十而不惑，五十而知天命。", "author": "孔子", "source": "论语", "category": 0, "tags": "三十而立"},
-  {"content": "六十而耳顺，七十而从心所欲，不逾矩。", "author": "孔子", "source": "论语", "category": 0, "tags": "耳顺,从心所欲"},
-  {"content": "温故而知新，可以为师矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "温故知新"},
-  {"content": "君子周而不比，小人比而不周。", "author": "孔子", "source": "论语", "category": 0, "tags": "周而不比"},
-  {"content": "学而不思则罔，思而不学则殆。", "author": "孔子", "source": "论语", "category": 0, "tags": "学而不思"},
-  {"content": "知之为知之，不知为不知，是知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "知之为知之"},
-  {"content": "人而无信，不知其可也。大车无輗，小车无軏，其何以行之哉？", "author": "孔子", "source": "论语", "category": 0, "tags": "人而无信"},
-  {"content": "八佾舞于庭，是可忍也，孰不可忍也？", "author": "孔子", "source": "论语", "category": 0, "tags": "八佾舞于庭"},
-  {"content": "居上不宽，为礼不敬，临丧不哀，吾何以观之哉？", "author": "孔子", "source": "论语", "category": 0, "tags": "居上不宽"},
-  {"content": "里仁为美。择不处仁，焉得知？", "author": "孔子", "source": "论语", "category": 0, "tags": "里仁为美"},
-  {"content": "不仁者不可以久处约，不可以长处乐。仁者安仁，知者利仁。", "author": "孔子", "source": "论语", "category": 0, "tags": "不仁者"},
-  {"content": "唯仁者能好人，能恶人。", "author": "孔子", "source": "论语", "category": 0, "tags": "唯仁者"},
-  {"content": "苟志于仁矣，无恶也。", "author": "孔子", "source": "论语", "category": 0, "tags": "苟志于仁"},
-  {"content": "君子去仁，恶乎成名？君子无终食之间违仁，造次必于是，颠沛必于是。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子去仁"},
-  {"content": "我未见好仁者，恶不仁者。好仁者，无以尚之。", "author": "孔子", "source": "论语", "category": 0, "tags": "好仁者"},
-  {"content": "观过，斯知仁矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "观过知仁"},
-  {"content": "朝闻道，夕死可矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "朝闻道夕死"},
-  {"content": "士志于道，而耻恶衣恶食者，未足与议也。", "author": "孔子", "source": "论语", "category": 0, "tags": "士志于道"},
-  {"content": "君子之于天下也，无适也，无莫也，义之与比。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子之于天下"},
-  {"content": "君子怀德，小人怀土；君子怀刑，小人怀惠。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子怀德"},
-  {"content": "放于利而行，多怨。", "author": "孔子", "source": "论语", "category": 0, "tags": "放于利"},
-  {"content": "能以礼让为国乎？何有？不能以礼让为国，如礼何？", "author": "孔子", "source": "论语", "category": 0, "tags": "礼让为国"},
-  {"content": "不患无位，患所以立。不患莫己知，求为可知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "不患无位"},
-  {"content": "君子喻于义，小人喻于利。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子喻于义"},
-  {"content": "见贤思齐焉，见不贤而内自省也。", "author": "孔子", "source": "论语", "category": 0, "tags": "见贤思齐"},
-  {"content": "父母在，不远游，游必有方。", "author": "孔子", "source": "论语", "category": 0, "tags": "父母在不远游"},
-  {"content": "父母之年，不可不知也。一则以喜，一则以惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "父母之年"},
-  {"content": "古者言之不出，耻躬之不逮也。", "author": "孔子", "source": "论语", "category": 0, "tags": "言之不出"},
-  {"content": "以约失之者鲜矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "以约失之"},
-  {"content": "君子欲讷于言而敏于行。", "author": "孔子", "source": "论语", "category": 0, "tags": "讷于言敏于行"},
-  {"content": "德不孤，必有邻。", "author": "孔子", "source": "论语", "category": 0, "tags": "德不孤"},
-  {"content": "朽木不可雕也，粪土之墙不可杇也，于予与何诛？", "author": "孔子", "source": "论语", "category": 0, "tags": "朽木不可雕"},
-  {"content": "始吾于人也，听其言而信其行；今吾于人也，听其言而观其行。", "author": "孔子", "source": "论语", "category": 0, "tags": "听其言观其行"},
-  {"content": "岁寒，然后知松柏之后凋也。", "author": "孔子", "source": "论语", "category": 0, "tags": "岁寒松柏"},
-  {"content": "知者不惑，仁者不忧，勇者不惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "知者不惑"},
-  {"content": "过犹不及。", "author": "孔子", "source": "论语", "category": 0, "tags": "过犹不及"},
-  {"content": "先行其言而后从之。", "author": "孔子", "source": "论语", "category": 0, "tags": "先行其言"},
-  {"content": "君子成人之美，不成人之恶；小人反是。", "author": "孔子", "source": "论语", "category": 0, "tags": "成人之美"},
-  {"content": "政者，正也。子帅以正，孰敢不正？", "author": "孔子", "source": "论语", "category": 0, "tags": "政者正也"},
-  {"content": "季康子问政于孔子。孔子对曰：政者，正也。子帅以正，孰敢不正？", "author": "孔子", "source": "论语", "category": 0, "tags": "政者正也"},
-  {"content": "其身正，不令而行；其身不正，虽令不从。", "author": "孔子", "source": "论语", "category": 0, "tags": "其身正"},
-  {"content": "苟正其身矣，于从政乎何有？不能正其身，如正人何？", "author": "孔子", "source": "论语", "category": 0, "tags": "正其身"},
-  {"content": "欲速则不达，见小利则大事不成。", "author": "孔子", "source": "论语", "category": 0, "tags": "欲速不达"},
-  {"content": "小人难事而易说也。说之虽不以道，说也；及其使人也，求备焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "小人难事"},
-  {"content": "君子易事而难说也。说之不以道，不说也；及其使人也，器之。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子易事"},
-  {"content": "爱之，能勿劳乎？忠焉，能勿诲乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "爱之劳之"},
-  {"content": "名不正则言不顺，言不顺则事不成。", "author": "孔子", "source": "论语", "category": 0, "tags": "名不正则言不顺"},
-  {"content": "己所不欲，勿施于人。", "author": "孔子", "source": "论语", "category": 0, "tags": "己所不欲"},
-  {"content": "过而不改，是谓过矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "过而不改"},
-  {"content": "当仁，不让于师。", "author": "孔子", "source": "论语", "category": 0, "tags": "当仁不让"},
-  {"content": "有教无类。", "author": "孔子", "source": "论语", "category": 0, "tags": "有教无类"},
-  {"content": "道不同，不相为谋。", "author": "孔子", "source": "论语", "category": 0, "tags": "道不同"},
-  {"content": "不患贫而患不均，不患寡而患不安。", "author": "孔子", "source": "论语", "category": 0, "tags": "不患贫患不均"},
-  {"content": "既来之，则安之。", "author": "孔子", "source": "论语", "category": 0, "tags": "既来之则安之"},
-  {"content": "友直，友谅，友多闻，益矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "友直友谅"},
-  {"content": "益者三友，损者三友。友直，友谅，友多闻，益矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "益者三友"},
-  {"content": "侍于君子有三愆：言未及之而言谓之躁，言及之而不言谓之隐，未见颜色而言谓之瞽。", "author": "孔子", "source": "论语", "category": 0, "tags": "侍于君子三愆"},
-  {"content": "唯女子与小人为难养也，近之则不逊，远之则怨。", "author": "孔子", "source": "论语", "category": 0, "tags": "女子小人"},
-  {"content": "往而不可追者，年也；去而不可得见者，亲也。", "author": "孔子", "source": "论语", "category": 0, "tags": "往而不可追"},
-  {"content": "后生可畏，焉知来者之不如今也？", "author": "孔子", "source": "论语", "category": 0, "tags": "后生可畏"},
-  {"content": "四十五十而无闻焉，斯亦不足畏也已。", "author": "孔子", "source": "论语", "category": 0, "tags": "四十五十"},
-  {"content": "三军可夺帅也，匹夫不可夺志也。", "author": "孔子", "source": "论语", "category": 0, "tags": "匹夫不可夺志"},
-  {"content": "知者不惑，仁者不忧，勇者不惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "知者不惑"},
-  {"content": "食不语，寝不言。", "author": "孔子", "source": "论语", "category": 0, "tags": "食不语寝不言"},
-  {"content": "席不正，不坐。", "author": "孔子", "source": "论语", "category": 0, "tags": "席不正不坐"},
-  {"content": "寝不尸，居不容。", "author": "孔子", "source": "论语", "category": 0, "tags": "寝不尸"},
-  {"content": "山梁雌雉，时哉时哉！", "author": "孔子", "source": "论语", "category": 0, "tags": "山梁雌雉"},
-  {"content": "未知生，焉知死？", "author": "孔子", "source": "论语", "category": 0, "tags": "未知生焉知死"},
-  {"content": "食不厌精，脍不厌细。", "author": "孔子", "source": "论语", "category": 0, "tags": "食不厌精"},
-  {"content": "割不正，不食。不得其酱，不食。", "author": "孔子", "source": "论语", "category": 0, "tags": "割不正不食"},
-  {"content": "非礼勿视，非礼勿听，非礼勿言，非礼勿动。", "author": "孔子", "source": "论语", "category": 0, "tags": "非礼勿视"},
-  {"content": "一日克己复礼，天下归仁焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "克己复礼"},
-  {"content": "为仁由己，而由人乎哉？", "author": "孔子", "source": "论语", "category": 0, "tags": "为仁由己"},
-  {"content": "出门如见大宾，使民如承大祭。", "author": "孔子", "source": "论语", "category": 0, "tags": "出门如见大宾"},
-  {"content": "居处恭，执事敬，与人忠。", "author": "孔子", "source": "论语", "category": 0, "tags": "居处恭执事敬"},
-  {"content": "己所不欲，勿施于人。在邦无怨，在家无怨。", "author": "孔子", "source": "论语", "category": 0, "tags": "己所不欲"},
-  {"content": "爱人，知人，举直错诸枉，能使枉者直。", "author": "孔子", "source": "论语", "category": 0, "tags": "爱人知人"},
-  {"content": "居上不宽，为礼不敬，临丧不哀，吾何以观之哉？", "author": "孔子", "source": "论语", "category": 0, "tags": "居上不宽"},
-  {"content": "学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "学而时习"},
-  {"content": "巧言令色，鲜矣仁。", "author": "孔子", "source": "论语", "category": 0, "tags": "巧言令色"},
-  {"content": "吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "三省吾身"},
-  {"content": "弟子入则孝，出则弟，谨而信，泛爱众，而亲仁。", "author": "孔子", "source": "论语", "category": 0, "tags": "入孝出弟"},
-  {"content": "行有余力，则以学文。", "author": "孔子", "source": "论语", "category": 0, "tags": "行有余力"},
-  {"content": "君子务本，本立而道生。孝弟也者，其为仁之本与！", "author": "孔子", "source": "论语", "category": 0, "tags": "君子务本"},
-  {"content": "其为人也孝弟，而好犯上者，鲜矣；不好犯上，而好作乱者，未之有也。", "author": "孔子", "source": "论语", "category": 0, "tags": "孝弟,犯上"},
-  {"content": "君子食无求饱，居无求安，敏于事而慎于言，就有道而正焉，可谓好学也已。", "author": "孔子", "source": "论语", "category": 0, "tags": "食无求饱"},
-  {"content": "贫而无谄，富而无骄，可矣；未若贫而乐，富而好礼者也。", "author": "孔子", "source": "论语", "category": 0, "tags": "贫而无谄"},
-  {"content": "诗三百，一言以蔽之，曰：思无邪。", "author": "孔子", "source": "论语", "category": 0, "tags": "诗三百,思无邪"},
-  {"content": "为政以德，譬如北辰，居其所而众星共之。", "author": "孔子", "source": "论语", "category": 0, "tags": "为政以德"},
-  {"content": "道之以政，齐之以刑，民免而无耻；道之以德，齐之以礼，有耻且格。", "author": "孔子", "source": "论语", "category": 0, "tags": "道之以德"},
-  {"content": "吾十有五而志于学，三十而立，四十而不惑，五十而知天命。", "author": "孔子", "source": "论语", "category": 0, "tags": "三十而立"},
-  {"content": "六十而耳顺，七十而从心所欲，不逾矩。", "author": "孔子", "source": "论语", "category": 0, "tags": "耳顺,从心所欲"},
-  {"content": "温故而知新，可以为师矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "温故知新"},
-  {"content": "君子周而不比，小人比而不周。", "author": "孔子", "source": "论语", "category": 0, "tags": "周而不比"},
-  {"content": "学而不思则罔，思而不学则殆。", "author": "孔子", "source": "论语", "category": 0, "tags": "学而不思"},
-  {"content": "知之为知之，不知为不知，是知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "知之为知之"},
-  {"content": "人而无信，不知其可也。大车无輗，小车无軏，其何以行之哉？", "author": "孔子", "source": "论语", "category": 0, "tags": "人而无信"},
-  {"content": "八佾舞于庭，是可忍也，孰不可忍也？", "author": "孔子", "source": "论语", "category": 0, "tags": "八佾舞于庭"},
-  {"content": "居上不宽，为礼不敬，临丧不哀，吾何以观之哉？", "author": "孔子", "source": "论语", "category": 0, "tags": "居上不宽"},
-  {"content": "里仁为美。择不处仁，焉得知？", "author": "孔子", "source": "论语", "category": 0, "tags": "里仁为美"},
-  {"content": "不仁者不可以久处约，不可以长处乐。仁者安仁，知者利仁。", "author": "孔子", "source": "论语", "category": 0, "tags": "不仁者"},
-  {"content": "唯仁者能好人，能恶人。", "author": "孔子", "source": "论语", "category": 0, "tags": "唯仁者"},
-  {"content": "苟志于仁矣，无恶也。", "author": "孔子", "source": "论语", "category": 0, "tags": "苟志于仁"},
-  {"content": "君子去仁，恶乎成名？君子无终食之间违仁，造次必于是，颠沛必于是。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子去仁"},
-  {"content": "我未见好仁者，恶不仁者。好仁者，无以尚之。", "author": "孔子", "source": "论语", "category": 0, "tags": "好仁者"},
-  {"content": "观过，斯知仁矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "观过知仁"},
-  {"content": "朝闻道，夕死可矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "朝闻道夕死"},
-  {"content": "士志于道，而耻恶衣恶食者，未足与议也。", "author": "孔子", "source": "论语", "category": 0, "tags": "士志于道"},
-  {"content": "君子之于天下也，无适也，无莫也，义之与比。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子之于天下"},
-  {"content": "君子怀德，小人怀土；君子怀刑，小人怀惠。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子怀德"},
-  {"content": "放于利而行，多怨。", "author": "孔子", "source": "论语", "category": 0, "tags": "放于利"},
-  {"content": "能以礼让为国乎？何有？不能以礼让为国，如礼何？", "author": "孔子", "source": "论语", "category": 0, "tags": "礼让为国"},
-  {"content": "不患无位，患所以立。不患莫己知，求为可知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "不患无位"},
-  {"content": "君子喻于义，小人喻于利。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子喻于义"},
-  {"content": "见贤思齐焉，见不贤而内自省也。", "author": "孔子", "source": "论语", "category": 0, "tags": "见贤思齐"},
-  {"content": "父母在，不远游，游必有方。", "author": "孔子", "source": "论语", "category": 0, "tags": "父母在不远游"},
-  {"content": "父母之年，不可不知也。一则以喜，一则以惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "父母之年"},
-  {"content": "古者言之不出，耻躬之不逮也。", "author": "孔子", "source": "论语", "category": 0, "tags": "言之不出"},
-  {"content": "以约失之者鲜矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "以约失之"},
-  {"content": "君子欲讷于言而敏于行。", "author": "孔子", "source": "论语", "category": 0, "tags": "讷于言敏于行"},
-  {"content": "德不孤，必有邻。", "author": "孔子", "source": "论语", "category": 0, "tags": "德不孤"},
-  {"content": "朽木不可雕也，粪土之墙不可杇也，于予与何诛？", "author": "孔子", "source": "论语", "category": 0, "tags": "朽木不可雕"},
-  {"content": "始吾于人也，听其言而信其行；今吾于人也，听其言而观其行。", "author": "孔子", "source": "论语", "category": 0, "tags": "听其言观其行"},
-  {"content": "岁寒，然后知松柏之后凋也。", "author": "孔子", "source": "论语", "category": 0, "tags": "岁寒松柏"},
-  {"content": "知者不惑，仁者不忧，勇者不惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "知者不惑"},
-  {"content": "过犹不及。", "author": "孔子", "source": "论语", "category": 0, "tags": "过犹不及"},
-  {"content": "先行其言而后从之。", "author": "孔子", "source": "论语", "category": 0, "tags": "先行其言"},
-  {"content": "君子成人之美，不成人之恶；小人反是。", "author": "孔子", "source": "论语", "category": 0, "tags": "成人之美"},
-  {"content": "政者，正也。子帅以正，孰敢不正？", "author": "孔子", "source": "论语", "category": 0, "tags": "政者正也"},
-  {"content": "其身正，不令而行；其身不正，虽令不从。", "author": "孔子", "source": "论语", "category": 0, "tags": "其身正"},
-  {"content": "苟正其身矣，于从政乎何有？不能正其身，如正人何？", "author": "孔子", "source": "论语", "category": 0, "tags": "正其身"},
-  {"content": "欲速则不达，见小利则大事不成。", "author": "孔子", "source": "论语", "category": 0, "tags": "欲速不达"},
-  {"content": "君子易事而难说也。说之不以道，不说也；及其使人也，器之。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子易事"},
-  {"content": "小人难事而易说也。说之虽不以道，说也；及其使人也，求备焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "小人难事"},
-  {"content": "爱之，能勿劳乎？忠焉，能勿诲乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "爱之劳之"},
-  {"content": "名不正则言不顺，言不顺则事不成。", "author": "孔子", "source": "论语", "category": 0, "tags": "名不正则言不顺"},
-  {"content": "己所不欲，勿施于人。", "author": "孔子", "source": "论语", "category": 0, "tags": "己所不欲"},
-  {"content": "过而不改，是谓过矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "过而不改"},
-  {"content": "当仁，不让于师。", "author": "孔子", "source": "论语", "category": 0, "tags": "当仁不让"},
-  {"content": "有教无类。", "author": "孔子", "source": "论语", "category": 0, "tags": "有教无类"},
-  {"content": "道不同，不相为谋。", "author": "孔子", "source": "论语", "category": 0, "tags": "道不同"},
-  {"content": "不患贫而患不均，不患寡而患不安。", "author": "孔子", "source": "论语", "category": 0, "tags": "不患贫患不均"},
-  {"content": "既来之，则安之。", "author": "孔子", "source": "论语", "category": 0, "tags": "既来之则安之"},
-  {"content": "友直，友谅，友多闻，益矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "友直友谅"},
-  {"content": "益者三友，损者三友。友直，友谅，友多闻，益矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "益者三友"},
-  {"content": "侍于君子有三愆：言未及之而言谓之躁，言及之而不言谓之隐，未见颜色而言谓之瞽。", "author": "孔子", "source": "论语", "category": 0, "tags": "侍于君子三愆"},
-  {"content": "唯女子与小人为难养也，近之则不逊，远之则怨。", "author": "孔子", "source": "论语", "category": 0, "tags": "女子小人"},
-  {"content": "后生可畏，焉知来者之不如今也？", "author": "孔子", "source": "论语", "category": 0, "tags": "后生可畏"},
-  {"content": "三军可夺帅也，匹夫不可夺志也。", "author": "孔子", "source": "论语", "category": 0, "tags": "匹夫不可夺志"},
-  {"content": "知者不惑，仁者不忧，勇者不惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "知者不惑"},
-  {"content": "己所不欲，勿施于人。在邦无怨，在家无怨。", "author": "孔子", "source": "论语", "category": 0, "tags": "己所不欲"},
-  {"content": "仁者不忧，知者不惑，勇者不惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "仁知勇"},
-  {"content": "知者不惑，仁者不忧，勇者不惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "知者不惑"},
-  {"content": "非礼勿视，非礼勿听，非礼勿言，非礼勿动。", "author": "孔子", "source": "论语", "category": 0, "tags": "非礼勿视"},
-  {"content": "一日克己复礼，天下归仁焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "克己复礼"},
-  {"content": "为仁由己，而由人乎哉？", "author": "孔子", "source": "论语", "category": 0, "tags": "为仁由己"},
-  {"content": "爱人，知人，举直错诸枉，能使枉者直。", "author": "孔子", "source": "论语", "category": 0, "tags": "爱人知人"},
-  {"content": "居处恭，执事敬，与人忠。", "author": "孔子", "source": "论语", "category": 0, "tags": "居处恭执事敬"},
-  {"content": "出门如见大宾，使民如承大祭。", "author": "孔子", "source": "论语", "category": 0, "tags": "出门如见大宾"},
-  {"content": "知之为知之，不知为不知，是知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "知之为知之"},
-  {"content": "学而不厌，诲人不倦。", "author": "孔子", "source": "论语", "category": 0, "tags": "学而不厌"},
-  {"content": "自行束脩以上，吾未尝无诲焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "自行束脩"},
-  {"content": "不愤不启，不悱不发。举一隅不以三隅反，则不复也。", "author": "孔子", "source": "论语", "category": 0, "tags": "不愤不启"},
-  {"content": "子以四教：文，行，忠，信。", "author": "孔子", "source": "论语", "category": 0, "tags": "四教"},
-  {"content": "圣人之道，曰，恭，宽，信，敏，惠。", "author": "孔子", "source": "论语", "category": 0, "tags": "圣人之道"},
-  {"content": "子曰：唯天为大，唯尧则之。", "author": "孔子", "source": "论语", "category": 0, "tags": "唯天为大"},
-  {"content": "巍巍乎！舜禹之有天下也，而不与焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "巍巍乎"},
-  {"content": "大哉，尧之为君也！巍巍乎！唯天为大，唯尧则之。", "author": "孔子", "source": "论语", "category": 0, "tags": "大哉尧之"},
-  {"content": "禹，吾无间然矣。菲饮食而致孝乎鬼神，恶衣服而致美乎黻冕。", "author": "孔子", "source": "论语", "category": 0, "tags": "禹吾无间然"},
-  {"content": "子绝四：毋意，毋必，毋固，毋我。", "author": "孔子", "source": "论语", "category": 0, "tags": "子绝四"},
-  {"content": "述而不作，信而好古，窃比于我老彭。", "author": "孔子", "source": "论语", "category": 0, "tags": "述而不作"},
-  {"content": "默而识之，学而不厌，诲人不倦，何有于我哉？", "author": "孔子", "source": "论语", "category": 0, "tags": "默而识之"},
-  {"content": "德之不修，学之不讲，闻义不能徙，不善不能改，是吾忧也。", "author": "孔子", "source": "论语", "category": 0, "tags": "德之不修"},
-  {"content": "富而可求也，虽执鞭之士，吾亦为之。如不可求，从吾所好。", "author": "孔子", "source": "论语", "category": 0, "tags": "富而可求"},
-  {"content": "饭疏食饮水，曲肱而枕之，乐亦在其中矣。不义而富且贵，于我如浮云。", "author": "孔子", "source": "论语", "category": 0, "tags": "饭疏食饮水"},
-  {"content": "加我数年，五十以学易，可以无大过矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "五十以学易"},
-  {"content": "三人行，必有我师焉：择其善者而从之，其不善者而改之。", "author": "孔子", "source": "论语", "category": 0, "tags": "三人行必有我师"},
-  {"content": "天生德于予，桓魋其如予何？", "author": "孔子", "source": "论语", "category": 0, "tags": "天生德于予"},
-  {"content": "天之将丧斯文也，后死者不得与于斯文也；天之未丧斯文也，匡人其如予何？", "author": "孔子", "source": "论语", "category": 0, "tags": "天之将丧斯文"},
-  {"content": "逝者如斯夫！不舍昼夜。", "author": "孔子", "source": "论语", "category": 0, "tags": "逝者如斯"},
-  {"content": "吾未见好德如好色者也。", "author": "孔子", "source": "论语", "category": 0, "tags": "好德如好色"},
-  {"content": "法语之言，能无从乎？改之为贵。巽与之言，能无说乎？绎之为贵。", "author": "孔子", "source": "论语", "category": 0, "tags": "法语之言"},
-  {"content": "三嗅而作。", "author": "孔子", "source": "论语", "category": 0, "tags": "三嗅而作"},
-  {"content": "鸟之将死，其鸣也哀；人之将死，其言也善。", "author": "孔子", "source": "论语", "category": 0, "tags": "鸟之将死"},
-  {"content": "以直报怨，以德报德。", "author": "孔子", "source": "论语", "category": 0, "tags": "以直报怨"},
-  {"content": "子曰：何事于仁，必也圣乎！尧舜其犹病诸！", "author": "孔子", "source": "论语", "category": 0, "tags": "何事于仁"},
-  {"content": "见利思害，见得思义。", "author": "孔子", "source": "论语", "category": 0, "tags": "见得思义"},
-  {"content": "仁者不忧，知者不惑，勇者不惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "仁知勇"},
-  {"content": "可与共学，未可与适道；可与适道，未可与立；可与立，未可与权。", "author": "孔子", "source": "论语", "category": 0, "tags": "可与共学"},
-  {"content": "富与贵，是人之所欲也；不以其道得之，不处也。贫与贱，是人之所恶也。", "author": "孔子", "source": "论语", "category": 0, "tags": "富与贵"},
-  {"content": "我未见嗜杀人者也。如有用我者，吾其为东周乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "嗜杀人者"},
-  {"content": "七十而从心所欲，不逾矩。", "author": "孔子", "source": "论语", "category": 0, "tags": "从心所欲"},
-  {"content": "逝者如斯夫！不舍昼夜。", "author": "孔子", "source": "论语", "category": 0, "tags": "逝者如斯"},
-  {"content": "知之者不如好之者，好之者不如乐之者。", "author": "孔子", "source": "论语", "category": 0, "tags": "知之者不如好之者"},
-  {"content": "知者乐水，仁者乐山；知者动，仁者静；知者乐，仁者寿。", "author": "孔子", "source": "论语", "category": 0, "tags": "知者乐水"},
-  {"content": "学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "学而时习"},
-  {"content": "巧言令色，鲜矣仁。", "author": "孔子", "source": "论语", "category": 0, "tags": "巧言令色"},
-  {"content": "吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "三省吾身"},
-  {"content": "弟子入则孝，出则弟，谨而信，泛爱众，而亲仁。", "author": "孔子", "source": "论语", "category": 0, "tags": "入孝出弟"},
-  {"content": "行有余力，则以学文。", "author": "孔子", "source": "论语", "category": 0, "tags": "行有余力"},
-  {"content": "君子务本，本立而道生。孝弟也者，其为仁之本与！", "author": "孔子", "source": "论语", "category": 0, "tags": "君子务本"},
-  {"content": "君子食无求饱，居无求安，敏于事而慎于言，就有道而正焉，可谓好学也已。", "author": "孔子", "source": "论语", "category": 0, "tags": "食无求饱"},
-  {"content": "贫而无谄，富而无骄，可矣；未若贫而乐，富而好礼者也。", "author": "孔子", "source": "论语", "category": 0, "tags": "贫而无谄"},
-  {"content": "诗三百，一言以蔽之，曰：思无邪。", "author": "孔子", "source": "论语", "category": 0, "tags": "诗三百"},
-  {"content": "为政以德，譬如北辰，居其所而众星共之。", "author": "孔子", "source": "论语", "category": 0, "tags": "为政以德"},
-  {"content": "道之以政，齐之以刑，民免而无耻；道之以德，齐之以礼，有耻且格。", "author": "孔子", "source": "论语", "category": 0, "tags": "道之以德"},
-  {"content": "吾十有五而志于学，三十而立，四十而不惑，五十而知天命。", "author": "孔子", "source": "论语", "category": 0, "tags": "三十而立"},
-  {"content": "六十而耳顺，七十而从心所欲，不逾矩。", "author": "孔子", "source": "论语", "category": 0, "tags": "耳顺"},
-  {"content": "温故而知新，可以为师矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "温故知新"},
-  {"content": "君子周而不比，小人比而不周。", "author": "孔子", "source": "论语", "category": 0, "tags": "周而不比"},
-  {"content": "学而不思则罔，思而不学则殆。", "author": "孔子", "source": "论语", "category": 0, "tags": "学而不思"},
-  {"content": "知之为知之，不知为不知，是知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "知之为知之"},
-  {"content": "人而无信，不知其可也。", "author": "孔子", "source": "论语", "category": 0, "tags": "人而无信"},
-  {"content": "见贤思齐焉，见不贤而内自省也。", "author": "孔子", "source": "论语", "category": 0, "tags": "见贤思齐"},
-  {"content": "父母在，不远游，游必有方。", "author": "孔子", "source": "论语", "category": 0, "tags": "父母在不远游"},
-  {"content": "德不孤，必有邻。", "author": "孔子", "source": "论语", "category": 0, "tags": "德不孤"},
-  {"content": "岁寒，然后知松柏之后凋也。", "author": "孔子", "source": "论语", "category": 0, "tags": "岁寒松柏"},
-  {"content": "知者不惑，仁者不忧，勇者不惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "知者不惑"},
-  {"content": "过犹不及。", "author": "孔子", "source": "论语", "category": 0, "tags": "过犹不及"},
-  {"content": "己所不欲，勿施于人。", "author": "孔子", "source": "论语", "category": 0, "tags": "己所不欲"},
-  {"content": "当仁，不让于师。", "author": "孔子", "source": "论语", "category": 0, "tags": "当仁不让"},
-  {"content": "有教无类。", "author": "孔子", "source": "论语", "category": 0, "tags": "有教无类"},
-  {"content": "道不同，不相为谋。", "author": "孔子", "source": "论语", "category": 0, "tags": "道不同"},
-  {"content": "人而不信，不知其可也。", "author": "孔子", "source": "论语", "category": 0, "tags": "人而不信"},
-  {"content": "三军可夺帅也，匹夫不可夺志也。", "author": "孔子", "source": "论语", "category": 0, "tags": "匹夫不可夺志"},
-  {"content": "不患无位，患所以立。不患莫己知，求为可知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "不患无位"},
-  {"content": "见利思害，见得思义。", "author": "孔子", "source": "论语", "category": 0, "tags": "见得思义"},
-  {"content": "君子喻于义，小人喻于利。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子喻于义"},
-  {"content": "君子成人之美，不成人之恶。", "author": "孔子", "source": "论语", "category": 0, "tags": "成人之美"},
-  {"content": "其身正，不令而行；其身不正，虽令不从。", "author": "孔子", "source": "论语", "category": 0, "tags": "其身正"},
-  {"content": "欲速则不达，见小利则大事不成。", "author": "孔子", "source": "论语", "category": 0, "tags": "欲速不达"},
-  {"content": "名不正则言不顺，言不顺则事不成。", "author": "孔子", "source": "论语", "category": 0, "tags": "名不正则言不顺"},
-  {"content": "不愤不启，不悱不发。举一隅不以三隅反，则不复也。", "author": "孔子", "source": "论语", "category": 0, "tags": "不愤不启"},
-  {"content": "知之者不如好之者，好之者不如乐之者。", "author": "孔子", "source": "论语", "category": 0, "tags": "知之者不如好之者"},
-  {"content": "知者乐水，仁者乐山。", "author": "孔子", "source": "论语", "category": 0, "tags": "知者乐水"},
-  {"content": "学而不厌，诲人不倦。", "author": "孔子", "source": "论语", "category": 0, "tags": "学而不厌"},
-  {"content": "三人行，必有我师焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "三人行必有我师"},
-  {"content": "逝者如斯夫！不舍昼夜。", "author": "孔子", "source": "论语", "category": 0, "tags": "逝者如斯"},
-  {"content": "吾未见好德如好色者也。", "author": "孔子", "source": "论语", "category": 0, "tags": "好德如好色"},
-  {"content": "法语之言，能无从乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "法语之言"},
-  {"content": "以直报怨，以德报德。", "author": "孔子", "source": "论语", "category": 0, "tags": "以直报怨"},
-  {"content": "富与贵，是人之所欲也；不以其道得之，不处也。", "author": "孔子", "source": "论语", "category": 0, "tags": "富与贵"},
-  {"content": "饭疏食饮水，曲肱而枕之，乐亦在其中矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "饭疏食饮水"},
-  {"content": "不义而富且贵，于我如浮云。", "author": "孔子", "source": "论语", "category": 0, "tags": "不义而富且贵"},
-  {"content": "我非生而知之者，好古，敏以求之者也。", "author": "孔子", "source": "论语", "category": 0, "tags": "生而知之"},
-  {"content": "盖有不知而作之者，我无是也。多闻，择其善者而从之；多见而识之。", "author": "孔子", "source": "论语", "category": 0, "tags": "多闻择善"},
-  {"content": "子不语：怪，力，乱，神。", "author": "孔子", "source": "论语", "category": 0, "tags": "子不语"},
-  {"content": "我叩其两端而竭焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "叩其两端"},
-  {"content": "知之为知之，不知为不知，是知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "知之为知之"},
-  {"content": "子以四教：文，行，忠，信。", "author": "孔子", "source": "论语", "category": 0, "tags": "四教"},
-  {"content": "圣人之道，曰，恭，宽，信，敏，惠。", "author": "孔子", "source": "论语", "category": 0, "tags": "圣人之道"},
-  {"content": "君子道者三，我无能焉：仁者不忧，知者不惑，勇者不惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子道者三"},
-  {"content": "君子义以为上，君子有勇而无义为乱，小人有勇而无义为盗。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子义以为上"},
-  {"content": "唯上知与下愚不移。", "author": "孔子", "source": "论语", "category": 0, "tags": "上知下愚"},
-  {"content": "性相近也，习相远也。", "author": "孔子", "source": "论语", "category": 0, "tags": "性相近习相远"},
-  {"content": "困而不学，民斯为下矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "困而不学"},
-  {"content": "生而知之者，上也；学而知之者，次也；困而学之，又其次也。", "author": "孔子", "source": "论语", "category": 0, "tags": "生而知之"},
-  {"content": "君君，臣臣，父父，子子。", "author": "孔子", "source": "论语", "category": 0, "tags": "君君臣臣"},
-  {"content": "先有司，赦小过，举贤才。", "author": "孔子", "source": "论语", "category": 0, "tags": "先有司"},
-  {"content": "举直错诸枉，则民服；举枉错诸直，则民不服。", "author": "孔子", "source": "论语", "category": 0, "tags": "举直错诸枉"},
-  {"content": "其为人也孝弟，而好犯上者，鲜矣；不好犯上，而好作乱者，未之有也。", "author": "孔子", "source": "论语", "category": 0, "tags": "孝弟犯上"},
-  {"content": "弟子入则孝，出则弟，谨而信，泛爱众，而亲仁。", "author": "孔子", "source": "论语", "category": 0, "tags": "入孝出弟"},
-  {"content": "君子不重则不威，学则不固。主忠信，无友不如己者，过则勿惮改。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子不重"},
-  {"content": "父在，观其志；父没，观其行；三年无改于父之道，可谓孝矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "三年无改"},
-  {"content": "父母之年，不可不知也，一则以喜，一则以惧。", "author": "孔子", "source": "论语", "category": 0, "tags": "父母之年"},
-  {"content": "君子之过也，如日月之食焉：过也，人皆见之；更也，人皆仰之。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子之过"},
-  {"content": "过而不改，是谓过矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "过而不改"},
-  {"content": "夫仁者，己欲立而立人，己欲达而达人。", "author": "孔子", "source": "论语", "category": 0, "tags": "己欲立而立人"},
-  {"content": "己所不欲，勿施于人。", "author": "孔子", "source": "论语", "category": 0, "tags": "己所不欲"},
-  {"content": "可与言而不与之言，失人；不可与言而与之言，失言。知者不失人亦不失言。", "author": "孔子", "source": "论语", "category": 0, "tags": "可与言"},
-  {"content": "君子欲讷于言而敏于行。", "author": "孔子", "source": "论语", "category": 0, "tags": "讷于言敏于行"},
-  {"content": "先行其言而后从之。", "author": "孔子", "source": "论语", "category": 0, "tags": "先行其言"},
-  {"content": "君子耻其言而过其行。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子耻其言"},
-  {"content": "其言之不怍，则为之也难。", "author": "孔子", "source": "论语", "category": 0, "tags": "言之不怍"},
-  {"content": "古者言之不出，耻躬之不逮也。", "author": "孔子", "source": "论语", "category": 0, "tags": "言之不出"},
-  {"content": "君子食无求饱，居无求安，敏于事而慎于言，就有道而正焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "食无求饱"},
-  {"content": "士志于道，而耻恶衣恶食者，未足与议也。", "author": "孔子", "source": "论语", "category": 0, "tags": "士志于道"},
-  {"content": "君子喻于义，小人喻于利。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子喻于义"},
-  {"content": "君子怀德，小人怀土；君子怀刑，小人怀惠。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子怀德"},
-  {"content": "放于利而行，多怨。", "author": "孔子", "source": "论语", "category": 0, "tags": "放于利"},
-  {"content": "君子周而不比，小人比而不周。", "author": "孔子", "source": "论语", "category": 0, "tags": "周而不比"},
-  {"content": "君子和而不同，小人同而不和。", "author": "孔子", "source": "论语", "category": 0, "tags": "和而不同"},
-  {"content": "君子泰而不骄，小人骄而不泰。", "author": "孔子", "source": "论语", "category": 0, "tags": "泰而不骄"},
-  {"content": "君子而不仁者有矣夫，未有小人而仁者也。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子而不仁"},
-  {"content": "君子上达，小人下达。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子上达"},
-  {"content": "君子病无能焉，不病人之不己知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子病无能"},
-  {"content": "君子疾没世而名不称焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子疾没世"},
-  {"content": "君子求诸己，小人求诸人。", "author": "孔子", "source": "论语", "category": 0, "tags": "君子求诸己"},
-  {"content": "君子矜而不争，群而不党。", "author": "孔子", "source": "论语", "category": 0, "tags": "矜而不争"},
-  {"content": "君子不以言举人，不以人废言。", "author": "孔子", "source": "论语", "category": 0, "tags": "不以言举人"},
-  {"content": "众恶之，必察焉；众好之，必察焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "众恶之"},
-  {"content": "君子谋道不谋食。耕也，馁在其中矣；学也，禄在其中矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "谋道不谋食"},
-  {"content": "君子忧道不忧贫。", "author": "孔子", "source": "论语", "category": 0, "tags": "忧道不忧贫"},
-  {"content": "君子不可小知而可大受也，小人不可大受而可小知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "小知大受"},
-  {"content": "人之过也，各于其党。观过，斯知仁矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "观过知仁"},
-  {"content": "以约失之者，鲜矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "以约失之"},
-  {"content": "君子欲讷于言而敏于行。", "author": "孔子", "source": "论语", "category": 0, "tags": "讷于言敏于行"},
-  {"content": "德不孤，必有邻。", "author": "孔子", "source": "论语", "category": 0, "tags": "德不孤"},
-  {"content": "事君数，斯辱矣；朋友数，斯疏矣。", "author": "孔子", "source": "论语", "category": 0, "tags": "事君数"},
-  {"content": "不在其位，不谋其政。", "author": "孔子", "source": "论语", "category": 0, "tags": "不在其位"},
-  {"content": "学而时习之，不亦说乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "学而时习"},
-  {"content": "有朋自远方来，不亦乐乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "有朋自远方来"},
-  {"content": "人不知而不愠，不亦君子乎？", "author": "孔子", "source": "论语", "category": 0, "tags": "人不知而不愠"},
-  {"content": "吾日三省吾身。", "author": "孔子", "source": "论语", "category": 0, "tags": "三省吾身"},
-  {"content": "温故而知新。", "author": "孔子", "source": "论语", "category": 0, "tags": "温故知新"},
-  {"content": "学而不思则罔，思而不学则殆。", "author": "孔子", "source": "论语", "category": 0, "tags": "学而不思"},
-  {"content": "知之为知之，不知为不知，是知也。", "author": "孔子", "source": "论语", "category": 0, "tags": "知之为知之"},
-  {"content": "见贤思齐焉。", "author": "孔子", "source": "论语", "category": 0, "tags": "见贤思齐"},
-  {"content": "德不孤，必有邻。", "author": "孔子", "source": "论语", "category": 0, "tags": "德不孤"},
-  {"content": "过犹不及。", "author": "孔子", "source": "论语", "category": 0, "tags": "过犹不及"},
-  {"content": "己所不欲，勿施于人。", "author": "孔子", "source": "论语", "category": 0, "tags": "己所不欲"},
-  {"content": "当仁不让于师。", "author": "孔子", "source": "论语", "category": 0, "tags": "当仁不让"},
-  {"content": "有教无类。", "author": "孔子", "source": "论语", "category": 0, "tags": "有教无类"},
-  {"content": "道不同不相为谋。", "author": "孔子", "source": "论语", "category": 0, "tags": "道不同"},
-  {"content": "三军可夺帅，匹夫不可夺志。", "author": "孔子", "source": "论语", "category": 0, "tags": "匹夫不可夺志"},
-  {"content": "知耻而后勇。", "author": "孔子", "source": "论语", "category": 0, "tags": "知耻而后勇"},
-  {"content": "朽木不可雕也。", "author": "孔子", "source": "论语", "category": 0, "tags": "朽木不可雕"},
-  {"content": "不在沉默中爆发，就在沉默中灭亡。", "author": "鲁迅", "source": "", "category": 0, "tags": "沉默,爆发"},
-  {"content": "横眉冷对千夫指，俯首甘为孺子牛。", "author": "鲁迅", "source": "", "category": 0, "tags": "横眉冷对"},
-  {"content": "真的猛士，敢于直面惨淡的人生，敢于正视淋漓的鲜血。", "author": "鲁迅", "source": "", "category": 0, "tags": "真的猛士"},
-  {"content": "时间就像海绵里的水，只要愿挤，总还是有的。", "author": "鲁迅", "source": "", "category": 0, "tags": "时间,海绵"},
-  {"content": "地上本没有路，走的人多了，也便成了路。", "author": "鲁迅", "source": "", "category": 0, "tags": "地上本没有路"},
-  {"content": "希望是附丽于存在的，有存在，便有希望，有希望，便是光明。", "author": "鲁迅", "source": "", "category": 0, "tags": "希望,光明"},
-  {"content": "哀其不幸，怒其不争。", "author": "鲁迅", "source": "", "category": 0, "tags": "哀其不幸"},
-  {"content": "心事浩茫连广宇，于无声处听惊雷。", "author": "鲁迅", "source": "", "category": 0, "tags": "心事浩茫"},
-  {"content": "寄意寒星荃不察，我以我血荐轩辕。", "author": "鲁迅", "source": "", "category": 0, "tags": "我以我血"},
-  {"content": "躲进小楼成一统，管他冬夏与春秋。", "author": "鲁迅", "source": "", "category": 0, "tags": "躲进小楼"},
-  {"content": "无情未必真豪杰，怜子如何不丈夫。", "author": "鲁迅", "source": "", "category": 0, "tags": "无情未必"},
-  {"content": "度尽劫波兄弟在，相逢一笑泯恩仇。", "author": "鲁迅", "source": "", "category": 0, "tags": "度尽劫波"},
-  {"content": "生命在于运动。", "author": "伏尔泰", "source": "", "category": 0, "tags": "生命,运动"},
-  {"content": "我不同意你说的话，但我愿意誓死捍卫你说话的权利。", "author": "伏尔泰", "source": "", "category": 0, "tags": "说话权利"},
-  {"content": "常识并不常见。", "author": "伏尔泰", "source": "", "category": 0, "tags": "常识"},
-  {"content": "要在这个世界上获得成功，就必须坚持到底。", "author": "伏尔泰", "source": "", "category": 0, "tags": "成功,坚持"},
-  {"content": "偏见是思想的放假。", "author": "伏尔泰", "source": "", "category": 0, "tags": "偏见"},
-  {"content": "劳动是幸福的左手，节约是幸福的右手。", "author": "伏尔泰", "source": "", "category": 0, "tags": "劳动,节约"},
-  {"content": "几只苍蝇咬几口，决不能羁绊一匹英勇的奔马。", "author": "伏尔泰", "source": "", "category": 0, "tags": "苍蝇,奔马"},
-  {"content": "最美的爱情，是在最不可能的时候相遇。", "author": "伏尔泰", "source": "", "category": 0, "tags": "爱情"},
-  {"content": "历史告诫我们说，一种崭新的真理惯常的命运是：最初与它的习俗和环境的对立。", "author": "伏尔泰", "source": "", "category": 0, "tags": "历史,真理"},
-  {"content": "没有所谓运气这回事，一切无非是考验、惩罚或补偿。", "author": "伏尔泰", "source": "", "category": 0, "tags": "运气"},
-  {"content": "自知之明是最难得的知识。", "author": "伏尔泰", "source": "", "category": 0, "tags": "自知之明"},
-  {"content": "几个苍蝇咬几口，不能羁绊一匹奔腾的骏马。", "author": "伏尔泰", "source": "", "category": 0, "tags": "苍蝇,骏马"},
-  {"content": "当你First航行成功时，回港的时间已经错过了。", "author": "伏尔泰", "source": "", "category": 0, "tags": "航行"},
-  {"content": "人类的知识是有限的，而无知却是无限的。", "author": "伏尔泰", "source": "", "category": 0, "tags": "知识,无知"},
-  {"content": "伟大的事业需要始终不渝的精神。", "author": "伏尔泰", "source": "", "category": 0, "tags": "事业,精神"},
-  {"content": "Life is like a box of chocolates, you never know what you're going to get.", "author": "Forrest Gump", "source": "Movie", "category": 0, "tags": "life,chocolates"},
-  {"content": "My mama always said life was like a box of chocolates. Means what, huh? You never know what you're gonna get.", "author": "Forrest Gump", "source": "Movie", "category": 0, "tags": "mama,chocolates"},
-  {"content": "Stupid is as stupid does.", "author": "Forrest Gump", "source": "Movie", "category": 0, "tags": "stupid"},
-  {"content": "I'm not a smart man, but I know what love is.", "author": "Forrest Gump", "source": "Movie", "category": 0, "tags": "love,smart"},
-  {"content": "It was like just before the sun goes down, you know? It was like all the colors were more vivid.", "author": "Forrest Gump", "source": "Movie", "category": 0, "tags": "sun,colors"},
-  {"content": "Miracles happen every day.", "author": "Forrest Gump", "source": "Movie", "category": 0, "tags": "miracles"},
-  {"content": "I don't know what I am. I don't know if I can be what I wanna be.", "author": "Forrest Gump", "source": "Movie", "category": 0, "tags": "know"},
-  {"content": "You got to do the best you can with what you've got.", "author": "Forrest Gump", "source": "Movie", "category": 0, "tags": "best"},
-  {"content": "That's one small step for man, one giant leap for mankind.", "author": "Neil Armstrong", "source": "", "category": 0, "tags": "small step,giant leap"},
-  {"content": "In the middle of difficulty lies opportunity.", "author": "Albert Einstein", "source": "", "category": 0, "tags": "difficulty,opportunity"},
-  {"content": "Life is what happens when you're busy making other plans.", "author": "John Lennon", "source": "", "category": 0, "tags": "life,plans"},
-  {"content": "The only way to do great work is to love what you do.", "author": "Steve Jobs", "source": "", "category": 0, "tags": "great work,love"},
-  {"content": "Stay hungry, stay foolish.", "author": "Steve Jobs", "source": "", "category": 0, "tags": "hungry,foolish"},
-  {"content": "Your time is limited, don't waste it living someone else's life.", "author": "Steve Jobs", "source": "", "category": 0, "tags": "time,life"},
-  {"content": "The people who are crazy enough to think they can change the world, are the ones who do.", "author": "Steve Jobs", "source": "", "category": 0, "tags": "crazy,change world"},
-  {"content": "Innovation distinguishes between a leader and a follower.", "author": "Steve Jobs", "source": "", "category": 0, "tags": "innovation,leader"},
-  {"content": "Design is not just what it looks like and feels like. Design is how it works.", "author": "Steve Jobs", "source": "", "category": 0, "tags": "design"},
-  {"content": "Sometimes when you innovate, you're making mistakes. It is best to admit them quickly.", "author": "Steve Jobs", "source": "", "category": 0, "tags": "innovate,mistakes"},
-  {"content": "Be a yardstick of quality.", "author": "Steve Jobs", "source": "", "category": 0, "tags": "quality"},
-  {"content": "The tools we use have a profound (and devious!) influence on our thinking habits.", "author": "E.F. Schumacher", "source": "", "category": 0, "tags": "tools,thinking"},
-  {"content": "Any sufficiently advanced technology is indistinguishable from magic.", "author": "Arthur C. Clarke", "source": "", "category": 0, "tags": "technology,magic"},
-  {"content": "The only way to discover the limits
+  {
+    "content": "道可道，非常道；名可名，非常名。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "道,道德经"
+  },
+  {
+    "content": "上善若水，水善利万物而不争。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "上善若水,不争"
+  },
+  {
+    "content": "知人者智，自知者明。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "自知,明智"
+  },
+  {
+    "content": "为学日益，为道日损。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "为学,为道"
+  },
+  {
+    "content": "知足者富，强行者有志。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "知足,富"
+  },
+  {
+    "content": "大成若缺，其用不弊。大盈若冲，其用不穷。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "大成,大盈"
+  },
+  {
+    "content": "祸兮福之所倚，福兮祸之所伏。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "祸福,相依"
+  },
+  {
+    "content": "天网恢恢，疏而不漏。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "天网,疏而不漏"
+  },
+  {
+    "content": "信言不美，美言不信。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "信言,美言"
+  },
+  {
+    "content": "夫唯不争，故天下莫能与之争。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "不争,莫能争"
+  },
+  {
+    "content": "飘风不终朝，骤雨不终日。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "飘风,骤雨"
+  },
+  {
+    "content": "曲则全，枉则直，洼则盈。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "曲全,枉直"
+  },
+  {
+    "content": "轻诺必寡信，多易必多难。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "轻诺,寡信"
+  },
+  {
+    "content": "天下皆知美之为美，斯恶已。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "美,恶"
+  },
+  {
+    "content": "出生入死。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "出生入死"
+  },
+  {
+    "content": "金玉满堂，莫之能守。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "金玉,满堂"
+  },
+  {
+    "content": "不出户，知天下；不窥牖，见天道。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "不出户,知天下"
+  },
+  {
+    "content": "胜人者有力，自胜者强。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "胜人,自胜"
+  },
+  {
+    "content": "知足者富，不知足者贵。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "知足,贵"
+  },
+  {
+    "content": "天之道，损有余而补不足。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "天之道"
+  },
+  {
+    "content": "人之道，则不然，损不足以奉有余。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "人之道"
+  },
+  {
+    "content": "甚爱必大费，多藏必厚亡。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "甚爱,多藏"
+  },
+  {
+    "content": "罪莫大于可欲，祸莫大于不知足。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "可欲,不知足"
+  },
+  {
+    "content": "知足之足，常足矣。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "知足之足"
+  },
+  {
+    "content": "为而不争，夫唯不争，故天下莫能与之争。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "为而不争"
+  },
+  {
+    "content": "知足者，富也；知止者，久也。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "知足,知止"
+  },
+  {
+    "content": "小国寡民，使有什伯之器而不用，使民重死而不远徙。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "小国寡民"
+  },
+  {
+    "content": "天之道，利而不害；圣人之道，为而不争。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "天之道,圣人之道"
+  },
+  {
+    "content": "上士闻道，勤而行之；中士闻道，若存若亡；下士闻道，大笑之。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "上士,中士,下士"
+  },
+  {
+    "content": "明道若昧，进道若退，夷道若纇。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "明道,昧"
+  },
+  {
+    "content": "上德若谷，大白若辱。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "上德,若谷"
+  },
+  {
+    "content": "大器晚成，大音希声，大象无形。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "大器,大音,大象"
+  },
+  {
+    "content": "我有三宝，持而保之：一曰慈，二曰俭，三曰不敢为天下先。",
+    "author": "老子",
+    "source": "道德经",
+    "category": 0,
+    "tags": "三宝,慈,俭"
+  },
+  {
+    "content": "学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "学而时习"
+  },
+  {
+    "content": "巧言令色，鲜矣仁。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "巧言令色"
+  },
+  {
+    "content": "吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "三省吾身"
+  },
+  {
+    "content": "弟子入则孝，出则弟，谨而信，泛爱众，而亲仁。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "入孝出弟"
+  },
+  {
+    "content": "君子务本，本立而道生。孝弟也者，其为仁之本与！",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "君子务本"
+  },
+  {
+    "content": "君子食无求饱，居无求安，敏于事而慎于言，就有道而正焉。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "食无求饱"
+  },
+  {
+    "content": "贫而无谄，富而无骄，可矣；未若贫而乐，富而好礼者也。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "贫而无谄"
+  },
+  {
+    "content": "诗三百，一言以蔽之，曰：思无邪。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "诗三百,思无邪"
+  },
+  {
+    "content": "为政以德，譬如北辰，居其所而众星共之。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "为政以德"
+  },
+  {
+    "content": "吾十有五而志于学，三十而立，四十而不惑，五十而知天命。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "三十而立"
+  },
+  {
+    "content": "六十而耳顺，七十而从心所欲，不逾矩。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "耳顺,从心所欲"
+  },
+  {
+    "content": "温故而知新，可以为师矣。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "温故知新"
+  },
+  {
+    "content": "君子周而不比，小人比而不周。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "周而不比"
+  },
+  {
+    "content": "学而不思则罔，思而不学则殆。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "学而不思"
+  },
+  {
+    "content": "知之为知之，不知为不知，是知也。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "知之为知之"
+  },
+  {
+    "content": "人而无信，不知其可也。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "人而无信"
+  },
+  {
+    "content": "见贤思齐焉，见不贤而内自省也。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "见贤思齐"
+  },
+  {
+    "content": "父母在，不远游，游必有方。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "父母在不远游"
+  },
+  {
+    "content": "德不孤，必有邻。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "德不孤"
+  },
+  {
+    "content": "岁寒，然后知松柏之后凋也。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "岁寒松柏"
+  },
+  {
+    "content": "知者不惑，仁者不忧，勇者不惧。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "知者不惑"
+  },
+  {
+    "content": "过犹不及。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "过犹不及"
+  },
+  {
+    "content": "己所不欲，勿施于人。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "己所不欲"
+  },
+  {
+    "content": "当仁，不让于师。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "当仁不让"
+  },
+  {
+    "content": "有教无类。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "有教无类"
+  },
+  {
+    "content": "道不同，不相为谋。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "道不同"
+  },
+  {
+    "content": "三军可夺帅也，匹夫不可夺志也。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "匹夫不可夺志"
+  },
+  {
+    "content": "不患无位，患所以立。不患莫己知，求为可知也。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "不患无位"
+  },
+  {
+    "content": "君子喻于义，小人喻于利。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "君子喻于义"
+  },
+  {
+    "content": "君子成人之美，不成人之恶；小人反是。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "成人之美"
+  },
+  {
+    "content": "其身正，不令而行；其身不正，虽令不从。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "其身正"
+  },
+  {
+    "content": "欲速则不达，见小利则大事不成。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "欲速不达"
+  },
+  {
+    "content": "名不正则言不顺，言不顺则事不成。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "名不正则言不顺"
+  },
+  {
+    "content": "知之者不如好之者，好之者不如乐之者。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "知之者不如好之者"
+  },
+  {
+    "content": "知者乐水，仁者乐山。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "知者乐水"
+  },
+  {
+    "content": "学而不厌，诲人不倦。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "学而不厌"
+  },
+  {
+    "content": "三人行，必有我师焉。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "三人行必有我师"
+  },
+  {
+    "content": "逝者如斯夫！不舍昼夜。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "逝者如斯"
+  },
+  {
+    "content": "吾未见好德如好色者也。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "好德如好色"
+  },
+  {
+    "content": "以直报怨，以德报德。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "以直报怨"
+  },
+  {
+    "content": "富与贵，是人之所欲也；不以其道得之，不处也。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "富与贵"
+  },
+  {
+    "content": "饭疏食饮水，曲肱而枕之，乐亦在其中矣。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "饭疏食饮水"
+  },
+  {
+    "content": "不义而富且贵，于我如浮云。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "不义而富且贵"
+  },
+  {
+    "content": "朝闻道，夕死可矣。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "朝闻道夕死"
+  },
+  {
+    "content": "君子求诸己，小人求诸人。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "君子求诸己"
+  },
+  {
+    "content": "君子矜而不争，群而不党。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "矜而不争"
+  },
+  {
+    "content": "君子不以言举人，不以人废言。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "不以言举人"
+  },
+  {
+    "content": "君子谋道不谋食。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "谋道不谋食"
+  },
+  {
+    "content": "君子忧道不忧贫。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "忧道不忧贫"
+  },
+  {
+    "content": "君子欲讷于言而敏于行。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "讷于言敏于行"
+  },
+  {
+    "content": "先行其言而后从之。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "先行其言"
+  },
+  {
+    "content": "过而不改，是谓过矣。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "过而不改"
+  },
+  {
+    "content": "夫仁者，己欲立而立人，己欲达而达人。",
+    "author": "孔子",
+    "source": "论语",
+    "category": 0,
+    "tags": "己欲立而立人"
+  },
+  {
+    "content": "大学之道，在明明德，在亲民，在止于至善。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "大学之道,明明德"
+  },
+  {
+    "content": "知止而后有定，定而后能静，静而后能安，安而后能虑，虑而后能得。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "知止,定静"
+  },
+  {
+    "content": "物有本末，事有终始。知所先后，则近道矣。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "本末,终始"
+  },
+  {
+    "content": "古之欲明明德于天下者，先治其国；欲治其国者，先齐其家。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "明明德,治国"
+  },
+  {
+    "content": "欲齐其家者，先修其身；欲修其身者，先正其心。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "齐家,修身"
+  },
+  {
+    "content": "欲正其心者，先诚其意；欲诚其意者，先致其知。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "正心,诚意"
+  },
+  {
+    "content": "致知在格物。物格而后知至，知至而后意诚。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "致知,格物"
+  },
+  {
+    "content": "为人君，止于仁；为人臣，止于敬；为人子，止于孝；为人父，止于慈。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "仁,敬,孝,慈"
+  },
+  {
+    "content": "与国人交，止于信。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "交友,信"
+  },
+  {
+    "content": "君子必慎其独也。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "慎独"
+  },
+  {
+    "content": "富润屋，德润身，心广体胖。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "富润屋,德润身"
+  },
+  {
+    "content": "所谓诚其意者，毋自欺也。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "诚意,自欺"
+  },
+  {
+    "content": "此谓诚于中，形于外，故君子必慎其独也。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "诚中,形外"
+  },
+  {
+    "content": "君子有大道，必忠信以得之，骄泰以失之。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "君子大道,忠信"
+  },
+  {
+    "content": "生财有大道：生之者众，食之者寡，为之者疾，用之者舒，则财恒足矣。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 2,
+    "tags": "生财大道"
+  },
+  {
+    "content": "仁者以财发身，不仁者以身发财。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 2,
+    "tags": "仁者,发身"
+  },
+  {
+    "content": "德者本也，财者末也。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "德本,财末"
+  },
+  {
+    "content": "财聚则民散，财散则民聚。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "财聚,财散"
+  },
+  {
+    "content": "言悖而出者，亦悖而入；货悖而入者，亦悖而出。",
+    "author": "曾子",
+    "source": "大学",
+    "category": 0,
+    "tags": "悖出,悖入"
+  },
+  {
+    "content": "得道者多助，失道者寡助。",
+    "author": "孟子",
+    "source": "公孙丑下",
+    "category": 0,
+    "tags": "得道,多助"
+  },
+  {
+    "content": "天时不如地利，地利不如人和。",
+    "author": "孟子",
+    "source": "公孙丑下",
+    "category": 0,
+    "tags": "天时,地利,人和"
+  },
+  {
+    "content": "富贵不能淫，贫贱不能移，威武不能屈，此之谓大丈夫。",
+    "author": "孟子",
+    "source": "滕文公下",
+    "category": 0,
+    "tags": "大丈夫,富贵淫"
+  },
+  {
+    "content": "鱼，我所欲也；熊掌，亦我所欲也。二者不可得兼，舍鱼而取熊掌者也。",
+    "author": "孟子",
+    "source": "告子上",
+    "category": 0,
+    "tags": "鱼,熊掌"
+  },
+  {
+    "content": "生，亦我所欲也；义，亦我所欲也。二者不可得兼，舍生而取义者也。",
+    "author": "孟子",
+    "source": "告子上",
+    "category": 0,
+    "tags": "舍生取义"
+  },
+  {
+    "content": "人性之善也，犹水之就下也。人无有不善，水无有不下。",
+    "author": "孟子",
+    "source": "告子上",
+    "category": 0,
+    "tags": "人性,善"
+  },
+  {
+    "content": "故天将降大任于斯人也，必先苦其心志，劳其筋骨，饿其体肤，空乏其身。",
+    "author": "孟子",
+    "source": "告子下",
+    "category": 0,
+    "tags": "天将降大任"
+  },
+  {
+    "content": "生于忧患而死于安乐也。",
+    "author": "孟子",
+    "source": "告子下",
+    "category": 0,
+    "tags": "生于忧患,死于安乐"
+  },
+  {
+    "content": "爱人者，人恒爱之；敬人者，人恒敬之。",
+    "author": "孟子",
+    "source": "离娄下",
+    "category": 0,
+    "tags": "爱人,人恒爱之"
+  },
+  {
+    "content": "穷则独善其身，达则兼善天下。",
+    "author": "孟子",
+    "source": "尽心上",
+    "category": 0,
+    "tags": "穷则独善,达则兼善"
+  },
+  {
+    "content": "老吾老，以及人之老；幼吾幼，以及人之幼。",
+    "author": "孟子",
+    "source": "梁惠王上",
+    "category": 0,
+    "tags": "老吾老,幼吾幼"
+  },
+  {
+    "content": "乐民之乐者，民亦乐其乐；忧民之忧者，民亦忧其忧。",
+    "author": "孟子",
+    "source": "梁惠王下",
+    "category": 0,
+    "tags": "乐民之乐"
+  },
+  {
+    "content": "自暴者，不可与有言也；自弃者，不可与有为也。",
+    "author": "孟子",
+    "source": "离娄上",
+    "category": 0,
+    "tags": "自暴自弃"
+  },
+  {
+    "content": "青，取之于蓝，而青于蓝；冰，水为之，而寒于水。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "青出于蓝"
+  },
+  {
+    "content": "故不积跬步，无以至千里；不积小流，无以成江海。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "积跬步,至千里"
+  },
+  {
+    "content": "学不可以已。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "学不可以已"
+  },
+  {
+    "content": "君子博学而日参省乎己，则知明而行无过矣。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "博学,参省"
+  },
+  {
+    "content": "吾尝终日而思矣，不如须臾之所学也。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "终日而思"
+  },
+  {
+    "content": "假舆马者，非利足也，而致千里；假舟楫者，非能水也，而绝江河。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "假舆马,致千里"
+  },
+  {
+    "content": "君子生非异也，善假于物也。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "生非异,善假于物"
+  },
+  {
+    "content": "积土成山，风雨兴焉；积水成渊，蛟龙生焉。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "积土成山"
+  },
+  {
+    "content": "骐骥一跃，不能十步；驽马十驾，功在不舍。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "骐骥,驽马"
+  },
+  {
+    "content": "锲而舍之，朽木不折；锲而不舍，金石可镂。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "锲而不舍"
+  },
+  {
+    "content": "蓬生麻中，不扶而直；白沙在涅，与之俱黑。",
+    "author": "荀子",
+    "source": "劝学",
+    "category": 0,
+    "tags": "蓬生麻中"
+  },
+  {
+    "content": "天行有常，不为尧存，不为桀亡。",
+    "author": "荀子",
+    "source": "天论",
+    "category": 0,
+    "tags": "天行有常"
+  },
+  {
+    "content": "制天命而用之。",
+    "author": "荀子",
+    "source": "天论",
+    "category": 0,
+    "tags": "制天命"
+  },
+  {
+    "content": "水能载舟，亦能覆舟。",
+    "author": "荀子",
+    "source": "哀公",
+    "category": 0,
+    "tags": "水能载舟"
+  },
+  {
+    "content": "与人善言，暖于布帛；伤人之言，深于矛戟。",
+    "author": "荀子",
+    "source": "荣辱",
+    "category": 0,
+    "tags": "善言,暖于布帛"
+  },
+  {
+    "content": "人皆知有用之用，而莫知无用之用也。",
+    "author": "庄子",
+    "source": "逍遥游",
+    "category": 0,
+    "tags": "有用,无用"
+  },
+  {
+    "content": "天地与我并生，而万物与我为一。",
+    "author": "庄子",
+    "source": "逍遥游",
+    "category": 0,
+    "tags": "天地,万物"
+  },
+  {
+    "content": "以道观之，物无贵贱；以物观之，自贵而相贱。",
+    "author": "庄子",
+    "source": "秋水",
+    "category": 0,
+    "tags": "道,物无贵贱"
+  },
+  {
+    "content": "井蛙不可以语于海者，拘于虚也；夏虫不可以语于冰者，笃于时也。",
+    "author": "庄子",
+    "source": "秋水",
+    "category": 0,
+    "tags": "井蛙,夏虫"
+  },
+  {
+    "content": "知其不可奈何而安之若命，德之至也。",
+    "author": "庄子",
+    "source": "人间世",
+    "category": 0,
+    "tags": "知命,安之"
+  },
+  {
+    "content": "朴素而天下莫能与之争美。",
+    "author": "庄子",
+    "source": "天道",
+    "category": 0,
+    "tags": "朴素,争美"
+  },
+  {
+    "content": "物物而不物于物，则胡可得而累邪？",
+    "author": "庄子",
+    "source": "山木",
+    "category": 0,
+    "tags": "物物,不物于物"
+  },
+  {
+    "content": "天命之谓性，率性之谓道，修道之谓教。",
+    "author": "子思",
+    "source": "中庸",
+    "category": 0,
+    "tags": "天命,率性"
+  },
+  {
+    "content": "道也者，不可须臾离也，可离非道也。",
+    "author": "子思",
+    "source": "中庸",
+    "category": 0,
+    "tags": "不可离,道"
+  },
+  {
+    "content": "莫见乎隐，莫显乎微，故君子慎其独也。",
+    "author": "子思",
+    "source": "中庸",
+    "category": 0,
+    "tags": "慎独"
+  },
+  {
+    "content": "喜怒哀乐之未发，谓之中；发而皆中节，谓之和。",
+    "author": "子思",
+    "source": "中庸",
+    "category": 0,
+    "tags": "中和"
+  },
+  {
+    "content": "中也者，天下之大本也；和也者，天下之达道也。",
+    "author": "子思",
+    "source": "中庸",
+    "category": 0,
+    "tags": "大本,达道"
+  },
+  {
+    "content": "致中和，天地位焉，万物育焉。",
+    "author": "子思",
+    "source": "中庸",
+    "category": 0,
+    "tags": "致中和"
+  },
+  {
+    "content": "博学之，审问之，慎思之，明辨之，笃行之。",
+    "author": "子思",
+    "source": "中庸",
+    "category": 0,
+    "tags": "博学,审问"
+  },
+  {
+    "content": "人一能之，己百之；人十能之，己千之。",
+    "author": "子思",
+    "source": "中庸",
+    "category": 0,
+    "tags": "人一能之"
+  },
+  {
+    "content": "诚者，天之道也；诚之者，人之道也。",
+    "author": "子思",
+    "source": "中庸",
+    "category": 0,
+    "tags": "诚者,天之道"
+  },
+  {
+    "content": "君子诚之为贵。",
+    "author": "子思",
+    "source": "中庸",
+    "category": 0,
+    "tags": "诚之为贵"
+  },
+  {
+    "content": "关关雎鸠，在河之洲。窈窕淑女，君子好逑。",
+    "author": "无名氏",
+    "source": "诗经·周南",
+    "category": 1,
+    "tags": "关雎,窈窕"
+  },
+  {
+    "content": "蒹葭苍苍，白露为霜。所谓伊人，在水一方。",
+    "author": "无名氏",
+    "source": "诗经·秦风",
+    "category": 1,
+    "tags": "蒹葭,伊人"
+  },
+  {
+    "content": "死生契阔，与子成说。执子之手，与子偕老。",
+    "author": "无名氏",
+    "source": "诗经·邶风",
+    "category": 1,
+    "tags": "执子之手"
+  },
+  {
+    "content": "桃之夭夭，灼灼其华。之子于归，宜其室家。",
+    "author": "无名氏",
+    "source": "诗经·周南",
+    "category": 1,
+    "tags": "桃夭,灼灼"
+  },
+  {
+    "content": "昔我往矣，杨柳依依；今我来思，雨雪霏霏。",
+    "author": "无名氏",
+    "source": "诗经·小雅",
+    "category": 1,
+    "tags": "杨柳依依"
+  },
+  {
+    "content": "它山之石，可以攻玉。",
+    "author": "无名氏",
+    "source": "诗经·小雅",
+    "category": 0,
+    "tags": "它山之石"
+  },
+  {
+    "content": "知我者谓我心忧，不知我者谓我何求。",
+    "author": "无名氏",
+    "source": "诗经·王风",
+    "category": 0,
+    "tags": "知我心忧"
+  },
+  {
+    "content": "投我以木桃，报之以琼瑶。",
+    "author": "无名氏",
+    "source": "诗经·卫风",
+    "category": 0,
+    "tags": "投桃报李"
+  },
+  {
+    "content": "春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。",
+    "author": "孟浩然",
+    "source": "春晓",
+    "category": 1,
+    "tags": "春眠,风雨"
+  },
+  {
+    "content": "床前明月光，疑是地上霜。举头望明月，低头思故乡。",
+    "author": "李白",
+    "source": "静夜思",
+    "category": 1,
+    "tags": "床前明月光"
+  },
+  {
+    "content": "日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺，疑是银河落九天。",
+    "author": "李白",
+    "source": "望庐山瀑布",
+    "category": 1,
+    "tags": "庐山瀑布"
+  },
+  {
+    "content": "君不见黄河之水天上来，奔流到海不复回。",
+    "author": "李白",
+    "source": "将进酒",
+    "category": 1,
+    "tags": "黄河之水"
+  },
+  {
+    "content": "人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。",
+    "author": "李白",
+    "source": "将进酒",
+    "category": 0,
+    "tags": "天生我材"
+  },
+  {
+    "content": "长风破浪会有时，直挂云帆济沧海。",
+    "author": "李白",
+    "source": "行路难",
+    "category": 0,
+    "tags": "长风破浪"
+  },
+  {
+    "content": "仰天大笑出门去，我辈岂是蓬蒿人。",
+    "author": "李白",
+    "source": "南陵别儿童入京",
+    "category": 0,
+    "tags": "仰天大笑"
+  },
+  {
+    "content": "安能摧眉折腰事权贵，使我不得开心颜。",
+    "author": "李白",
+    "source": "梦游天姥吟留别",
+    "category": 0,
+    "tags": "摧眉折腰"
+  },
+  {
+    "content": "今人不见古时月，今月曾经照古人。",
+    "author": "李白",
+    "source": "把酒问月",
+    "category": 0,
+    "tags": "今月照古人"
+  },
+  {
+    "content": "举杯邀明月，对影成三人。",
+    "author": "李白",
+    "source": "月下独酌",
+    "category": 1,
+    "tags": "举杯邀月"
+  },
+  {
+    "content": "月落乌啼霜满天，江枫渔火对愁眠。",
+    "author": "张继",
+    "source": "枫桥夜泊",
+    "category": 1,
+    "tags": "月落乌啼"
+  },
+  {
+    "content": "独在异乡为异客，每逢佳节倍思亲。",
+    "author": "王维",
+    "source": "九月九日忆山东兄弟",
+    "category": 1,
+    "tags": "独在异乡"
+  },
+  {
+    "content": "劝君更尽一杯酒，西出阳关无故人。",
+    "author": "王维",
+    "source": "送元二使安西",
+    "category": 1,
+    "tags": "西出阳关"
+  },
+  {
+    "content": "大漠孤烟直，长河落日圆。",
+    "author": "王维",
+    "source": "使至塞上",
+    "category": 1,
+    "tags": "大漠孤烟"
+  },
+  {
+    "content": "行到水穷处，坐看云起时。",
+    "author": "王维",
+    "source": "终南别业",
+    "category": 0,
+    "tags": "水穷云起"
+  },
+  {
+    "content": "明月松间照，清泉石上流。",
+    "author": "王维",
+    "source": "山居秋暝",
+    "category": 1,
+    "tags": "明月松间"
+  },
+  {
+    "content": "海内存知己，天涯若比邻。",
+    "author": "王勃",
+    "source": "送杜少府之任蜀州",
+    "category": 0,
+    "tags": "海内存知己"
+  },
+  {
+    "content": "落霞与孤鹜齐飞，秋水共长天一色。",
+    "author": "王勃",
+    "source": "滕王阁序",
+    "category": 1,
+    "tags": "落霞孤鹜"
+  },
+  {
+    "content": "前不见古人，后不见来者。念天地之悠悠，独怆然而涕下。",
+    "author": "陈子昂",
+    "source": "登幽州台歌",
+    "category": 0,
+    "tags": "前不见古人"
+  },
+  {
+    "content": "海上生明月，天涯共此时。",
+    "author": "张九龄",
+    "source": "望月怀远",
+    "category": 1,
+    "tags": "海上生明月"
+  },
+  {
+    "content": "欲穷千里目，更上一层楼。",
+    "author": "王之涣",
+    "source": "登鹳雀楼",
+    "category": 0,
+    "tags": "欲穷千里目"
+  },
+  {
+    "content": "羌笛何须怨杨柳，春风不度玉门关。",
+    "author": "王之涣",
+    "source": "凉州词",
+    "category": 1,
+    "tags": "羌笛何须"
+  },
+  {
+    "content": "黄沙百战穿金甲，不破楼兰终不还。",
+    "author": "王昌龄",
+    "source": "从军行",
+    "category": 0,
+    "tags": "不破楼兰"
+  },
+  {
+    "content": "秦时明月汉时关，万里长征人未还。",
+    "author": "王昌龄",
+    "source": "出塞",
+    "category": 1,
+    "tags": "秦时明月"
+  },
+  {
+    "content": "但使龙城飞将在，不教胡马度阴山。",
+    "author": "王昌龄",
+    "source": "出塞",
+    "category": 0,
+    "tags": "但使龙城"
+  },
+  {
+    "content": "两岸猿声啼不住，轻舟已过万重山。",
+    "author": "李白",
+    "source": "早发白帝城",
+    "category": 1,
+    "tags": "轻舟已过"
+  },
+  {
+    "content": "桃花潭水深千尺，不及汪伦送我情。",
+    "author": "李白",
+    "source": "赠汪伦",
+    "category": 1,
+    "tags": "桃花潭水"
+  },
+  {
+    "content": "会当凌绝顶，一览众山小。",
+    "author": "杜甫",
+    "source": "望岳",
+    "category": 0,
+    "tags": "会当凌绝顶"
+  },
+  {
+    "content": "两个黄鹂鸣翠柳，一行白鹭上青天。",
+    "author": "杜甫",
+    "source": "绝句",
+    "category": 1,
+    "tags": "两个黄鹂"
+  },
+  {
+    "content": "窗含西岭千秋雪，门泊东吴万里船。",
+    "author": "杜甫",
+    "source": "绝句",
+    "category": 1,
+    "tags": "窗含西岭"
+  },
+  {
+    "content": "星垂平野阔，月涌大江流。",
+    "author": "杜甫",
+    "source": "旅夜书怀",
+    "category": 1,
+    "tags": "星垂平野"
+  },
+  {
+    "content": "无边落木萧萧下，不尽长江滚滚来。",
+    "author": "杜甫",
+    "source": "登高",
+    "category": 1,
+    "tags": "无边落木"
+  },
+  {
+    "content": "露从今夜白，月是故乡明。",
+    "author": "杜甫",
+    "source": "月夜忆舍弟",
+    "category": 1,
+    "tags": "露从今夜白"
+  },
+  {
+    "content": "朱门酒肉臭，路有冻死骨。",
+    "author": "杜甫",
+    "source": "自京洛奉先县咏怀五百字",
+    "category": 0,
+    "tags": "朱门酒肉臭"
+  },
+  {
+    "content": "读书破万卷，下笔如有神。",
+    "author": "杜甫",
+    "source": "奉赠韦左丞丈二十二韵",
+    "category": 0,
+    "tags": "读书破万卷"
+  },
+  {
+    "content": "随风潜入夜，润物细无声。",
+    "author": "杜甫",
+    "source": "春夜喜雨",
+    "category": 1,
+    "tags": "随风潜入夜"
+  },
+  {
+    "content": "感时花溅泪，恨别鸟惊心。",
+    "author": "杜甫",
+    "source": "春望",
+    "category": 0,
+    "tags": "感时花溅泪"
+  },
+  {
+    "content": "烽火连三月，家书抵万金。",
+    "author": "杜甫",
+    "source": "春望",
+    "category": 0,
+    "tags": "家书抵万金"
+  },
+  {
+    "content": "出师未捷身先死，长使英雄泪满襟。",
+    "author": "杜甫",
+    "source": "蜀相",
+    "category": 0,
+    "tags": "出师未捷"
+  },
+  {
+    "content": "安得广厦千万间，大庇天下寒士俱欢颜。",
+    "author": "杜甫",
+    "source": "茅屋为秋风所破歌",
+    "category": 0,
+    "tags": "安得广厦"
+  },
+  {
+    "content": "清明时节雨纷纷，路上行人欲断魂。",
+    "author": "杜牧",
+    "source": "清明",
+    "category": 1,
+    "tags": "清明时节"
+  },
+  {
+    "content": "借问酒家何处有，牧童遥指杏花村。",
+    "author": "杜牧",
+    "source": "清明",
+    "category": 1,
+    "tags": "借问酒家"
+  },
+  {
+    "content": "烟笼寒水月笼沙，夜泊秦淮近酒家。",
+    "author": "杜牧",
+    "source": "泊秦淮",
+    "category": 1,
+    "tags": "烟笼寒水"
+  },
+  {
+    "content": "商女不知亡国恨，隔江犹唱后庭花。",
+    "author": "杜牧",
+    "source": "泊秦淮",
+    "category": 0,
+    "tags": "商女不知"
+  },
+  {
+    "content": "停车坐爱枫林晚，霜叶红于二月花。",
+    "author": "杜牧",
+    "source": "山行",
+    "category": 1,
+    "tags": "霜叶红于二月花"
+  },
+  {
+    "content": "东风不与周郎便，铜雀春深锁二乔。",
+    "author": "杜牧",
+    "source": "赤壁",
+    "category": 0,
+    "tags": "东风不与"
+  },
+  {
+    "content": "离离原上草，一岁一枯荣。野火烧不尽，春风吹又生。",
+    "author": "白居易",
+    "source": "赋得古原草送别",
+    "category": 1,
+    "tags": "野火烧不尽"
+  },
+  {
+    "content": "同是天涯沦落人，相逢何必曾相识。",
+    "author": "白居易",
+    "source": "琵琶行",
+    "category": 0,
+    "tags": "天涯沦落"
+  },
+  {
+    "content": "在天愿作比翼鸟，在地愿为连理枝。",
+    "author": "白居易",
+    "source": "长恨歌",
+    "category": 1,
+    "tags": "比翼鸟,连理枝"
+  },
+  {
+    "content": "天长地久有时尽，此恨绵绵无绝期。",
+    "author": "白居易",
+    "source": "长恨歌",
+    "category": 1,
+    "tags": "此恨绵绵"
+  },
+  {
+    "content": "千呼万唤始出来，犹抱琵琶半遮面。",
+    "author": "白居易",
+    "source": "琵琶行",
+    "category": 1,
+    "tags": "千呼万唤"
+  },
+  {
+    "content": "明月几时有？把酒问青天。",
+    "author": "苏轼",
+    "source": "水调歌头",
+    "category": 1,
+    "tags": "明月几时有"
+  },
+  {
+    "content": "但愿人长久，千里共婵娟。",
+    "author": "苏轼",
+    "source": "水调歌头",
+    "category": 1,
+    "tags": "但愿人长久"
+  },
+  {
+    "content": "大江东去，浪淘尽，千古风流人物。",
+    "author": "苏轼",
+    "source": "念奴娇·赤壁怀古",
+    "category": 1,
+    "tags": "大江东去"
+  },
+  {
+    "content": "人生如梦，一尊还酹江月。",
+    "author": "苏轼",
+    "source": "念奴娇·赤壁怀古",
+    "category": 0,
+    "tags": "人生如梦"
+  },
+  {
+    "content": "十年生死两茫茫，不思量，自难忘。",
+    "author": "苏轼",
+    "source": "江城子",
+    "category": 1,
+    "tags": "十年生死"
+  },
+  {
+    "content": "老夫聊发少年狂，左牵黄，右擎苍。",
+    "author": "苏轼",
+    "source": "江城子·密州出猎",
+    "category": 0,
+    "tags": "老夫聊发少年狂"
+  },
+  {
+    "content": "竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。",
+    "author": "苏轼",
+    "source": "定风波",
+    "category": 0,
+    "tags": "竹杖芒鞋"
+  },
+  {
+    "content": "回首向来萧瑟处，归去，也无风雨也无晴。",
+    "author": "苏轼",
+    "source": "定风波",
+    "category": 0,
+    "tags": "也无风雨也无晴"
+  },
+  {
+    "content": "不识庐山真面目，只缘身在此山中。",
+    "author": "苏轼",
+    "source": "题西林壁",
+    "category": 0,
+    "tags": "不识庐山真面目"
+  },
+  {
+    "content": "横看成岭侧成峰，远近高低各不同。",
+    "author": "苏轼",
+    "source": "题西林壁",
+    "category": 1,
+    "tags": "横看成岭"
+  },
+  {
+    "content": "欲把西湖比西子，淡妆浓抹总相宜。",
+    "author": "苏轼",
+    "source": "饮湖上初晴后雨",
+    "category": 1,
+    "tags": "欲把西湖比西子"
+  },
+  {
+    "content": "明月别枝惊鹊，清风半夜鸣蝉。",
+    "author": "辛弃疾",
+    "source": "西江月",
+    "category": 1,
+    "tags": "明月别枝"
+  },
+  {
+    "content": "稻花香里说丰年，听取蛙声一片。",
+    "author": "辛弃疾",
+    "source": "西江月",
+    "category": 1,
+    "tags": "稻花香里"
+  },
+  {
+    "content": "众里寻他千百度，蓦然回首，那人却在灯火阑珊处。",
+    "author": "辛弃疾",
+    "source": "青玉案·元夕",
+    "category": 1,
+    "tags": "众里寻他"
+  },
+  {
+    "content": "青山遮不住，毕竟东流去。",
+    "author": "辛弃疾",
+    "source": "菩萨蛮·书江西造口壁",
+    "category": 0,
+    "tags": "青山遮不住"
+  },
+  {
+    "content": "千古兴亡多少事？悠悠。不尽长江滚滚流。",
+    "author": "辛弃疾",
+    "source": "南乡子·登京口北固亭有怀",
+    "category": 0,
+    "tags": "千古兴亡"
+  },
+  {
+    "content": "想当年，金戈铁马，气吞万里如虎。",
+    "author": "辛弃疾",
+    "source": "永遇乐·京口北固亭怀古",
+    "category": 0,
+    "tags": "金戈铁马"
+  },
+  {
+    "content": "凭谁问：廉颇老矣，尚能饭否？",
+    "author": "辛弃疾",
+    "source": "永遇乐·京口北固亭怀古",
+    "category": 0,
+    "tags": "廉颇老矣"
+  },
+  {
+    "content": "了却君王天下事，赢得生前身后名。可怜白发生！",
+    "author": "辛弃疾",
+    "source": "破阵子",
+    "category": 0,
+    "tags": "了却君王天下事"
+  },
+  {
+    "content": "少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。",
+    "author": "辛弃疾",
+    "source": "丑奴儿·书博山道中壁",
+    "category": 0,
+    "tags": "少年不识愁"
+  },
+  {
+    "content": "而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。",
+    "author": "辛弃疾",
+    "source": "丑奴儿·书博山道中壁",
+    "category": 0,
+    "tags": "而今识尽愁"
+  },
+  {
+    "content": "寻寻觅觅，冷冷清清，凄凄惨惨戚戚。",
+    "author": "李清照",
+    "source": "声声慢",
+    "category": 1,
+    "tags": "寻寻觅觅"
+  },
+  {
+    "content": "乍暖还寒时候，最难将息。",
+    "author": "李清照",
+    "source": "声声慢",
+    "category": 1,
+    "tags": "乍暖还寒"
+  },
+  {
+    "content": "这次第，怎一个愁字了得！",
+    "author": "李清照",
+    "source": "声声慢",
+    "category": 0,
+    "tags": "怎一个愁字了得"
+  },
+  {
+    "content": "生当作人杰，死亦为鬼雄。",
+    "author": "李清照",
+    "source": "夏日绝句",
+    "category": 0,
+    "tags": "生当作人杰"
+  },
+  {
+    "content": "常记溪亭日暮，沉醉不知归路。",
+    "author": "李清照",
+    "source": "如梦令",
+    "category": 1,
+    "tags": "常记溪亭日暮"
+  },
+  {
+    "content": "知否？知否？应是绿肥红瘦。",
+    "author": "李清照",
+    "source": "如梦令",
+    "category": 1,
+    "tags": "知否知否"
+  },
+  {
+    "content": "红藕香残玉簟秋。轻解罗裳，独上兰舟。",
+    "author": "李清照",
+    "source": "一剪梅",
+    "category": 1,
+    "tags": "红藕香残玉簟秋"
+  },
+  {
+    "content": "此情无计可消除，才下眉头，却上心头。",
+    "author": "李清照",
+    "source": "一剪梅",
+    "category": 1,
+    "tags": "才下眉头却上心头"
+  },
+  {
+    "content": "莫道不销魂，帘卷西风，人比黄花瘦。",
+    "author": "李清照",
+    "source": "醉花阴",
+    "category": 1,
+    "tags": "人比黄花瘦"
+  },
+  {
+    "content": "物是人非事事休，欲语泪先流。",
+    "author": "李清照",
+    "source": "武陵春",
+    "category": 0,
+    "tags": "物是人非事事休"
+  },
+  {
+    "content": "不在沉默中爆发，就在沉默中灭亡。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "沉默,爆发"
+  },
+  {
+    "content": "横眉冷对千夫指，俯首甘为孺子牛。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "横眉冷对"
+  },
+  {
+    "content": "真的猛士，敢于直面惨淡的人生，敢于正视淋漓的鲜血。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "真的猛士"
+  },
+  {
+    "content": "时间就像海绵里的水，只要愿挤，总还是有的。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "时间,海绵"
+  },
+  {
+    "content": "地上本没有路，走的人多了，也便成了路。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "地上本没有路"
+  },
+  {
+    "content": "希望是附丽于存在的，有存在，便有希望，有希望，便是光明。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "希望,光明"
+  },
+  {
+    "content": "哀其不幸，怒其不争。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "哀其不幸"
+  },
+  {
+    "content": "心事浩茫连广宇，于无声处听惊雷。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "心事浩茫"
+  },
+  {
+    "content": "寄意寒星荃不察，我以我血荐轩辕。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "我以我血"
+  },
+  {
+    "content": "躲进小楼成一统，管他冬夏与春秋。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "躲进小楼"
+  },
+  {
+    "content": "无情未必真豪杰，怜子如何不丈夫。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "无情未必"
+  },
+  {
+    "content": "度尽劫波兄弟在，相逢一笑泯恩仇。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "度尽劫波"
+  },
+  {
+    "content": "人生得一知己足矣，斯世当以同怀视之。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "人生得一知己足矣"
+  },
+  {
+    "content": "不满是向上的车轮。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "不满是向上的车轮"
+  },
+  {
+    "content": "多有不自满的人的种族，永远前进，永远有希望。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "不自满"
+  },
+  {
+    "content": "有一分热，发一分光。",
+    "author": "鲁迅",
+    "source": "",
+    "category": 0,
+    "tags": "有一分热发一分光"
+  },
+  {
+    "content": "在别人贪婪时恐惧，在别人恐惧时贪婪。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "逆行者,贪婪,巴菲特"
+  },
+  {
+    "content": "规则一：永远不要亏损。规则二：永远不要忘记规则一。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "风险,资本,巴菲特"
+  },
+  {
+    "content": "如果你不愿意持有一只股票十年，那就不要考虑持有十分钟。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "长期,价值,巴菲特"
+  },
+  {
+    "content": "价格是你支付的，价值是你得到的。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "价值,价格,巴菲特"
+  },
+  {
+    "content": "风险来自于不知道自己在做什么。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "风险,知识,巴菲特"
+  },
+  {
+    "content": "退潮时，我们才能看到谁在裸泳。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "风险,警告,巴菲特"
+  },
+  {
+    "content": "持有一只股票最好的方式是永远。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "永远,持有,巴菲特"
+  },
+  {
+    "content": "找到优秀的公司并长期持有。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "优秀,长期,巴菲特"
+  },
+  {
+    "content": "以合理的价格收购一家优秀的公司，比以高昂的价格收购一家普通的公司要好。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "价值,价格,巴菲特"
+  },
+  {
+    "content": "模糊的正确远好于精确的错误。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "决策,智慧,巴菲特"
+  },
+  {
+    "content": "投资不需要高智商，但需要高情商。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "情商,智商,巴菲特"
+  },
+  {
+    "content": "耐心是投资者最重要的品质。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "耐心,品质,巴菲特"
+  },
+  {
+    "content": "时间是好公司的朋友，是平庸公司的敌人。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "时间,公司,巴菲特"
+  },
+  {
+    "content": "少即是多。集中投资比分散投资能产生更好的回报。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "集中,分散,巴菲特"
+  },
+  {
+    "content": "多样化是对无知的保护。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "多样化,保护,巴菲特"
+  },
+  {
+    "content": "如果你没有找到足够好的投资机会，就什么都不做。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "耐心,机会,巴菲特"
+  },
+  {
+    "content": "不要把所有的鸡蛋放在一个篮子里。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "多样化,风险,巴菲特"
+  },
+  {
+    "content": "知道你不做什么，比知道你做什么更重要。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "知识,智慧,巴菲特"
+  },
+  {
+    "content": "最有价值的投资是对自己的投资。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "投资,自己,巴菲特"
+  },
+  {
+    "content": "别人恐惧时我贪婪，别人贪婪时我恐惧。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "逆行,情绪,巴菲特"
+  },
+  {
+    "content": "投资者最重要的品质不是智力，而是气质。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "气质,智力,巴菲特"
+  },
+  {
+    "content": "你不需要成为天才才能成功投资。你需要的是控制冲动的能力。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "气质,冲动,巴菲特"
+  },
+  {
+    "content": "只有当潮水退去时，你才知道谁在裸泳。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "潮水,裸泳,巴菲特"
+  },
+  {
+    "content": "买股票就是买公司。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "股票,公司,巴菲特"
+  },
+  {
+    "content": "能力圈的大小不重要，知道它的边界在哪里才重要。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "能力圈,边界,巴菲特"
+  },
+  {
+    "content": "短视频不适合价值投资。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "短期,长期,巴菲特"
+  },
+  {
+    "content": "预测雨不算什么，建造方舟才算。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "准备,行动,巴菲特"
+  },
+  {
+    "content": "投资的第一原则是不要亏损。第二原则是记住第一原则。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "亏损,原则,巴菲特"
+  },
+  {
+    "content": "好公司便宜买，才是真正的价值投资。",
+    "author": "沃伦·巴菲特",
+    "source": "伯克希尔哈撒韦",
+    "category": 2,
+    "tags": "价值投资,巴菲特"
+  },
+  {
+    "content": "商学院奖励复杂行为多于简单行为，但简单行为更有效。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "简单,行为,芒格"
+  },
+  {
+    "content": "在商界，最成功的人总是思考什么可能出错的人。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "风险,思考,芒格"
+  },
+  {
+    "content": "复合利息是宇宙中最强大的力量。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "复合利息,芒格"
+  },
+  {
+    "content": "复利的第一个法则：不要不必要地中断它。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "复利,芒格"
+  },
+  {
+    "content": "每天努力变得比醒来时更聪明一点。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "智慧,每日,芒格"
+  },
+  {
+    "content": "储蓄率越高，积累财富的速度就越快。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "储蓄,财富,芒格"
+  },
+  {
+    "content": "不是你赚多少，而是你留下多少。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "保留,金钱,芒格"
+  },
+  {
+    "content": "知道你不知道什么比成为聪明人更有用。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "知识,聪明,芒格"
+  },
+  {
+    "content": "很多高智商的人投资很糟糕，因为他们有糟糕的气质。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "智商,气质,芒格"
+  },
+  {
+    "content": "你需要有一种特定的气质，不会被波动性弄疯。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "气质,波动,芒格"
+  },
+  {
+    "content": "过度多样化是疯狂的想法。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "多样化,疯狂,芒格"
+  },
+  {
+    "content": "要有耐心。大钱不是买卖产生的，而是等待产生的。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "耐心,等待,芒格"
+  },
+  {
+    "content": "不要亏钱。不要忘记不要亏钱。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "不要亏钱,规则,芒格"
+  },
+  {
+    "content": "投资最重要的教训是不要做蠢事。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "蠢事,投资教训,芒格"
+  },
+  {
+    "content": "先考虑缺点。然后好处会自己照顾自己。",
+    "author": "查理·芒格",
+    "source": "每日日报",
+    "category": 2,
+    "tags": "缺点,好处,芒格"
+  },
+  {
+    "content": "除非你做与大众不同的事情，否则不可能产生优异的表现。",
+    "author": "乔治·索罗斯",
+    "source": "量子基金",
+    "category": 2,
+    "tags": "逆行,表现,索罗斯"
+  },
+  {
+    "content": "我只在我有优势的时候投资。",
+    "author": "乔治·索罗斯",
+    "source": "量子基金",
+    "category": 2,
+    "tags": "优势,时机,索罗斯"
+  },
+  {
+    "content": "每个泡沫都有两个组成部分：潜在趋势和对趋势的误解。",
+    "author": "乔治·索罗斯",
+    "source": "金融炼金术",
+    "category": 2,
+    "tags": "泡沫,趋势,索罗斯"
+  },
+  {
+    "content": "当你对了，重仓。当你错了，轻仓。",
+    "author": "乔治·索罗斯",
+    "source": "量子基金",
+    "category": 2,
+    "tags": "信心,投注,索罗斯"
+  },
+  {
+    "content": "重要的不是你是否正确，而是你正确时赚了多少，错误时亏了多少。",
+    "author": "乔治·索罗斯",
+    "source": "量子基金",
+    "category": 2,
+    "tags": "风险,回报,索罗斯"
+  },
+  {
+    "content": "短期内市场是一台投票机。长期来看，它是一台称重机。",
+    "author": "本杰明·格雷厄姆",
+    "source": "聪明的投资者",
+    "category": 2,
+    "tags": "市场,投票,称重,格雷厄姆"
+  },
+  {
+    "content": "投资operation是经过彻底分析，保证本金安全并获得适当回报的操作。",
+    "author": "本杰明·格雷厄姆",
+    "source": "聪明的投资者",
+    "category": 2,
+    "tags": "投资,分析,安全,格雷厄姆"
+  },
+  {
+    "content": "不要与市场先生争论。",
+    "author": "本杰明·格雷厄姆",
+    "source": "聪明的投资者",
+    "category": 2,
+    "tags": "市场,理性,格雷厄姆"
+  },
+  {
+    "content": "投资者的主要问题，甚至最大的敌人，可能就是他自己。",
+    "author": "本杰明·格雷厄姆",
+    "source": "聪明的投资者",
+    "category": 2,
+    "tags": "投资者,他自己,格雷厄姆"
+  },
+  {
+    "content": "安全边际是投资的核心理念。",
+    "author": "本杰明·格雷厄姆",
+    "source": "证券分析",
+    "category": 2,
+    "tags": "安全边际,格雷厄姆"
+  },
+  {
+    "content": "真正的投资者欢迎波动，因为它创造了机会。",
+    "author": "本杰明·格雷厄姆",
+    "source": "聪明的投资者",
+    "category": 2,
+    "tags": "波动,机会,格雷厄姆"
+  },
+  {
+    "content": "最有可能成功的人是有明确目标的人。",
+    "author": "彼得·林奇",
+    "source": "富达投资",
+    "category": 2,
+    "tags": "目标,成功,林奇"
+  },
+  {
+    "content": "知道你拥有什么，以及为什么拥有它。",
+    "author": "彼得·林奇",
+    "source": "富达投资",
+    "category": 2,
+    "tags": "知识,拥有,林奇"
+  },
+  {
+    "content": "永远不要投资你不理解的公司。",
+    "author": "彼得·林奇",
+    "source": "富达投资",
+    "category": 2,
+    "tags": "理解,投资,林奇"
+  },
+  {
+    "content": "如果你找不到公司的任何缺陷，你可能没有足够努力地寻找。",
+    "author": "彼得·林奇",
+    "source": "富达投资",
+    "category": 2,
+    "tags": "缺陷,公司,林奇"
+  },
+  {
+    "content": "股票市场充满了知道一切价格但不知道任何价值的人。",
+    "author": "彼得·林奇",
+    "source": "富达投资",
+    "category": 2,
+    "tags": "股票市场,价值,林奇"
+  },
+  {
+    "content": "不加研究就买股票就像酒后驾车一样危险。",
+    "author": "彼得·林奇",
+    "source": "富达投资",
+    "category": 2,
+    "tags": "研究,危险,林奇"
+  },
+  {
+    "content": "投资的真正钱来自于找到并长期持有好公司。",
+    "author": "彼得·林奇",
+    "source": "富达投资",
+    "category": 2,
+    "tags": "好公司,长期,林奇"
+  },
+  {
+    "content": "时间是朋友，冲动是敌人。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "时间,冲动,博格"
+  },
+  {
+    "content": "不要做什么，就站在那里。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "站着,什么都不做,博格"
+  },
+  {
+    "content": "获得市场回报最简单的方法是停止交易。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "市场回报,交易,博格"
+  },
+  {
+    "content": "在投资中，成本很重要。始终。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "成本,始终,博格"
+  },
+  {
+    "content": "低成本投资是实现投资成功最可靠的途径。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "低成本,成功,博格"
+  },
+  {
+    "content": "市场是将钱从急躁者转移到耐心者的工具。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "市场,急躁,耐心,博格"
+  },
+  {
+    "content": "你的行为比你所知道的更重要。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "行为,知道,博格"
+  },
+  {
+    "content": "不要把牛市误认为是能力。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "牛市,能力,博格"
+  },
+  {
+    "content": "成功的秘诀是什么？什么都不做。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "成功,什么都不做,博格"
+  },
+  {
+    "content": "投资的三个最重要的词：多样化、简单性、低成本。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "多样化,简单性,低成本,博格"
+  },
+  {
+    "content": "复利的力量总是比投机的力量更强大。",
+    "author": "约翰·博格",
+    "source": "先锋领航",
+    "category": 2,
+    "tags": "复利,投机,博格"
+  },
+  {
+    "content": "保持饥饿，保持愚蠢。",
+    "author": "史蒂夫·乔布斯",
+    "source": "",
+    "category": 0,
+    "tags": "饥饿,愚蠢"
+  },
+  {
+    "content": "你的时间有限，不要浪费在过别人的生活。",
+    "author": "史蒂夫·乔布斯",
+    "source": "",
+    "category": 0,
+    "tags": "时间,生活"
+  },
+  {
+    "content": "创新区分领导者和追随者。",
+    "author": "史蒂夫·乔布斯",
+    "source": "",
+    "category": 0,
+    "tags": "创新,领导者"
+  },
+  {
+    "content": "设计不只是看起来怎么样，设计是它如何工作。",
+    "author": "史蒂夫·乔布斯",
+    "source": "",
+    "category": 0,
+    "tags": "设计"
+  },
+  {
+    "content": "有时候当你创新时，你会犯错。最好承认它们很快。",
+    "author": "史蒂夫·乔布斯",
+    "source": "",
+    "category": 0,
+    "tags": "创新,错误"
+  },
+  {
+    "content": "生命中最重要的是不要停止问问题。",
+    "author": "阿尔伯特·爱因斯坦",
+    "source": "",
+    "category": 0,
+    "tags": "问题,好奇"
+  },
+  {
+    "content": "想象力比知识更重要。",
+    "author": "阿尔伯特·爱因斯坦",
+    "source": "",
+    "category": 0,
+    "tags": "想象力,知识"
+  },
+  {
+    "content": "困难中蕴含机会。",
+    "author": "阿尔伯特·爱因斯坦",
+    "source": "",
+    "category": 0,
+    "tags": "困难,机会"
+  },
+  {
+    "content": "真正的智慧是知道自己知道什么和不知道什么。",
+    "author": "阿尔伯特·爱因斯坦",
+    "source": "",
+    "category": 0,
+    "tags": "智慧,知道"
+  },
+  {
+    "content": "生活就像骑自行车。要保持平衡就得往前走。",
+    "author": "阿尔伯特·爱因斯坦",
+    "source": "",
+    "category": 0,
+    "tags": "生活,平衡"
+  }
+]
