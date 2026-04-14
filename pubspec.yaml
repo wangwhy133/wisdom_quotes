@@ -40,3 +40,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/
+    - assets/quotes_cn.json
+    - assets/quotes_en.json

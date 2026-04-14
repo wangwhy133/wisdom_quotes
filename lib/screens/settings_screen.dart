@@ -1,17 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import '../providers/providers.dart';
-import '../data/database.dart';
-import '../services/quote_generator_service.dart';
-import '../providers/model_providers.dart';
 import '../services/notification_service.dart';
-import '../services/quote_api_service.dart';
 import '../services/translation_service.dart';
 import '../services/alarm_service.dart';
 import 'model_providers_screen.dart';
@@ -30,7 +27,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   bool _loading = true;
   bool _isImporting = false;
   bool _isExporting = false;
-  bool _isFetchingApi = false;
 
   // Alarm config
   bool _alarmEnabled = false;
@@ -157,34 +153,21 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     setState(() => _isImporting = false);
   }
 
-  Future<void> _fetchFromApi() async {
-    final providers = ref.read(modelProvidersProvider);
-    final defaultProvider = providers.isNotEmpty ? providers.firstWhere((p) => p.isDefault, orElse: () => providers.first) : null;
-    if (defaultProvider == null || defaultProvider.apiKey.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('请先在AI模型配置中添加API Key')));
-      return;
-    }
-
-    setState(() => _isFetchingApi = true);
+  Future<void> _importBundledQuotes(String assetPath, String name) async {
+    setState(() => _isImporting = true);
     try {
-      final generator = QuoteGeneratorService();
-      final quotes = await generator.generateQuotes(
-        providers: providers,
-        count: 20,
-        category: QuoteCategory.investment,
-      );
-      if (quotes.isNotEmpty) {
-        final db = ref.read(databaseProvider);
-        await db.importQuotes(quotes);
-        if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('已生成 ${quotes.length} 条名言')));
+      final data = await DefaultAssetBundle.of(context).loadString(assetPath);
+      final List<dynamic> jsonData = json.decode(data);
+      final db = ref.read(databaseProvider);
+      await db.importQuotes(jsonData.cast<Map<String, dynamic>>());
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('已导入${name} ${jsonData.length} 条名言')));
         ref.invalidate(allQuotesProvider);
-      } else {
-        if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('生成失败，请检查API配置')));
       }
     } catch (e) {
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('生成失败: $e')));
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('导入失败: $e')));
     }
-    setState(() => _isFetchingApi = false);
+    setState(() => _isImporting = false);
   }
 
   @override
@@ -233,18 +216,27 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             onTap: _showFontPicker,
           ),
           const Divider(),
-          _buildSectionHeader('数据管理'),
+          _buildSectionHeader('导入内置名言库'),
           ListTile(
-            leading: const Icon(Icons.cloud_download),
-            title: const Text('AI生成名言'),
-            subtitle: const Text('使用大模型自动生成更多名言'),
-            trailing: _isFetchingApi ? const SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.chevron_right),
-            onTap: _isFetchingApi ? null : _fetchFromApi,
+            leading: const Icon(Icons.file_download, color: Colors.green),
+            title: const Text('导入中文名言'),
+            subtitle: const Text('经典名著、诗词、投资名言 · 35条'),
+            trailing: _isImporting ? const SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.chevron_right),
+            onTap: _isImporting ? null : () => _importBundledQuotes('assets/quotes_cn.json', '中文名言'),
           ),
           ListTile(
+            leading: const Icon(Icons.file_download, color: Colors.blue),
+            title: const Text('导入英文名言'),
+            subtitle: const Text('经典语录、投资名言 · 35条'),
+            trailing: _isImporting ? const SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.chevron_right),
+            onTap: _isImporting ? null : () => _importBundledQuotes('assets/quotes_en.json', '英文名言'),
+          ),
+          const Divider(),
+          _buildSectionHeader('数据管理'),
+          ListTile(
             leading: const Icon(Icons.file_upload),
-            title: const Text('导入名言'),
-            subtitle: const Text('从JSON文件导入'),
+            title: const Text('导入自定义JSON'),
+            subtitle: const Text('从文件导入自己的名言库'),
             trailing: _isImporting ? const SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.chevron_right),
             onTap: _isImporting ? null : _importQuotes,
           ),
