@@ -7,6 +7,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import '../providers/providers.dart';
+import '../data/database.dart';
+import '../services/quote_generator_service.dart';
 import '../providers/model_providers.dart';
 import '../services/notification_service.dart';
 import '../services/quote_api_service.dart';
@@ -156,21 +158,31 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Future<void> _fetchFromApi() async {
+    final providers = ref.read(modelProvidersProvider);
+    final defaultProvider = providers.isNotEmpty ? providers.firstWhere((p) => p.isDefault, orElse: () => providers.first) : null;
+    if (defaultProvider == null || defaultProvider.apiKey.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('请先在AI模型配置中添加API Key')));
+      return;
+    }
+
     setState(() => _isFetchingApi = true);
     try {
-      final apiService = QuoteApiService();
-      final quotes = await apiService.fetchFromAllApis();
+      final generator = QuoteGeneratorService();
+      final quotes = await generator.generateQuotes(
+        providers: providers,
+        count: 20,
+        category: QuoteCategory.investment,
+      );
       if (quotes.isNotEmpty) {
         final db = ref.read(databaseProvider);
-        final data = quotes.map((q) => {'content': q.content, 'author': q.author, 'source': q.source, 'category': 2, 'tags': 'API'}).toList();
-        await db.importQuotes(data.cast<Map<String, dynamic>>());
-        if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('已从API获取 ${data.length} 条名言')));
+        await db.importQuotes(quotes);
+        if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('已生成 ${quotes.length} 条名言')));
         ref.invalidate(allQuotesProvider);
       } else {
-        if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('API获取失败，请稍后重试')));
+        if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('生成失败，请检查API配置')));
       }
     } catch (e) {
-      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('API获取失败: $e')));
+      if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('生成失败: $e')));
     }
     setState(() => _isFetchingApi = false);
   }
@@ -224,8 +236,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           _buildSectionHeader('数据管理'),
           ListTile(
             leading: const Icon(Icons.cloud_download),
-            title: const Text('从API获取名言'),
-            subtitle: const Text('从网络获取更多英文名言'),
+            title: const Text('AI生成名言'),
+            subtitle: const Text('使用大模型自动生成更多名言'),
             trailing: _isFetchingApi ? const SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2)) : const Icon(Icons.chevron_right),
             onTap: _isFetchingApi ? null : _fetchFromApi,
           ),
