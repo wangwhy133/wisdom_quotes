@@ -1,0 +1,69 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+
+# Flutter specific
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+
+# Android
+android/.gradle/
+android/app/build/
+android/captures/
+android/gradle/
+android/gradlew
+android/gradlew.bat
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/ServiceDefinitions.json
+
+# macOS
+macos/Pods/
+macos/.symlinks/
+macos/Flutter/Flutter.framework
+macos/Flutter/Flutter.podspec
+macos/Flutter/App.framework
+macos/Flutter/App.podspec
+
+# Linux
+linux/.cmake/
+linux/flutter/ephemeral/
+linux/build/
+
+# Windows
+windows/.cmake/
+windows/flutter/ephemeral/
+windows/build/
+
+# Web
+web/canvaskit/
+web/flutter.js
+web/flutter_worker.js
+web/main.dart.js
+web/version.json
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Pub
+pubspec.lock
+
+# Test
+test/widget_test.dart
