@@ -149,6 +149,12 @@ class _ModelProvidersScreenState extends ConsumerState<ModelProvidersScreen> {
                   ),
                   const SizedBox(width: 8),
                   TextButton.icon(
+                    icon: const Icon(Icons.play_arrow, size: 18, color: Colors.green),
+                    label: const Text('测试', style: TextStyle(color: Colors.green)),
+                    onPressed: () => _testProvider(provider),
+                  ),
+                  const SizedBox(width: 8),
+                  TextButton.icon(
                     icon: const Icon(Icons.delete, size: 18, color: Colors.red),
                     label: const Text('删除', style: TextStyle(color: Colors.red)),
                     onPressed: () => _confirmDelete(provider),
@@ -213,6 +219,41 @@ class _ModelProvidersScreenState extends ConsumerState<ModelProvidersScreen> {
       builder: (ctx) => _ProviderForm(provider: provider),
     );
   }
+
+  Future<void> _testProvider(ModelProvider provider) async {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => const AlertDialog(
+        content: Row(
+          children: [
+            SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2)),
+            SizedBox(width: 16),
+            Text('测试连接中...'),
+          ],
+        ),
+      ),
+    );
+
+    final result = await LlmService().testConnection(provider);
+
+    if (mounted) {
+      Navigator.pop(context); // 关闭loading
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: Text(result.success ? '✅ 测试成功' : '❌ 测试失败'),
+          content: Text(result.message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('确定'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
 }
 
 class _ProviderForm extends ConsumerStatefulWidget {
@@ -255,6 +296,56 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
     _apiKeyController.dispose();
     _modelIdController.dispose();
     super.dispose();
+  }
+
+  Future<void> _testConnection(BuildContext context) async {
+    if (_baseUrlController.text.isEmpty || _apiKeyController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('请先填写 Base URL 和 API Key')),
+      );
+      return;
+    }
+
+    final tempProvider = ModelProvider(
+      id: 'temp',
+      name: _nameController.text.isEmpty ? 'Temp' : _nameController.text,
+      baseUrl: _baseUrlController.text,
+      apiKey: _apiKeyController.text,
+      modelId: _modelIdController.text,
+    );
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => const AlertDialog(
+        content: Row(
+          children: [
+            SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2)),
+            SizedBox(width: 16),
+            Text('测试连接中...'),
+          ],
+        ),
+      ),
+    );
+
+    final result = await LlmService().testConnection(tempProvider);
+
+    if (context.mounted) {
+      Navigator.pop(context); // 关闭loading
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: Text(result.success ? '✅ 测试成功' : '❌ 测试失败'),
+          content: Text(result.message),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('确定'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   Future<void> _fetchModels() async {
@@ -388,7 +479,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
                     controller: _modelIdController,
                     decoration: const InputDecoration(
                       labelText: '模型 ID *',
-                      hintText: '如：MiniMax-M2.7',
+                      hintText: '如：MiniMax-M2.7 / gpt-4o-mini',
                       border: OutlineInputBorder(),
                     ),
                     onChanged: (v) => _selectedModel = v,
@@ -402,6 +493,18 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
                       : const Text('获取模型'),
                 ),
               ],
+            ),
+            const SizedBox(height: 12),
+            OutlinedButton.icon(
+              onPressed: _apiKeyController.text.isEmpty || _baseUrlController.text.isEmpty
+                  ? null
+                  : () => _testConnection(context),
+              icon: const Icon(Icons.play_arrow),
+              label: const Text('测试连接'),
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Colors.green,
+                side: const BorderSide(color: Colors.green),
+              ),
             ),
             if (_availableModels.isNotEmpty) ...[
               const SizedBox(height: 16),
