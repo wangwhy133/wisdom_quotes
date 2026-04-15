@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
+
+  String _getVersion() {
+    // 从 pubspec 获取版本
+    try {
+      final channel = const MethodChannel('flutter/app');
+      return 'v1.1.4'; // TODO: 动态获取
+    } catch (e) {
+      return 'v1.1.4';
+    }
+  }
 
   Future<void> _launchUrl(String url) async {
     final uri = Uri.parse(url);
@@ -61,7 +72,7 @@ class AboutScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'v1.0.9',
+                  'v1.1.4',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[500],

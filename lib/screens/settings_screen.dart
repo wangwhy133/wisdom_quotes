@@ -15,6 +15,7 @@ import '../services/alarm_service.dart';
 import 'model_providers_screen.dart';
 import 'ai_generate_screen.dart';
 import 'my_thoughts_screen.dart';
+import 'notes_screen.dart';
 import 'about_screen.dart';
 import 'quote_apis_screen.dart';
 
@@ -220,6 +221,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MyThoughtsScreen())),
           ),
           ListTile(
+            leading: const Icon(Icons.note_alt, color: Colors.orange),
+            title: const Text('我的笔记'),
+            subtitle: const Text('查看所有笔记与对应名言'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const NotesScreen())),
+          ),
+          ListTile(
             leading: const Icon(Icons.cloud),
             title: const Text('管理模型提供商'),
             subtitle: const Text('添加、编辑、删除AI模型接口'),
@@ -307,7 +315,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
           const Divider(),
           _buildSectionHeader('关于'),
-          const ListTile(title: Text('版本'), subtitle: Text('1.0.0')),
+          const ListTile(title: Text('版本'), subtitle: Text('1.1.4')),
           ListTile(
             title: const Text('名言总数'),
             subtitle: ref.watch(allQuotesProvider).when(
