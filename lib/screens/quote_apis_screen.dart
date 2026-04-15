@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import '../providers/providers.dart';
 
 class QuoteApiProvider {
   final String id;
@@ -326,11 +327,25 @@ class _QuoteApisScreenState extends ConsumerState<QuoteApisScreen> {
                     ),
                   ),
                   const SizedBox(width: 8),
-                  Text(
-                    _getMethodLabel(api.method),
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey[500],
+                  OutlinedButton.icon(
+                    onPressed: () => _importFromApi(api),
+                    icon: const Icon(Icons.download, size: 18),
+                    label: Text('导入${api.quoteCount > 0 ? "(${api.quoteCount})" : ""}'),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      minimumSize: Size.zero,
+                    ),
+                  ),
+                  const Spacer(),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      _getCategoryLabel(api.category),
+                      style: TextStyle(fontSize: 11, color: Colors.grey[700]),
                     ),
                   ),
                 ],
@@ -340,6 +355,16 @@ class _QuoteApisScreenState extends ConsumerState<QuoteApisScreen> {
         ),
       ),
     );
+  }
+
+  String _getCategoryLabel(String category) {
+    switch (category) {
+      case 'investment': return '💰 投资';
+      case 'philosophy': return '🧠 哲学';
+      case 'poetry': return '📜 诗词';
+      case 'motivation': return '💪 励志';
+      default: return '📚 综合';
+    }
   }
 
   String _getMethodLabel(String method) {
@@ -392,6 +417,202 @@ class _QuoteApisScreenState extends ConsumerState<QuoteApisScreen> {
       if (!mounted) return;
       Navigator.pop(context); // Close loading
       _showResultDialog(false, e.toString());
+    }
+  }
+
+  Future<void> _importFromApi(QuoteApiProvider api) async {
+    // Show import dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => const AlertDialog(
+        content: Row(
+          children: [
+            CircularProgressIndicator(),
+            SizedBox(width: 16),
+            Text('正在导入名言...'),
+          ],
+        ),
+      ),
+    );
+
+    try {
+      final db = ref.read(databaseProvider);
+      int importedCount = 0;
+      
+      // Try to fetch multiple quotes based on API type
+      List<Map<String, dynamic>> quotesToImport = [];
+      
+      if (api.method == 'xygeng') {
+        // Fetch multiple from xygeng
+        for (int i = 0; i < 5; i++) {
+          try {
+            final response = await http.get(
+              Uri.parse('https://api.xygeng.cn/BoKeAPI/random'),
+            ).timeout(const Duration(seconds: 10));
+            
+            if (response.statusCode == 200) {
+              final data = json.decode(response.body);
+              if (data['code'] == 200 && data['data'] != null) {
+                quotesToImport.add({
+                  'content': data['data']['content'] ?? '',
+                  'author': data['data']['author'] ?? '未知',
+                  'source': data['data']['source'] ?? '',
+                  'category': _categoryToIndex(api.category),
+                  'tags': '',
+                });
+              }
+            }
+          } catch (e) {
+            // Continue even if one fails
+          }
+        }
+      } else if (api.method == 'zenquotes') {
+        // Fetch from zenquotes
+        try {
+          final response = await http.get(
+            Uri.parse('https://zenquotes.io/api/quotes'),
+          ).timeout(const Duration(seconds: 10));
+          
+          if (response.statusCode == 200) {
+            final data = json.decode(response.body);
+            if (data is List) {
+              for (var item in data.take(10)) {
+                quotesToImport.add({
+                  'content': item['q'] ?? '',
+                  'author': item['a'] ?? 'Unknown',
+                  'source': '',
+                  'category': 0,
+                  'tags': '',
+                });
+              }
+            }
+          }
+        } catch (e) {
+          // ignore
+        }
+      } else if (api.method == 'quotable') {
+        // Fetch from quotable
+        try {
+          final response = await http.get(
+            Uri.parse('https://api.quotable.io/quotes/random?limit=10'),
+          ).timeout(const Duration(seconds: 10));
+          
+          if (response.statusCode == 200) {
+            final data = json.decode(response.body);
+            if (data['results'] is List) {
+              for (var item in data['results']) {
+                quotesToImport.add({
+                  'content': item['content'] ?? '',
+                  'author': item['author'] ?? 'Unknown',
+                  'source': '',
+                  'category': 0,
+                  'tags': '',
+                });
+              }
+            }
+          }
+        } catch (e) {
+          // ignore
+        }
+      } else {
+        // Custom API - try single fetch
+        try {
+          final response = await http.get(
+            Uri.parse(api.baseUrl),
+          ).timeout(const Duration(seconds: 10));
+          
+          if (response.statusCode == 200) {
+            final data = json.decode(response.body);
+            // Try common patterns
+            var content = data['content'] ?? data['text'] ?? data['quote'] ?? data['q'] ?? '';
+            var author = data['author'] ?? data['a'] ?? data['writer'] ?? '未知';
+            if (content.isNotEmpty) {
+              quotesToImport.add({
+                'content': content,
+                'author': author,
+                'source': '',
+                'category': 0,
+                'tags': '',
+              });
+            }
+          }
+        } catch (e) {
+          // ignore
+        }
+      }
+
+      // Import quotes
+      if (quotesToImport.isNotEmpty) {
+        await db.importQuotes(quotesToImport);
+        importedCount = quotesToImport.length;
+        
+        // Update API quote count
+        final updatedApi = api.copyWith(quoteCount: api.quoteCount + importedCount);
+        ref.read(quoteApisProvider.notifier).update(updatedApi);
+      }
+
+      if (!mounted) return;
+      Navigator.pop(context); // Close loading
+
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Row(
+            children: [
+              Icon(
+                importedCount > 0 ? Icons.check_circle : Icons.info,
+                color: importedCount > 0 ? Colors.green : Colors.orange,
+              ),
+              const SizedBox(width: 8),
+              Text(importedCount > 0 ? '导入成功' : '导入结果'),
+            ],
+          ),
+          content: Text(
+            importedCount > 0 
+              ? '成功导入 $importedCount 条名言到本地库'
+              : '未能获取到名言，请检查API是否可用',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('确定'),
+            ),
+          ],
+        ),
+      );
+    } catch (e) {
+      if (!mounted) return;
+      Navigator.pop(context); // Close loading
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Row(
+            children: [
+              Icon(Icons.error, color: Colors.red),
+              SizedBox(width: 8),
+              Text('导入失败'),
+            ],
+          ),
+          content: Text('错误: $e'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('确定'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
+  int _categoryToIndex(String category) {
+    switch (category) {
+      case 'investment': return 2;
+      case 'philosophy': return 0;
+      case 'poetry': return 1;
+      case 'motivation': return 0;
+      default: return 0;
     }
   }
 
