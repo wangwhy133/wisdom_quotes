@@ -22,6 +22,40 @@ class _QuoteDetailScreenState extends ConsumerState<QuoteDetailScreen> {
   String? _translatedAuthor;
   bool _isInterpreting = false;
   String? _interpretation;
+  late TextEditingController _notesController;
+  bool _isEditingNotes = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _notesController = TextEditingController(text: widget.quote.notes);
+    // 标记为已读
+    _markAsRead();
+  }
+
+  @override
+  void dispose() {
+    _notesController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _markAsRead() async {
+    if (!widget.quote.isRead) {
+      final db = ref.read(databaseProvider);
+      await db.markAsRead(widget.quote.id);
+    }
+  }
+
+  Future<void> _saveNotes() async {
+    final db = ref.read(databaseProvider);
+    await db.updateQuoteNotes(widget.quote.id, _notesController.text.trim());
+    setState(() => _isEditingNotes = false);
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('笔记已保存')),
+      );
+    }
+  }
 
   String _getCategoryName(QuoteCategory category) {
     switch (category) {
@@ -329,6 +363,66 @@ class _QuoteDetailScreenState extends ConsumerState<QuoteDetailScreen> {
               const SizedBox(height: 16),
               _buildTagsRow(widget.quote.tags),
             ],
+
+            // 笔记区域
+            const SizedBox(height: 24),
+            const Divider(),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Icon(Icons.note_alt, size: 20, color: Colors.orange[700]),
+                const SizedBox(width: 8),
+                Text(
+                  '我的笔记',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.orange[700],
+                  ),
+                ),
+                const Spacer(),
+                if (_isEditingNotes)
+                  TextButton(
+                    onPressed: _saveNotes,
+                    child: const Text('保存'),
+                  )
+                else
+                  IconButton(
+                    icon: const Icon(Icons.edit, size: 20),
+                    onPressed: () => setState(() => _isEditingNotes = true),
+                    color: Colors.grey[600],
+                  ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            if (_isEditingNotes)
+              TextField(
+                controller: _notesController,
+                decoration: const InputDecoration(
+                  hintText: '写下你对这句名言的想法...',
+                  border: OutlineInputBorder(),
+                ),
+                maxLines: 4,
+                maxLength: 500,
+              )
+            else
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.orange[50],
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.orange[200]!),
+                ),
+                child: Text(
+                  widget.quote.notes.isEmpty ? '暂无笔记，点击编辑添加' : widget.quote.notes,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: widget.quote.notes.isEmpty ? Colors.grey[500] : Colors.orange[900],
+                    height: 1.6,
+                  ),
+                ),
+              ),
           ],
         ),
       ),

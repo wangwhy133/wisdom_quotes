@@ -94,6 +94,19 @@ class $QuotesTable extends Quotes with TableInfo<$QuotesTable, Quote> {
     requiredDuringInsert: false,
     defaultValue: const Constant(''),
   );
+  static const VerificationMeta _isReadMeta = const VerificationMeta('isRead');
+  @override
+  late final GeneratedColumn<bool> isRead = GeneratedColumn<bool>(
+    'is_read',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_read" IN (0, 1))',
+    ),
+    defaultValue: const Constant(false),
+  );
   static const VerificationMeta _createdAtMeta = const VerificationMeta(
     'createdAt',
   );
@@ -116,6 +129,7 @@ class $QuotesTable extends Quotes with TableInfo<$QuotesTable, Quote> {
     tags,
     isFavorite,
     notes,
+    isRead,
     createdAt,
   ];
   @override
@@ -173,6 +187,12 @@ class $QuotesTable extends Quotes with TableInfo<$QuotesTable, Quote> {
         notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
       );
     }
+    if (data.containsKey('is_read')) {
+      context.handle(
+        _isReadMeta,
+        isRead.isAcceptableOrUnknown(data['is_read']!, _isReadMeta),
+      );
+    }
     if (data.containsKey('created_at')) {
       context.handle(
         _createdAtMeta,
@@ -222,6 +242,10 @@ class $QuotesTable extends Quotes with TableInfo<$QuotesTable, Quote> {
         DriftSqlType.string,
         data['${effectivePrefix}notes'],
       )!,
+      isRead: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_read'],
+      )!,
       createdAt: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}created_at'],
@@ -247,6 +271,7 @@ class Quote extends DataClass implements Insertable<Quote> {
   final String tags;
   final bool isFavorite;
   final String notes;
+  final bool isRead;
   final DateTime createdAt;
   const Quote({
     required this.id,
@@ -257,6 +282,7 @@ class Quote extends DataClass implements Insertable<Quote> {
     required this.tags,
     required this.isFavorite,
     required this.notes,
+    required this.isRead,
     required this.createdAt,
   });
   @override
@@ -276,6 +302,7 @@ class Quote extends DataClass implements Insertable<Quote> {
     map['tags'] = Variable<String>(tags);
     map['is_favorite'] = Variable<bool>(isFavorite);
     map['notes'] = Variable<String>(notes);
+    map['is_read'] = Variable<bool>(isRead);
     map['created_at'] = Variable<DateTime>(createdAt);
     return map;
   }
@@ -292,6 +319,7 @@ class Quote extends DataClass implements Insertable<Quote> {
       tags: Value(tags),
       isFavorite: Value(isFavorite),
       notes: Value(notes),
+      isRead: Value(isRead),
       createdAt: Value(createdAt),
     );
   }
@@ -312,6 +340,7 @@ class Quote extends DataClass implements Insertable<Quote> {
       tags: serializer.fromJson<String>(json['tags']),
       isFavorite: serializer.fromJson<bool>(json['isFavorite']),
       notes: serializer.fromJson<String>(json['notes']),
+      isRead: serializer.fromJson<bool>(json['isRead']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
     );
   }
@@ -329,6 +358,7 @@ class Quote extends DataClass implements Insertable<Quote> {
       'tags': serializer.toJson<String>(tags),
       'isFavorite': serializer.toJson<bool>(isFavorite),
       'notes': serializer.toJson<String>(notes),
+      'isRead': serializer.toJson<bool>(isRead),
       'createdAt': serializer.toJson<DateTime>(createdAt),
     };
   }
@@ -342,6 +372,7 @@ class Quote extends DataClass implements Insertable<Quote> {
     String? tags,
     bool? isFavorite,
     String? notes,
+    bool? isRead,
     DateTime? createdAt,
   }) => Quote(
     id: id ?? this.id,
@@ -352,6 +383,7 @@ class Quote extends DataClass implements Insertable<Quote> {
     tags: tags ?? this.tags,
     isFavorite: isFavorite ?? this.isFavorite,
     notes: notes ?? this.notes,
+    isRead: isRead ?? this.isRead,
     createdAt: createdAt ?? this.createdAt,
   );
   Quote copyWithCompanion(QuotesCompanion data) {
@@ -366,6 +398,7 @@ class Quote extends DataClass implements Insertable<Quote> {
           ? data.isFavorite.value
           : this.isFavorite,
       notes: data.notes.present ? data.notes.value : this.notes,
+      isRead: data.isRead.present ? data.isRead.value : this.isRead,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
   }
@@ -381,6 +414,7 @@ class Quote extends DataClass implements Insertable<Quote> {
           ..write('tags: $tags, ')
           ..write('isFavorite: $isFavorite, ')
           ..write('notes: $notes, ')
+          ..write('isRead: $isRead, ')
           ..write('createdAt: $createdAt')
           ..write(')'))
         .toString();
@@ -396,6 +430,7 @@ class Quote extends DataClass implements Insertable<Quote> {
     tags,
     isFavorite,
     notes,
+    isRead,
     createdAt,
   );
   @override
@@ -410,6 +445,7 @@ class Quote extends DataClass implements Insertable<Quote> {
           other.tags == this.tags &&
           other.isFavorite == this.isFavorite &&
           other.notes == this.notes &&
+          other.isRead == this.isRead &&
           other.createdAt == this.createdAt);
 }
 
@@ -422,6 +458,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
   final Value<String> tags;
   final Value<bool> isFavorite;
   final Value<String> notes;
+  final Value<bool> isRead;
   final Value<DateTime> createdAt;
   const QuotesCompanion({
     this.id = const Value.absent(),
@@ -432,6 +469,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
     this.tags = const Value.absent(),
     this.isFavorite = const Value.absent(),
     this.notes = const Value.absent(),
+    this.isRead = const Value.absent(),
     this.createdAt = const Value.absent(),
   });
   QuotesCompanion.insert({
@@ -443,6 +481,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
     this.tags = const Value.absent(),
     this.isFavorite = const Value.absent(),
     this.notes = const Value.absent(),
+    this.isRead = const Value.absent(),
     this.createdAt = const Value.absent(),
   }) : content = Value(content),
        author = Value(author),
@@ -456,6 +495,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
     Expression<String>? tags,
     Expression<bool>? isFavorite,
     Expression<String>? notes,
+    Expression<bool>? isRead,
     Expression<DateTime>? createdAt,
   }) {
     return RawValuesInsertable({
@@ -467,6 +507,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
       if (tags != null) 'tags': tags,
       if (isFavorite != null) 'is_favorite': isFavorite,
       if (notes != null) 'notes': notes,
+      if (isRead != null) 'is_read': isRead,
       if (createdAt != null) 'created_at': createdAt,
     });
   }
@@ -480,6 +521,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
     Value<String>? tags,
     Value<bool>? isFavorite,
     Value<String>? notes,
+    Value<bool>? isRead,
     Value<DateTime>? createdAt,
   }) {
     return QuotesCompanion(
@@ -491,6 +533,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
       tags: tags ?? this.tags,
       isFavorite: isFavorite ?? this.isFavorite,
       notes: notes ?? this.notes,
+      isRead: isRead ?? this.isRead,
       createdAt: createdAt ?? this.createdAt,
     );
   }
@@ -524,6 +567,9 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
     if (notes.present) {
       map['notes'] = Variable<String>(notes.value);
     }
+    if (isRead.present) {
+      map['is_read'] = Variable<bool>(isRead.value);
+    }
     if (createdAt.present) {
       map['created_at'] = Variable<DateTime>(createdAt.value);
     }
@@ -541,6 +587,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
           ..write('tags: $tags, ')
           ..write('isFavorite: $isFavorite, ')
           ..write('notes: $notes, ')
+          ..write('isRead: $isRead, ')
           ..write('createdAt: $createdAt')
           ..write(')'))
         .toString();
@@ -568,6 +615,7 @@ typedef $$QuotesTableCreateCompanionBuilder =
       Value<String> tags,
       Value<bool> isFavorite,
       Value<String> notes,
+      Value<bool> isRead,
       Value<DateTime> createdAt,
     });
 typedef $$QuotesTableUpdateCompanionBuilder =
@@ -580,6 +628,7 @@ typedef $$QuotesTableUpdateCompanionBuilder =
       Value<String> tags,
       Value<bool> isFavorite,
       Value<String> notes,
+      Value<bool> isRead,
       Value<DateTime> createdAt,
     });
 
@@ -630,6 +679,11 @@ class $$QuotesTableFilterComposer
 
   ColumnFilters<String> get notes => $composableBuilder(
     column: $table.notes,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isRead => $composableBuilder(
+    column: $table.isRead,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -688,6 +742,11 @@ class $$QuotesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<bool> get isRead => $composableBuilder(
+    column: $table.isRead,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<DateTime> get createdAt => $composableBuilder(
     column: $table.createdAt,
     builder: (column) => ColumnOrderings(column),
@@ -729,6 +788,9 @@ class $$QuotesTableAnnotationComposer
   GeneratedColumn<String> get notes =>
       $composableBuilder(column: $table.notes, builder: (column) => column);
 
+  GeneratedColumn<bool> get isRead =>
+      $composableBuilder(column: $table.isRead, builder: (column) => column);
+
   GeneratedColumn<DateTime> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
 }
@@ -769,6 +831,7 @@ class $$QuotesTableTableManager
                 Value<String> tags = const Value.absent(),
                 Value<bool> isFavorite = const Value.absent(),
                 Value<String> notes = const Value.absent(),
+                Value<bool> isRead = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
               }) => QuotesCompanion(
                 id: id,
@@ -779,6 +842,7 @@ class $$QuotesTableTableManager
                 tags: tags,
                 isFavorite: isFavorite,
                 notes: notes,
+                isRead: isRead,
                 createdAt: createdAt,
               ),
           createCompanionCallback:
@@ -791,6 +855,7 @@ class $$QuotesTableTableManager
                 Value<String> tags = const Value.absent(),
                 Value<bool> isFavorite = const Value.absent(),
                 Value<String> notes = const Value.absent(),
+                Value<bool> isRead = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
               }) => QuotesCompanion.insert(
                 id: id,
@@ -801,6 +866,7 @@ class $$QuotesTableTableManager
                 tags: tags,
                 isFavorite: isFavorite,
                 notes: notes,
+                isRead: isRead,
                 createdAt: createdAt,
               ),
           withReferenceMapper: (p0) => p0

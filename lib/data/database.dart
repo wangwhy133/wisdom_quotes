@@ -21,6 +21,7 @@ class Quotes extends Table {
   TextColumn get tags => text().withDefault(const Constant(''))();
   BoolColumn get isFavorite => boolean().withDefault(const Constant(false))();
   TextColumn get notes => text().withDefault(const Constant(''))();
+  BoolColumn get isRead => boolean().withDefault(const Constant(false))();
   DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
 }
 
@@ -29,7 +30,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration {
@@ -39,9 +40,11 @@ class AppDatabase extends _$AppDatabase {
         await _seedData();
       },
       onUpgrade: (Migrator m, int from, int to) async {
-        // v1 -> v2: 添加 notes 字段
         if (from < 2) {
           await m.addColumn(quotes, quotes.notes);
+        }
+        if (from < 3) {
+          await m.addColumn(quotes, quotes.isRead);
         }
       },
     );
@@ -247,14 +250,42 @@ class AppDatabase extends _$AppDatabase {
   Future<Quote?> getRandomQuote() async {
     final all = await getAllQuotes();
     if (all.isEmpty) return null;
+    // 优先返回未读的
+    final unread = all.where((q) => !q.isRead).toList();
+    if (unread.isNotEmpty) {
+      unread.shuffle();
+      return unread.first;
+    }
+    // 全部已读时随机返回
     all.shuffle();
     return all.first;
   }
+  
+  Future<Quote?> getRandomUnreadQuote() async {
+    final all = await getAllQuotes();
+    if (all.isEmpty) return null;
+    final unread = all.where((q) => !q.isRead).toList();
+    if (unread.isEmpty) return null;
+    unread.shuffle();
+    return unread.first;
+  }
+  
   Future<Quote?> getRandomQuoteByCategory(QuoteCategory category) async {
     final byCat = await getQuotesByCategory(category);
     if (byCat.isEmpty) return null;
+    // 优先未读
+    final unread = byCat.where((q) => !q.isRead).toList();
+    if (unread.isNotEmpty) {
+      unread.shuffle();
+      return unread.first;
+    }
     byCat.shuffle();
     return byCat.first;
+  }
+  
+  Future<void> markAsRead(int id) async {
+    await (update(quotes)..where((q) => q.id.equals(id)))
+        .write(const QuotesCompanion(isRead: Value(true)));
   }
 
   // Import/Export

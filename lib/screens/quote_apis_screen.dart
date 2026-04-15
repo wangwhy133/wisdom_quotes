@@ -8,17 +8,21 @@ class QuoteApiProvider {
   final String id;
   final String name;
   final String baseUrl;
-  final String method; // random, list, etc
+  final String method; // xygeng, zenquotes, quotable, custom
   final bool isDefault;
   final bool isEnabled;
+  final String category; // 分类: investment, philosophy, poetry, literature, general
+  int quoteCount; // 导入的名言数量
 
   QuoteApiProvider({
     required this.id,
     required this.name,
     required this.baseUrl,
-    this.method = 'random',
+    this.method = 'xygeng',
     this.isDefault = false,
     this.isEnabled = true,
+    this.category = 'general',
+    this.quoteCount = 0,
   });
 
   Map<String, dynamic> toJson() => {
@@ -28,15 +32,19 @@ class QuoteApiProvider {
     'method': method,
     'isDefault': isDefault,
     'isEnabled': isEnabled,
+    'category': category,
+    'quoteCount': quoteCount,
   };
 
   factory QuoteApiProvider.fromJson(Map<String, dynamic> json) => QuoteApiProvider(
     id: json['id'] ?? '',
     name: json['name'] ?? '',
     baseUrl: json['baseUrl'] ?? '',
-    method: json['method'] ?? 'random',
+    method: json['method'] ?? 'xygeng',
     isDefault: json['isDefault'] ?? false,
     isEnabled: json['isEnabled'] ?? true,
+    category: json['category'] ?? 'general',
+    quoteCount: json['quoteCount'] ?? 0,
   );
 
   QuoteApiProvider copyWith({
@@ -46,6 +54,8 @@ class QuoteApiProvider {
     String? method,
     bool? isDefault,
     bool? isEnabled,
+    String? category,
+    int? quoteCount,
   }) {
     return QuoteApiProvider(
       id: id ?? this.id,
@@ -54,6 +64,8 @@ class QuoteApiProvider {
       method: method ?? this.method,
       isDefault: isDefault ?? this.isDefault,
       isEnabled: isEnabled ?? this.isEnabled,
+      category: category ?? this.category,
+      quoteCount: quoteCount ?? this.quoteCount,
     );
   }
 }
@@ -80,24 +92,35 @@ class QuoteApisNotifier extends StateNotifier<List<QuoteApiProvider>> {
       state = [
         QuoteApiProvider(
           id: 'xygeng_cn',
-          name: '句野API (国内)',
+          name: '句野API (综合)',
           baseUrl: 'https://api.xygeng.cn/BoKeAPI/random',
           method: 'xygeng',
+          category: 'general',
           isDefault: true,
           isEnabled: true,
         ),
         QuoteApiProvider(
-          id: 'zenquotes_intl',
-          name: 'ZenQuotes (国际)',
+          id: 'zenquotes_invest',
+          name: 'ZenQuotes (投资)',
           baseUrl: 'https://zenquotes.io/api/random',
           method: 'zenquotes',
+          category: 'investment',
           isEnabled: true,
         ),
         QuoteApiProvider(
-          id: 'quotable_intl',
-          name: 'Quotable (国际)',
+          id: 'quotable_philo',
+          name: 'Quotable (哲学)',
           baseUrl: 'https://api.quotable.io/random',
           method: 'quotable',
+          category: 'philosophy',
+          isEnabled: false,
+        ),
+        QuoteApiProvider(
+          id: 'урл',
+          name: '励志名言API',
+          baseUrl: 'https://api.vvhan.com/api/mingyan',
+          method: 'custom',
+          category: 'motivation',
           isEnabled: false,
         ),
       ];
