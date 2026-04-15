@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/database.dart';
 import '../providers/providers.dart';
+import '../providers/model_providers.dart';
 import '../services/translation_service.dart';
+import '../services/llm_service.dart';
 
 class QuoteDetailScreen extends ConsumerStatefulWidget {
   final Quote quote;
@@ -18,6 +20,8 @@ class _QuoteDetailScreenState extends ConsumerState<QuoteDetailScreen> {
   bool _isTranslating = false;
   String? _translatedContent;
   String? _translatedAuthor;
+  bool _isInterpreting = false;
+  String? _interpretation;
 
   String _getCategoryName(QuoteCategory category) {
     switch (category) {
@@ -86,6 +90,43 @@ class _QuoteDetailScreenState extends ConsumerState<QuoteDetailScreen> {
     }
 
     setState(() => _isTranslating = false);
+  }
+
+  Future<void> _interpretQuote() async {
+    if (_isInterpreting) return;
+
+    final providers = ref.read(modelProvidersProvider);
+    if (providers.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('请先在设置中添加AI模型配置')),
+      );
+      return;
+    }
+
+    final provider = providers.firstWhere(
+      (p) => p.isDefault,
+      orElse: () => providers.first,
+    );
+
+    setState(() => _isInterpreting = true);
+    LlmService().setProvider(provider);
+
+    try {
+      _interpretation = await LlmService().interpretQuote(
+        content: widget.quote.content,
+        author: widget.quote.author,
+        source: widget.quote.source,
+      );
+      setState(() {});
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('解读失败: $e')),
+        );
+      }
+    }
+
+    setState(() => _isInterpreting = false);
   }
 
   @override
@@ -216,6 +257,67 @@ class _QuoteDetailScreenState extends ConsumerState<QuoteDetailScreen> {
                 ),
               ),
             ],
+
+            // AI 解读按钮
+            const SizedBox(height: 24),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton.icon(
+                onPressed: _isInterpreting ? null : _interpretQuote,
+                icon: _isInterpreting
+                    ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2))
+                    : const Icon(Icons.auto_awesome),
+                label: Text(_isInterpreting ? '解读中...' : 'AI 解读'),
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  backgroundColor: Colors.purple,
+                  foregroundColor: Colors.white,
+                ),
+              ),
+            ),
+
+            // 解读结果
+            if (_interpretation != null) ...[
+              const SizedBox(height: 24),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.purple[50],
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: Colors.purple[200]!),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.psychology, color: Colors.purple[400]),
+                        const SizedBox(width: 8),
+                        Text(
+                          'AI 解读',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.purple[700],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      _interpretation!,
+                      style: TextStyle(
+                        fontSize: 15,
+                        height: 1.8,
+                        color: Colors.purple[900],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+
             const SizedBox(height: 32),
             // Author info
             _buildInfoRow(Icons.person, '作者', widget.quote.author),
