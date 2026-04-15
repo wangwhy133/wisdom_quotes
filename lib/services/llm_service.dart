@@ -19,6 +19,22 @@ class LlmService {
       _currentProvider!.apiKey.isNotEmpty &&
       _currentProvider!.baseUrl.isNotEmpty;
 
+  /// 清理baseUrl，避免双重路径
+  String _cleanBaseUrl(String baseUrl) {
+    return baseUrl
+        .replaceAll(RegExp(r'[/\\s]+$'), '') // 移除末尾斜杠
+        .replaceAll(RegExp(r'/v1$'), '')       // 移除末尾的 /v1
+        .replaceAll(RegExp(r'/v2$'), '');       // 移除末尾的 /v2
+  }
+
+  String _url(String path) {
+    return '${_cleanBaseUrl(_currentProvider!.baseUrl)}$path';
+  }
+
+  String _urlForProvider(String baseUrl, String path) {
+    return '${_cleanBaseUrl(baseUrl)}$path';
+  }
+
   /// 测试模型连接是否正常
   Future<TestResult> testConnection(ModelProvider provider) async {
     if (provider.apiKey.isEmpty || provider.baseUrl.isEmpty) {
@@ -26,8 +42,8 @@ class LlmService {
     }
 
     try {
-      // 尝试发送一个简单的测试请求
-      final uri = Uri.parse('${provider.baseUrl}/v1/chat/completions');
+      // 构建测试URL
+      final url = _urlForProvider(provider.baseUrl, '/v1/chat/completions');
       
       final body = json.encode({
         'model': provider.modelId.isNotEmpty ? provider.modelId : 'gpt-3.5-turbo',
@@ -39,7 +55,7 @@ class LlmService {
       });
 
       final response = await http.post(
-        uri,
+        Uri.parse(url),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ${provider.apiKey}',
@@ -71,9 +87,6 @@ class LlmService {
     if (!isConfigured) return null;
 
     try {
-      // 尝试 OpenAI 兼容接口
-      var uri = Uri.parse('${_currentProvider!.baseUrl}/v1/chat/completions');
-      
       final body = json.encode({
         'model': _currentProvider!.modelId,
         'messages': [
@@ -91,8 +104,9 @@ class LlmService {
         'temperature': 0.7,
       });
 
+      // 尝试 OpenAI 兼容接口
       var response = await http.post(
-        uri,
+        Uri.parse(_url('/v1/chat/completions')),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ${_currentProvider!.apiKey}',
@@ -100,11 +114,10 @@ class LlmService {
         body: body,
       ).timeout(const Duration(seconds: 30));
 
-      // 如果 v1 接口失败，尝试 MiniMax 专用接口
+      // 如果失败，尝试 MiniMax 专用接口
       if (response.statusCode != 200) {
-        uri = Uri.parse('${_currentProvider!.baseUrl}/text/chatcompletion_v2');
         response = await http.post(
-          uri,
+          Uri.parse('${_currentProvider!.baseUrl}/text/chatcompletion_v2'),
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ${_currentProvider!.apiKey}',
@@ -128,8 +141,6 @@ class LlmService {
     if (!isConfigured) return null;
 
     try {
-      var uri = Uri.parse('${_currentProvider!.baseUrl}/v1/chat/completions');
-
       final quotesText = quotes.map((q) =>
         '- "${q['content']}" - ${q['author']}'
       ).join('\n');
@@ -148,8 +159,9 @@ $quotesText'''
         'temperature': 0.5,
       });
 
+      // 尝试 OpenAI 兼容接口
       var response = await http.post(
-        uri,
+        Uri.parse(_url('/v1/chat/completions')),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ${_currentProvider!.apiKey}',
@@ -157,11 +169,10 @@ $quotesText'''
         body: body,
       ).timeout(const Duration(seconds: 30));
 
-      // 如果 v1 接口失败，尝试 MiniMax 专用接口
+      // 如果失败，尝试 MiniMax 专用接口
       if (response.statusCode != 200) {
-        uri = Uri.parse('${_currentProvider!.baseUrl}/text/chatcompletion_v2');
         response = await http.post(
-          uri,
+          Uri.parse('${_currentProvider!.baseUrl}/text/chatcompletion_v2'),
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ${_currentProvider!.apiKey}',
@@ -183,10 +194,8 @@ $quotesText'''
 
     try {
       // 尝试 OpenAI 兼容接口
-      var uri = Uri.parse('${_currentProvider!.baseUrl}/v1/models');
-      
       var response = await http.get(
-        uri,
+        Uri.parse(_url('/v1/models')),
         headers: {
           'Authorization': 'Bearer ${_currentProvider!.apiKey}',
         },
@@ -199,10 +208,9 @@ $quotesText'''
         }
       }
 
-      // 如果 v1/models 失败，尝试 MiniMax 专用接口
-      uri = Uri.parse('${_currentProvider!.baseUrl}/models');
+      // 如果失败，尝试 MiniMax 专用接口
       response = await http.get(
-        uri,
+        Uri.parse('${_currentProvider!.baseUrl}/models'),
         headers: {
           'Authorization': 'Bearer ${_currentProvider!.apiKey}',
         },
