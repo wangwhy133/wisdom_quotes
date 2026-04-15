@@ -262,6 +262,16 @@ class AppDatabase extends _$AppDatabase {
     await batch((batch) => batch.insertAll(quotes, toInsert));
   }
 
+  Future<void> insertQuote(Map<String, dynamic> data) async {
+    await into(quotes).insert(QuotesCompanion.insert(
+      content: data['content'] ?? '',
+      author: data['author'] ?? 'Unknown',
+      source: Value(data['source'] ?? ''),
+      category: QuoteCategory.values[data['category'] ?? 0],
+      tags: Value(data['tags'] ?? ''),
+    ));
+  }
+
   Future<List<Map<String, dynamic>>> exportQuotes() async {
     final all = await getAllQuotes();
     return all.map((q) => {

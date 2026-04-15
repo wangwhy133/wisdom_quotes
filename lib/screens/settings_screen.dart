@@ -12,6 +12,7 @@ import '../services/notification_service.dart';
 import '../services/translation_service.dart';
 import '../services/alarm_service.dart';
 import 'model_providers_screen.dart';
+import 'ai_generate_screen.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -199,7 +200,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               onTap: () => _selectTime(isAlarm: true),
             ),
           const Divider(),
-          _buildSectionHeader('AI模型配置'),
+          _buildSectionHeader('AI功能'),
+          ListTile(
+            leading: const Icon(Icons.auto_awesome, color: Colors.purple),
+            title: const Text('AI 名言生成'),
+            subtitle: const Text('使用AI生成新的名言'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AiGenerateScreen())),
+          ),
           ListTile(
             leading: const Icon(Icons.cloud),
             title: const Text('管理模型提供商'),
