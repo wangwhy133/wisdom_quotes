@@ -8,6 +8,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import '../providers/providers.dart';
+import '../providers/theme_provider.dart';
 import '../services/notification_service.dart';
 import '../services/translation_service.dart';
 import '../services/alarm_service.dart';
@@ -217,6 +218,27 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
           const Divider(),
           _buildSectionHeader('显示设置'),
+          Consumer(
+            builder: (context, ref, _) {
+              final themeMode = ref.watch(themeProvider);
+              return SwitchListTile(
+                title: const Text('暗黑模式'),
+                subtitle: Text(
+                  themeMode == ThemeMode.dark ? '已开启' : '已关闭',
+                ),
+                secondary: Icon(
+                  themeMode == ThemeMode.dark ? Icons.dark_mode : Icons.light_mode,
+                  color: themeMode == ThemeMode.dark ? Colors.indigo : Colors.orange,
+                ),
+                value: themeMode == ThemeMode.dark,
+                onChanged: (value) {
+                  ref.read(themeProvider.notifier).setTheme(
+                    value ? ThemeMode.dark : ThemeMode.light,
+                  );
+                },
+              );
+            },
+          ),
           ListTile(
             title: const Text('名言字体'),
             subtitle: Text(_selectedFont),
