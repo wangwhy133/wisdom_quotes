@@ -355,6 +355,7 @@ class _QuoteApisScreenState extends ConsumerState<QuoteApisScreen> {
         Uri.parse(api.baseUrl),
       ).timeout(const Duration(seconds: 10));
 
+      if (!mounted) return;
       Navigator.pop(context); // Close loading
 
       if (response.statusCode == 200) {
@@ -365,6 +366,7 @@ class _QuoteApisScreenState extends ConsumerState<QuoteApisScreen> {
         _showResultDialog(false, 'HTTP ${response.statusCode}');
       }
     } catch (e) {
+      if (!mounted) return;
       Navigator.pop(context); // Close loading
       _showResultDialog(false, e.toString());
     }
