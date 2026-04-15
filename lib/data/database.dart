@@ -29,7 +29,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration {
@@ -37,6 +37,12 @@ class AppDatabase extends _$AppDatabase {
       onCreate: (Migrator m) async {
         await m.createAll();
         await _seedData();
+      },
+      onUpgrade: (Migrator m, int from, int to) async {
+        // v1 -> v2: 添加 notes 字段
+        if (from < 2) {
+          await m.addColumn(quotes, quotes.notes);
+        }
       },
     );
   }
