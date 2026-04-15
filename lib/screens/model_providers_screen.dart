@@ -454,7 +454,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
               controller: _baseUrlController,
               decoration: const InputDecoration(
                 labelText: 'Base URL *',
-                hintText: 'https://api.minimax.chat/v1',
+                hintText: 'https://open.bigmodel.cn/api/paas/v4',
                 border: OutlineInputBorder(),
               ),
             ),
@@ -479,7 +479,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
                     controller: _modelIdController,
                     decoration: const InputDecoration(
                       labelText: '模型 ID *',
-                      hintText: '如：MiniMax-M2.7 / gpt-4o-mini',
+                      hintText: '如：glm-4-flash / glm-4 / gpt-4o-mini',
                       border: OutlineInputBorder(),
                     ),
                     onChanged: (v) => _selectedModel = v,

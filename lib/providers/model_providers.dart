@@ -68,14 +68,14 @@ class ModelProvidersNotifier extends StateNotifier<List<ModelProvider>> {
       final List<dynamic> list = json.decode(data);
       state = list.map((e) => ModelProvider.fromJson(e)).toList();
     } else {
-      // Add default MiniMax provider
+      // Add default Zhipu GLM provider (永久免费)
       state = [
         ModelProvider(
-          id: 'minimax_default',
-          name: 'MiniMax',
-          baseUrl: 'https://api.minimax.chat/v1',
+          id: 'zhipu_default',
+          name: '智谱GLM',
+          baseUrl: 'https://open.bigmodel.cn/api/paas/v4',
           apiKey: '',
-          modelId: 'MiniMax-M2.7',
+          modelId: 'glm-4-flash',
           isDefault: true,
         ),
       ];
