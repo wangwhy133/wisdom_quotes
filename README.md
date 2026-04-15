@@ -27,9 +27,11 @@
 - 🌐 **Batch Translation** — Translate quotes between Chinese and English
 - 💭 **My Thoughts (吾思)** — Write down your own quotes and ideas
 - 📝 **Notes** — Add personal notes to any quote
+- 📖 **Read Tracking** — Track viewed quotes, prioritize unread ones
 - 🔔 **Daily Notifications** — Receive wisdom every day
 - ⏰ **Alarm Clock** — Bilingual quote display when alarm rings
 - 📥 **Import/Export** — JSON format for personal quote collections
+- 📂 **API Import** — Import quotes from external APIs
 - ⭐ **Favorites** — Save your favorite quotes
 - 🌓 **Dark Mode** — Support for dark theme
 - 📱 **Home Screen Widget** — Daily quote on your desktop
@@ -44,9 +46,9 @@
 
 ### Download | 下载
 
-**Latest Release:** [v1.1.2](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.2)
+**Latest Release:** [v1.1.5](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.5)
 
-📦 APK Download: `app-release.apk` (61.6MB)
+📦 APK Download: `app-release.apk` (61.8MB)
 
 ### Quote Sources | 名言来源
 
@@ -109,9 +111,11 @@ MIT License
 - 🌐 **批量翻译** — 中英文双向翻译
 - 💭 **吾思** — 记录你的想法与名言
 - 📝 **笔记** — 为任意名言添加笔记
+- 📖 **阅读追踪** — 记录已看过的名言，未读优先推荐
 - 🔔 **每日推送** — 每天接收智慧语录
 - ⏰ **闹钟双语播报** — 闹钟响起时双语显示名言
 - 📥 **导入导出** — JSON 格式个人名言库
+- 📂 **API 导入** — 从外部 API 导入名言
 - ⭐ **收藏功能** — 保存喜爱名言
 - 🌓 **暗黑模式** — 支持深色主题
 - 📱 **桌面小组件** — 桌面显示每日名言
@@ -120,9 +124,9 @@ MIT License
 
 ### 下载
 
-**最新版本：** [v1.1.2](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.2)
+**最新版本：** [v1.1.5](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.5)
 
-📦 APK 下载: `app-release.apk` (61.6MB)
+📦 APK 下载: `app-release.apk` (61.8MB)
 
 ### 名言来源
 
