@@ -84,6 +84,16 @@ class $QuotesTable extends Quotes with TableInfo<$QuotesTable, Quote> {
     ),
     defaultValue: const Constant(false),
   );
+  static const VerificationMeta _notesMeta = const VerificationMeta('notes');
+  @override
+  late final GeneratedColumn<String> notes = GeneratedColumn<String>(
+    'notes',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
   static const VerificationMeta _createdAtMeta = const VerificationMeta(
     'createdAt',
   );
@@ -105,6 +115,7 @@ class $QuotesTable extends Quotes with TableInfo<$QuotesTable, Quote> {
     category,
     tags,
     isFavorite,
+    notes,
     createdAt,
   ];
   @override
@@ -156,6 +167,12 @@ class $QuotesTable extends Quotes with TableInfo<$QuotesTable, Quote> {
         isFavorite.isAcceptableOrUnknown(data['is_favorite']!, _isFavoriteMeta),
       );
     }
+    if (data.containsKey('notes')) {
+      context.handle(
+        _notesMeta,
+        notes.isAcceptableOrUnknown(data['notes']!, _notesMeta),
+      );
+    }
     if (data.containsKey('created_at')) {
       context.handle(
         _createdAtMeta,
@@ -201,6 +218,10 @@ class $QuotesTable extends Quotes with TableInfo<$QuotesTable, Quote> {
         DriftSqlType.bool,
         data['${effectivePrefix}is_favorite'],
       )!,
+      notes: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}notes'],
+      )!,
       createdAt: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}created_at'],
@@ -225,6 +246,7 @@ class Quote extends DataClass implements Insertable<Quote> {
   final QuoteCategory category;
   final String tags;
   final bool isFavorite;
+  final String notes;
   final DateTime createdAt;
   const Quote({
     required this.id,
@@ -234,6 +256,7 @@ class Quote extends DataClass implements Insertable<Quote> {
     required this.category,
     required this.tags,
     required this.isFavorite,
+    required this.notes,
     required this.createdAt,
   });
   @override
@@ -252,6 +275,7 @@ class Quote extends DataClass implements Insertable<Quote> {
     }
     map['tags'] = Variable<String>(tags);
     map['is_favorite'] = Variable<bool>(isFavorite);
+    map['notes'] = Variable<String>(notes);
     map['created_at'] = Variable<DateTime>(createdAt);
     return map;
   }
@@ -267,6 +291,7 @@ class Quote extends DataClass implements Insertable<Quote> {
       category: Value(category),
       tags: Value(tags),
       isFavorite: Value(isFavorite),
+      notes: Value(notes),
       createdAt: Value(createdAt),
     );
   }
@@ -286,6 +311,7 @@ class Quote extends DataClass implements Insertable<Quote> {
       ),
       tags: serializer.fromJson<String>(json['tags']),
       isFavorite: serializer.fromJson<bool>(json['isFavorite']),
+      notes: serializer.fromJson<String>(json['notes']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
     );
   }
@@ -302,6 +328,7 @@ class Quote extends DataClass implements Insertable<Quote> {
       ),
       'tags': serializer.toJson<String>(tags),
       'isFavorite': serializer.toJson<bool>(isFavorite),
+      'notes': serializer.toJson<String>(notes),
       'createdAt': serializer.toJson<DateTime>(createdAt),
     };
   }
@@ -314,6 +341,7 @@ class Quote extends DataClass implements Insertable<Quote> {
     QuoteCategory? category,
     String? tags,
     bool? isFavorite,
+    String? notes,
     DateTime? createdAt,
   }) => Quote(
     id: id ?? this.id,
@@ -323,6 +351,7 @@ class Quote extends DataClass implements Insertable<Quote> {
     category: category ?? this.category,
     tags: tags ?? this.tags,
     isFavorite: isFavorite ?? this.isFavorite,
+    notes: notes ?? this.notes,
     createdAt: createdAt ?? this.createdAt,
   );
   Quote copyWithCompanion(QuotesCompanion data) {
@@ -336,6 +365,7 @@ class Quote extends DataClass implements Insertable<Quote> {
       isFavorite: data.isFavorite.present
           ? data.isFavorite.value
           : this.isFavorite,
+      notes: data.notes.present ? data.notes.value : this.notes,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
   }
@@ -350,6 +380,7 @@ class Quote extends DataClass implements Insertable<Quote> {
           ..write('category: $category, ')
           ..write('tags: $tags, ')
           ..write('isFavorite: $isFavorite, ')
+          ..write('notes: $notes, ')
           ..write('createdAt: $createdAt')
           ..write(')'))
         .toString();
@@ -364,6 +395,7 @@ class Quote extends DataClass implements Insertable<Quote> {
     category,
     tags,
     isFavorite,
+    notes,
     createdAt,
   );
   @override
@@ -377,6 +409,7 @@ class Quote extends DataClass implements Insertable<Quote> {
           other.category == this.category &&
           other.tags == this.tags &&
           other.isFavorite == this.isFavorite &&
+          other.notes == this.notes &&
           other.createdAt == this.createdAt);
 }
 
@@ -388,6 +421,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
   final Value<QuoteCategory> category;
   final Value<String> tags;
   final Value<bool> isFavorite;
+  final Value<String> notes;
   final Value<DateTime> createdAt;
   const QuotesCompanion({
     this.id = const Value.absent(),
@@ -397,6 +431,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
     this.category = const Value.absent(),
     this.tags = const Value.absent(),
     this.isFavorite = const Value.absent(),
+    this.notes = const Value.absent(),
     this.createdAt = const Value.absent(),
   });
   QuotesCompanion.insert({
@@ -407,6 +442,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
     required QuoteCategory category,
     this.tags = const Value.absent(),
     this.isFavorite = const Value.absent(),
+    this.notes = const Value.absent(),
     this.createdAt = const Value.absent(),
   }) : content = Value(content),
        author = Value(author),
@@ -419,6 +455,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
     Expression<int>? category,
     Expression<String>? tags,
     Expression<bool>? isFavorite,
+    Expression<String>? notes,
     Expression<DateTime>? createdAt,
   }) {
     return RawValuesInsertable({
@@ -429,6 +466,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
       if (category != null) 'category': category,
       if (tags != null) 'tags': tags,
       if (isFavorite != null) 'is_favorite': isFavorite,
+      if (notes != null) 'notes': notes,
       if (createdAt != null) 'created_at': createdAt,
     });
   }
@@ -441,6 +479,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
     Value<QuoteCategory>? category,
     Value<String>? tags,
     Value<bool>? isFavorite,
+    Value<String>? notes,
     Value<DateTime>? createdAt,
   }) {
     return QuotesCompanion(
@@ -451,6 +490,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
       category: category ?? this.category,
       tags: tags ?? this.tags,
       isFavorite: isFavorite ?? this.isFavorite,
+      notes: notes ?? this.notes,
       createdAt: createdAt ?? this.createdAt,
     );
   }
@@ -481,6 +521,9 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
     if (isFavorite.present) {
       map['is_favorite'] = Variable<bool>(isFavorite.value);
     }
+    if (notes.present) {
+      map['notes'] = Variable<String>(notes.value);
+    }
     if (createdAt.present) {
       map['created_at'] = Variable<DateTime>(createdAt.value);
     }
@@ -497,6 +540,7 @@ class QuotesCompanion extends UpdateCompanion<Quote> {
           ..write('category: $category, ')
           ..write('tags: $tags, ')
           ..write('isFavorite: $isFavorite, ')
+          ..write('notes: $notes, ')
           ..write('createdAt: $createdAt')
           ..write(')'))
         .toString();
@@ -523,6 +567,7 @@ typedef $$QuotesTableCreateCompanionBuilder =
       required QuoteCategory category,
       Value<String> tags,
       Value<bool> isFavorite,
+      Value<String> notes,
       Value<DateTime> createdAt,
     });
 typedef $$QuotesTableUpdateCompanionBuilder =
@@ -534,6 +579,7 @@ typedef $$QuotesTableUpdateCompanionBuilder =
       Value<QuoteCategory> category,
       Value<String> tags,
       Value<bool> isFavorite,
+      Value<String> notes,
       Value<DateTime> createdAt,
     });
 
@@ -579,6 +625,11 @@ class $$QuotesTableFilterComposer
 
   ColumnFilters<bool> get isFavorite => $composableBuilder(
     column: $table.isFavorite,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get notes => $composableBuilder(
+    column: $table.notes,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -632,6 +683,11 @@ class $$QuotesTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get notes => $composableBuilder(
+    column: $table.notes,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<DateTime> get createdAt => $composableBuilder(
     column: $table.createdAt,
     builder: (column) => ColumnOrderings(column),
@@ -669,6 +725,9 @@ class $$QuotesTableAnnotationComposer
     column: $table.isFavorite,
     builder: (column) => column,
   );
+
+  GeneratedColumn<String> get notes =>
+      $composableBuilder(column: $table.notes, builder: (column) => column);
 
   GeneratedColumn<DateTime> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
@@ -709,6 +768,7 @@ class $$QuotesTableTableManager
                 Value<QuoteCategory> category = const Value.absent(),
                 Value<String> tags = const Value.absent(),
                 Value<bool> isFavorite = const Value.absent(),
+                Value<String> notes = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
               }) => QuotesCompanion(
                 id: id,
@@ -718,6 +778,7 @@ class $$QuotesTableTableManager
                 category: category,
                 tags: tags,
                 isFavorite: isFavorite,
+                notes: notes,
                 createdAt: createdAt,
               ),
           createCompanionCallback:
@@ -729,6 +790,7 @@ class $$QuotesTableTableManager
                 required QuoteCategory category,
                 Value<String> tags = const Value.absent(),
                 Value<bool> isFavorite = const Value.absent(),
+                Value<String> notes = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
               }) => QuotesCompanion.insert(
                 id: id,
@@ -738,6 +800,7 @@ class $$QuotesTableTableManager
                 category: category,
                 tags: tags,
                 isFavorite: isFavorite,
+                notes: notes,
                 createdAt: createdAt,
               ),
           withReferenceMapper: (p0) => p0

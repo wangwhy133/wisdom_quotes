@@ -14,6 +14,8 @@ import '../services/translation_service.dart';
 import '../services/alarm_service.dart';
 import 'model_providers_screen.dart';
 import 'ai_generate_screen.dart';
+import 'my_thoughts_screen.dart';
+import 'about_screen.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -210,11 +212,27 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AiGenerateScreen())),
           ),
           ListTile(
+            leading: const Icon(Icons.psychology, color: Colors.indigo),
+            title: const Text('吾思'),
+            subtitle: const Text('记录你的想法与名言'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MyThoughtsScreen())),
+          ),
+          ListTile(
             leading: const Icon(Icons.cloud),
             title: const Text('管理模型提供商'),
             subtitle: const Text('添加、编辑、删除AI模型接口'),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ModelProvidersScreen())),
+          ),
+          const Divider(),
+          _buildSectionHeader('关于'),
+          ListTile(
+            leading: const Icon(Icons.info_outline, color: Colors.teal),
+            title: const Text('关于智慧名言'),
+            subtitle: const Text('版本信息、GitHub仓库'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AboutScreen())),
           ),
           const Divider(),
           _buildSectionHeader('显示设置'),

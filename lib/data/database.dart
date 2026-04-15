@@ -20,6 +20,7 @@ class Quotes extends Table {
   IntColumn get category => intEnum<QuoteCategory>()();
   TextColumn get tags => text().withDefault(const Constant(''))();
   BoolColumn get isFavorite => boolean().withDefault(const Constant(false))();
+  TextColumn get notes => text().withDefault(const Constant(''))();
   DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
 }
 
@@ -272,6 +273,61 @@ class AppDatabase extends _$AppDatabase {
     ));
   }
 
+  Future<void> updateQuoteNotes(int id, String notes) async {
+    await (update(quotes)..where((q) => q.id.equals(id)))
+        .write(QuotesCompanion(notes: Value(notes)));
+  }
+
+  Future<void> updateQuote(int id, Map<String, dynamic> data) async {
+    await (update(quotes)..where((q) => q.id.equals(id)))
+        .write(QuotesCompanion(
+          content: Value(data['content'] ?? ''),
+          author: Value(data['author'] ?? ''),
+          source: Value(data['source'] ?? ''),
+          tags: Value(data['tags'] ?? ''),
+          notes: Value(data['notes'] ?? ''),
+        ));
+  }
+
+  // ============ My Thoughts (吾思) - 使用 Quotes 表，author='吾思' 标识 ============
+  Future<List<Quote>> getAllMyThoughts() {
+    return (select(quotes)..where((q) => q.author.equals('吾思'))).get();
+  }
+  
+  Future<void> insertMyThought(Map<String, dynamic> data) async {
+    await into(quotes).insert(QuotesCompanion.insert(
+      content: data['content'] ?? '',
+      author: '吾思',
+      source: const Value(''),
+      category: QuoteCategory.classicLiterature,
+      tags: Value(data['tags'] ?? ''),
+      notes: Value(data['notes'] ?? ''),
+    ));
+  }
+
+  Future<void> updateMyThought(int id, Map<String, dynamic> data) async {
+    await (update(quotes)..where((q) => q.id.equals(id)))
+        .write(QuotesCompanion(
+          content: Value(data['content'] ?? ''),
+          tags: Value(data['tags'] ?? ''),
+          notes: Value(data['notes'] ?? ''),
+        ));
+  }
+
+  Future<void> deleteMyThought(int id) async {
+    await (delete(quotes)..where((q) => q.id.equals(id))).go();
+  }
+
+  Future<List<Map<String, dynamic>>> exportMyThoughts() async {
+    final all = await getAllMyThoughts();
+    return all.map((t) => {
+      'content': t.content,
+      'author': t.author,
+      'tags': t.tags,
+      'notes': t.notes,
+    }).toList();
+  }
+
   Future<List<Map<String, dynamic>>> exportQuotes() async {
     final all = await getAllQuotes();
     return all.map((q) => {
@@ -280,6 +336,7 @@ class AppDatabase extends _$AppDatabase {
       'source': q.source,
       'category': q.category.index,
       'tags': q.tags,
+      'notes': q.notes,
       'isFavorite': q.isFavorite,
     }).toList();
   }
