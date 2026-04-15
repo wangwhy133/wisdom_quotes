@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
 import 'services/notification_service.dart';
 import 'services/permission_service.dart';
 import 'providers/theme_provider.dart';
@@ -34,7 +34,7 @@ class WisdomQuotesApp extends ConsumerWidget {
       theme: _buildLightTheme(),
       darkTheme: _buildDarkTheme(),
       themeMode: themeMode,
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 

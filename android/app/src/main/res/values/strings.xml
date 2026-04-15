@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">智慧名言</string>
+    <string name="widget_name">每日名言</string>
+    <string name="widget_description">在桌面显示每日精选名言</string>
+</resources>

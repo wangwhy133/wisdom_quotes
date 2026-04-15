@@ -1,7 +1,7 @@
 name: wisdom_quotes
 description: "名言警句应用 - 经典名著、诗词、投资名言"
 publish_to: 'none'
-version: 1.0.8+1
+version: 1.0.9+1
 
 environment:
   sdk: ^3.11.4
