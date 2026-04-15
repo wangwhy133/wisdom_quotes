@@ -22,13 +22,16 @@
 
 - 📚 **600+ Quotes** — Chinese and English wisdom from investment masters, philosophers, poets
 - 🌍 **Bilingual** — Full Chinese and English support
-- 🤖 **AI Interpretation** — Powered by LLM for quote analysis
+- 🤖 **AI Interpretation** — Powered by LLM for quote analysis (detail page)
 - ✨ **AI Quote Generation** — Generate new quotes with AI
 - 🌐 **Batch Translation** — Translate quotes between Chinese and English
 - 🔔 **Daily Notifications** — Receive wisdom every day
 - ⏰ **Alarm Clock** — Bilingual quote display when alarm rings
 - 📥 **Import/Export** — JSON format for personal quote collections
 - ⭐ **Favorites** — Save your favorite quotes
+- 🌓 **Dark Mode** — Support for dark theme
+- 📱 **Home Screen Widget** — Daily quote on your desktop
+- 🎨 **Splash Screen** — Beautiful whytrue brand UI
 
 ### Screenshots | 截图
 
@@ -38,9 +41,9 @@
 
 ### Download | 下载
 
-**Latest Release:** [v1.0.7](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.0.7)
+**Latest Release:** [v1.0.9](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.0.9)
 
-📦 APK Download: `app-release.apk` (60.8MB)
+📦 APK Download: `app-release.apk` (60.9MB)
 
 ### Quote Sources | 名言来源
 
@@ -98,19 +101,22 @@ MIT License
 
 - 📚 **600+ 名言** — 来自投资大师、哲学家、诗人、经典著作
 - 🌍 **中英双语** — 完整的中英文支持
-- 🤖 **AI 解读** — LLM 驱动名言解析
+- 🤖 **AI 解读** — LLM 驱动名言解析（详情页）
 - ✨ **AI 名言生成** — 使用AI生成新的名言警句
 - 🌐 **批量翻译** — 中英文双向翻译
 - 🔔 **每日推送** — 每天接收智慧语录
 - ⏰ **闹钟双语播报** — 闹钟响起时双语显示名言
 - 📥 **导入导出** — JSON 格式个人名言库
 - ⭐ **收藏功能** — 保存喜爱名言
+- 🌓 **暗黑模式** — 支持深色主题
+- 📱 **桌面小组件** — 桌面显示每日名言
+- 🎨 **启动页** — whytrue 品牌 UI 设计
 
 ### 下载
 
-**最新版本：** [v1.0.7](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.0.7)
+**最新版本：** [v1.0.9](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.0.9)
 
-📦 APK 下载: `app-release.apk` (60.8MB)
+📦 APK 下载: `app-release.apk` (60.9MB)
 
 ### 名言来源
 
