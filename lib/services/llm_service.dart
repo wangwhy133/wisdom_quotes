@@ -45,15 +45,21 @@ class LlmService {
     }
 
     try {
-      // 构建测试URL
-      final url = _urlForProvider(provider.baseUrl, '/v1/chat/completions');
+      // 构建测试URL - 确保没有空格
+      final cleanUrl = _cleanBaseUrl(provider.baseUrl.trim());
+      final url = '$cleanUrl/v1/chat/completions';
+      
+      // 验证URL没有空格
+      if (url.contains(' ')) {
+        return TestResult(success: false, message: 'URL包含空格，请检查输入: $url');
+      }
       
       final body = json.encode({
         'model': provider.modelId.isNotEmpty ? provider.modelId : 'gpt-3.5-turbo',
         'messages': [
-          {'role': 'user', 'content': 'Hi, reply with "OK" only.'}
+          {'role': 'user', 'content': 'Hi'}
         ],
-        'max_tokens': 10,
+        'max_tokens': 5,
         'temperature': 0,
       });
 
