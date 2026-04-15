@@ -16,6 +16,7 @@ import 'model_providers_screen.dart';
 import 'ai_generate_screen.dart';
 import 'my_thoughts_screen.dart';
 import 'about_screen.dart';
+import 'quote_apis_screen.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -224,6 +225,15 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             subtitle: const Text('添加、编辑、删除AI模型接口'),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ModelProvidersScreen())),
+          ),
+          const Divider(),
+          _buildSectionHeader('名言API'),
+          ListTile(
+            leading: const Icon(Icons.api, color: Colors.green),
+            title: const Text('管理名言API'),
+            subtitle: const Text('添加、测试、切换名言数据源'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const QuoteApisScreen())),
           ),
           const Divider(),
           _buildSectionHeader('关于'),
