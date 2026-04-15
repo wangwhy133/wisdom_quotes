@@ -16,24 +16,24 @@
 
 ### About | 关于
 
-**Wisdom Quotes (智慧名言)** is a Flutter application featuring 600+ curated quotes in Chinese and English, covering investment wisdom, philosophy, poetry, and classic literature.
+**Wisdom Quotes (智慧名言)** is a Flutter application featuring **2000+** curated quotes in Chinese and English, covering investment wisdom, philosophy, poetry, and classic literature.
 
 ### Features | 功能
 
-- 📚 **600+ Quotes** — Chinese and English wisdom from investment masters, philosophers, poets
+- 📚 **2000+ Quotes** — Chinese and English wisdom from investment masters, philosophers, poets
 - 🌍 **Bilingual** — Full Chinese and English support
 - 🤖 **AI Interpretation** — Powered by LLM for quote analysis (detail page)
-- ✨ **AI Quote Generation** — Generate new quotes with AI
+- ✨ **AI Quote Generation** — Generate new quotes with AI (theme-based or random)
 - 🌐 **Batch Translation** — Translate quotes between Chinese and English
 - 💭 **My Thoughts (吾思)** — Write down your own quotes and ideas
 - 📝 **Notes** — Add personal notes to any quote
 - 📖 **Read Tracking** — Track viewed quotes, prioritize unread ones
-- 🔔 **Daily Notifications** — Receive wisdom every day
-- ⏰ **Alarm Clock** — Bilingual quote display when alarm rings
+- 🔔 **Daily Notifications** — Receive wisdom every day at scheduled time
+- ⏰ **Alarm Clock** — Bilingual quote display when alarm rings (daily recurring)
 - 📥 **Import/Export** — JSON format for personal quote collections
-- 📂 **API Import** — Import quotes from external APIs
+- 📂 **API Import** — Import quotes from external APIs (xygeng, zenoquotes, quotable, custom)
 - ⭐ **Favorites** — Save your favorite quotes
-- 🌓 **Dark Mode** — Support for dark theme
+- 🌓 **Dark Mode** — Support for dark theme (3-way cycle: light → dark → system)
 - 📱 **Home Screen Widget** — Daily quote on your desktop
 - 🎨 **Splash Screen** — Beautiful whytrue brand UI
 - 🌐 **Dual API** — Auto-switch between domestic (CN) and international APIs
@@ -66,7 +66,7 @@ Download quote collections from GitHub:
 
 | File | Quotes | Description |
 |:---|:---:|:---|
-| 📄 [quotes_cn.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_cn.json) | 339 | Chinese Quotes 名言合集 |
+| 📄 [quotes_cn.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_cn.json) | 2000+ | Chinese Quotes 名言合集 |
 | 📄 [quotes_en.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_en.json) | 270 | English Quotes 英文名言 |
 
 ### API Support | API 支持
@@ -100,24 +100,24 @@ MIT License
 
 ### 关于
 
-**智慧名言** 是一款 Flutter 应用，收录 600+ 条中英文精选名言，涵盖投资智慧、哲学思辨、诗词歌赋、经典名著。
+**智慧名言** 是一款 Flutter 应用，收录 **2000+** 条中英文精选名言，涵盖投资智慧、哲学思辨、诗词歌赋、经典名著。
 
 ### 功能
 
-- 📚 **600+ 名言** — 来自投资大师、哲学家、诗人、经典著作
+- 📚 **2000+ 名言** — 来自投资大师、哲学家、诗人、经典著作
 - 🌍 **中英双语** — 完整的中英文支持
 - 🤖 **AI 解读** — LLM 驱动名言解析（详情页）
-- ✨ **AI 名言生成** — 使用AI生成新的名言警句
+- ✨ **AI 名言生成** — 使用AI生成新的名言警句（主题生成或随机生成）
 - 🌐 **批量翻译** — 中英文双向翻译
 - 💭 **吾思** — 记录你的想法与名言
 - 📝 **笔记** — 为任意名言添加笔记
 - 📖 **阅读追踪** — 记录已看过的名言，未读优先推荐
-- 🔔 **每日推送** — 每天接收智慧语录
-- ⏰ **闹钟双语播报** — 闹钟响起时双语显示名言
+- 🔔 **每日推送** — 每天定时接收智慧语录
+- ⏰ **闹钟双语播报** — 闹钟响起时双语显示名言（每日循环）
 - 📥 **导入导出** — JSON 格式个人名言库
-- 📂 **API 导入** — 从外部 API 导入名言
+- 📂 **API 导入** — 从外部 API 导入名言（句野、ZenQuotes、Quotable、自定义）
 - ⭐ **收藏功能** — 保存喜爱名言
-- 🌓 **暗黑模式** — 支持深色主题
+- 🌓 **暗黑模式** — 支持深色主题（3档循环：浅色→深色→系统）
 - 📱 **桌面小组件** — 桌面显示每日名言
 - 🎨 **启动页** — whytrue 品牌 UI 设计
 - 🌐 **双线路API** — 国内/国际API自动切换
@@ -144,7 +144,7 @@ MIT License
 
 | 文件 | 数量 | 说明 |
 |:---|:---:|:---|
-| 📄 [quotes_cn.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_cn.json) | 339 | 中文名言合集 |
+| 📄 [quotes_cn.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_cn.json) | 2000+ | 中文名言合集 |
 | 📄 [quotes_en.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_en.json) | 270 | 英文名言合集 |
 
 ### API 支持
