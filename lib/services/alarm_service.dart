@@ -29,6 +29,13 @@ class AlarmService {
       onDidReceiveNotificationResponse: _onNotificationTap,
     );
 
+    // 请求精确闹钟权限（Android 12+ 必须用户授权）
+    final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
+        AndroidFlutterLocalNotificationsPlugin>();
+    if (androidPlugin != null) {
+      await androidPlugin.requestExactAlarms();
+    }
+
     _initialized = true;
   }
 

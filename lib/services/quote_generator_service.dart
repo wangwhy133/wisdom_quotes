@@ -19,11 +19,10 @@ class QuoteGeneratorService {
       _currentProvider!.apiKey.isNotEmpty &&
       _currentProvider!.baseUrl.isNotEmpty;
 
-  // Refactor: unified with LlmService._cleanBaseUrl — trim + strip any /v[N] suffix
+  /// 清理baseUrl，避免空格和末尾斜杠，保留版本路径（/v3 /v4 等）
   String _cleanBaseUrl(String baseUrl) {
     String cleaned = baseUrl.trim();
-    cleaned = cleaned.replaceAll(RegExp(r'/v[0-9]+$'), '');
-    cleaned = cleaned.replaceAll(RegExp(r'[/\\s]+$'), '');
+    cleaned = cleaned.replaceAll(RegExp(r'/[\s]+$'), '');
     return cleaned;
   }
 
@@ -60,9 +59,13 @@ class QuoteGeneratorService {
 {"content": "名言内容", "author": "作者或佚名", "source": "来源(可选)", "tags": "标签1,标签2"}''';
       }
 
-      // 尝试 OpenAI 兼容接口
-      final uri = Uri.parse('${_cleanBaseUrl(_currentProvider!.baseUrl)}/v1/chat/completions');
-      
+      // 尝试多个端点：优先 Zhipu 格式(/chat/completions)，再标准 OpenAI(/v1/chat/completions)，最后 MiniMax
+      final endpoints = [
+        '${_cleanBaseUrl(_currentProvider!.baseUrl)}/chat/completions',
+        '${_cleanBaseUrl(_currentProvider!.baseUrl)}/v1/chat/completions',
+        '${_cleanBaseUrl(_currentProvider!.baseUrl)}/text/chatcompletion_v2',
+      ];
+
       final body = json.encode({
         'model': _currentProvider!.modelId,
         'messages': [
@@ -72,30 +75,22 @@ class QuoteGeneratorService {
         'temperature': 0.9,
       });
 
-      var response = await http.post(
-        uri,
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${_currentProvider!.apiKey}',
-        },
-        body: body,
-      ).timeout(const Duration(seconds: 30));
-
-      // 如果失败，尝试 MiniMax 专用接口
-      if (response.statusCode != 200) {
-        // Refactor: also apply _cleanBaseUrl to fallback URL for consistency
-        final miniMaxUri = Uri.parse('${_cleanBaseUrl(_currentProvider!.baseUrl)}/text/chatcompletion_v2');
-        response = await http.post(
-          miniMaxUri,
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ${_currentProvider!.apiKey}',
-          },
-          body: body,
-        ).timeout(const Duration(seconds: 30));
+      http.Response? response;
+      for (var uriStr in endpoints) {
+        try {
+          response = await http.post(
+            Uri.parse(uriStr),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ${_currentProvider!.apiKey}',
+            },
+            body: body,
+          ).timeout(const Duration(seconds: 30));
+          if (response!.statusCode == 200) break;
+        } catch (_) {}
       }
 
-      if (response.statusCode == 200) {
+      if (response != null && response.statusCode == 200) {
         final data = json.decode(response.body);
         final content = data['choices']?[0]?['message']?['content'];
         if (content != null) {
@@ -110,18 +105,18 @@ class QuoteGeneratorService {
     try {
       // 尝试解析 JSON
       String jsonStr = content.trim();
-      
+
       // 移除可能的 markdown 代码块
       if (jsonStr.contains('```json')) {
         jsonStr = jsonStr.split('```json')[1].split('```')[0];
       } else if (jsonStr.contains('```')) {
         jsonStr = jsonStr.split('```')[1].split('```')[0];
       }
-      
+
       jsonStr = jsonStr.trim();
-      
+
       final Map<String, dynamic> map = json.decode(jsonStr);
-      
+
       return GeneratedQuote(
         content: map['content'] ?? '',
         author: map['author'] ?? '佚名',

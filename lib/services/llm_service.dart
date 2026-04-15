@@ -47,7 +47,7 @@ class LlmService {
     try {
       // 构建测试URL - 确保没有空格
       final cleanUrl = _cleanBaseUrl(provider.baseUrl.trim());
-      final url = '$cleanUrl/v1/chat/completions';
+      final url = '$cleanUrl/chat/completions';
       
       // 验证URL没有空格
       if (url.contains(' ')) {
@@ -113,26 +113,26 @@ class LlmService {
         'temperature': 0.7,
       });
 
-      // 尝试 OpenAI 兼容接口
-      var response = await http.post(
-        Uri.parse(_url('/v1/chat/completions')),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${_currentProvider!.apiKey}',
-        },
-        body: body,
-      ).timeout(const Duration(seconds: 30));
-
-      // 如果失败，尝试 MiniMax 专用接口
-      if (response.statusCode != 200) {
-        response = await http.post(
-          Uri.parse('${_currentProvider!.baseUrl}/text/chatcompletion_v2'),
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ${_currentProvider!.apiKey}',
-          },
-          body: body,
-        ).timeout(const Duration(seconds: 30));
+      // 尝试多个端点：优先 Zhipu 格式(/chat/completions)，再标准 OpenAI(/v1/chat/completions)，最后 MiniMax
+      final endpoints = [
+        '${_cleanBaseUrl(_currentProvider!.baseUrl)}/chat/completions',
+        _url('/v1/chat/completions'),
+        '${_cleanBaseUrl(_currentProvider!.baseUrl)}/text/chatcompletion_v2',
+      ];
+      
+      var response;
+      for (var endpoint in endpoints) {
+        try {
+          response = await http.post(
+            Uri.parse(endpoint),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ${_currentProvider!.apiKey}',
+            },
+            body: body,
+          ).timeout(const Duration(seconds: 30));
+          if (response.statusCode == 200) break;
+        } catch (_) {}
       }
 
       if (response.statusCode == 200) {
@@ -147,28 +147,24 @@ class LlmService {
     if (!isConfigured) return null;
 
     try {
-      // 尝试 OpenAI 兼容接口
-      var response = await http.get(
-        Uri.parse(_url('/v1/models')),
-        headers: {
-          'Authorization': 'Bearer ${_currentProvider!.apiKey}',
-        },
-      ).timeout(const Duration(seconds: 10));
-
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        if (data['data'] != null) {
-          return (data['data'] as List).map((m) => m['id']?.toString() ?? '').where((s) => s.isNotEmpty).toList();
-        }
+      // 尝试多个端点获取模型列表
+      final endpoints = [
+        '${_cleanBaseUrl(_currentProvider!.baseUrl)}/models',
+        _url('/v1/models'),
+      ];
+      
+      http.Response? response;
+      for (var endpoint in endpoints) {
+        try {
+          response = await http.get(
+            Uri.parse(endpoint),
+            headers: {
+              'Authorization': 'Bearer ${_currentProvider!.apiKey}',
+            },
+          ).timeout(const Duration(seconds: 10));
+          if (response.statusCode == 200) break;
+        } catch (_) {}
       }
-
-      // 如果失败，尝试 MiniMax 专用接口
-      response = await http.get(
-        Uri.parse('${_cleanBaseUrl(_currentProvider!.baseUrl)}/models'),
-        headers: {
-          'Authorization': 'Bearer ${_currentProvider!.apiKey}',
-        },
-      ).timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
