@@ -1,12 +1,18 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz_data;
 import '../data/database.dart';
+import '../main.dart';
+import '../screens/home_screen.dart';
 
 class AlarmService {
   static final AlarmService _instance = AlarmService._internal();
   factory AlarmService() => _instance;
   AlarmService._internal();
+
+  // Bug 24 fix: named constant instead of magic number
+  static const int dailyAlarmId = 999;
 
   final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
   bool _initialized = false;
@@ -27,7 +33,11 @@ class AlarmService {
   }
 
   void _onNotificationTap(NotificationResponse response) {
-    // Handle alarm tap
+    // Bug 2 fix: navigate to home screen on tap (use MaterialPageRoute since no named routes)
+    notificationNavigatorKey.currentState?.pushAndRemoveUntil(
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
+      (route) => false,
+    );
   }
 
   Future<void> scheduleAlarm({

@@ -1,47 +1,61 @@
+import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class PermissionService {
-  /// 请求所有必要权限
-  static Future<void> requestAllPermissions() async {
-    // 通知权限
-    await _requestPermission(
-      Permission.notification,
-      '通知权限',
-      '用于每日名言推送和闹钟提醒',
-    );
+  /// Request all required permissions and check result.
+  /// Returns true only if all critical permissions are granted.
+  static Future<bool> requestAllPermissions() async {
+    // Notification permission (critical for both alarm and daily notification)
+    final notifStatus = await Permission.notification.request();
 
-    // 闹钟权限
-    await _requestPermission(
-      Permission.scheduleExactAlarm,
-      '闹钟权限',
-      '用于精确的闹钟提醒功能',
-    );
+    // Exact alarm permission (critical for alarm)
+    final alarmStatus = await Permission.scheduleExactAlarm.request();
 
-    // 存储权限（用于导入导出）
-    await _requestPermission(
-      Permission.storage,
-      '存储权限',
-      '用于导入导出名言文件',
+    // Storage permission (for import/export)
+    final storageStatus = await Permission.storage.request();
+
+    return notifStatus.isGranted || alarmStatus.isGranted;
+  }
+
+  /// Check if notification permission is granted
+  static Future<bool> hasNotificationPermission() async {
+    final status = await Permission.notification.status;
+    return status.isGranted;
+  }
+
+  /// Check if exact alarm permission is granted
+  static Future<bool> hasExactAlarmPermission() async {
+    final status = await Permission.scheduleExactAlarm.status;
+    return status.isGranted;
+  }
+
+  /// Show settings dialog when permission is permanently denied
+  static Future<void> showSettingsDialog(BuildContext context) async {
+    await showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('权限不足'),
+        content: const Text(
+          '通知/闹钟权限被拒绝，请在系统设置中开启，否则相关功能将无法使用。',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('取消'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(ctx);
+              openAppSettings();
+            },
+            child: const Text('去设置'),
+          ),
+        ],
+      ),
     );
   }
 
-  static Future<void> _requestPermission(
-    Permission permission,
-    String name,
-    String description,
-  ) async {
-    final status = await permission.status;
-    
-    if (status.isDenied) {
-      // 首次请求
-      await permission.request();
-    } else if (status.isPermanentlyDenied) {
-      // 被永久拒绝，跳转到设置
-      // 注意：实际应该提供设置引导
-    }
-  }
-
-  /// 检查权限状态
+  /// Check all permissions and return their status
   static Future<Map<Permission, PermissionStatus>> checkAllPermissions() async {
     return {
       Permission.notification: await Permission.notification.status,

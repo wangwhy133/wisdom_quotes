@@ -143,61 +143,6 @@ class LlmService {
     return null;
   }
 
-  Future<String?> translateQuotes({
-    required List<Map<String, String>> quotes,
-    required String targetLang,
-  }) async {
-    if (!isConfigured) return null;
-
-    try {
-      final quotesText = quotes.map((q) =>
-        '- "${q['content']}" - ${q['author']}'
-      ).join('\n');
-
-      final body = json.encode({
-        'model': _currentProvider!.modelId,
-        'messages': [
-          {
-            'role': 'user',
-            'content': '''请将以下名言翻译成${targetLang == 'zh' ? '中文' : '英文'}，保持原有格式，逐一翻译：
-
-$quotesText'''
-          }
-        ],
-        'max_tokens': 1500,
-        'temperature': 0.5,
-      });
-
-      // 尝试 OpenAI 兼容接口
-      var response = await http.post(
-        Uri.parse(_url('/v1/chat/completions')),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ${_currentProvider!.apiKey}',
-        },
-        body: body,
-      ).timeout(const Duration(seconds: 30));
-
-      // 如果失败，尝试 MiniMax 专用接口
-      if (response.statusCode != 200) {
-        response = await http.post(
-          Uri.parse('${_currentProvider!.baseUrl}/text/chatcompletion_v2'),
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ${_currentProvider!.apiKey}',
-          },
-          body: body,
-        ).timeout(const Duration(seconds: 30));
-      }
-
-      if (response.statusCode == 200) {
-        final data = json.decode(response.body);
-        return data['choices']?[0]?['message']?['content'];
-      }
-    } catch (_) {}
-    return null;
-  }
-
   Future<List<String>?> fetchModels() async {
     if (!isConfigured) return null;
 
@@ -219,7 +164,7 @@ $quotesText'''
 
       // 如果失败，尝试 MiniMax 专用接口
       response = await http.get(
-        Uri.parse('${_currentProvider!.baseUrl}/models'),
+        Uri.parse('${_cleanBaseUrl(_currentProvider!.baseUrl)}/models'),
         headers: {
           'Authorization': 'Bearer ${_currentProvider!.apiKey}',
         },

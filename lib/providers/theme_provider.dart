@@ -30,9 +30,12 @@ class ThemeNotifier extends StateNotifier<ThemeMode> {
     await prefs.setString(_key, mode.name);
   }
 
+  // Bug 14 fix: cycle light → dark → system → light ...
   Future<void> toggleTheme() async {
     if (state == ThemeMode.light) {
       await setTheme(ThemeMode.dark);
+    } else if (state == ThemeMode.dark) {
+      await setTheme(ThemeMode.system);
     } else {
       await setTheme(ThemeMode.light);
     }

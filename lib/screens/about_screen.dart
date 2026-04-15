@@ -9,9 +9,9 @@ class AboutScreen extends StatelessWidget {
     // 从 pubspec 获取版本
     try {
       final channel = const MethodChannel('flutter/app');
-      return 'v1.1.4'; // TODO: 动态获取
+      return 'v1.1.5'; // Bug 18 fix: sync with pubspec.yaml
     } catch (e) {
-      return 'v1.1.4';
+      return 'v1.1.5'; // Bug 18 fix
     }
   }
 
@@ -72,7 +72,7 @@ class AboutScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'v1.1.4',
+                  'v1.1.5', // Bug 18 fix
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[500],
@@ -187,7 +187,7 @@ class AboutScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 12),
-                  _buildFeatureItem('📚 600+ 名言', '收录投资、哲学、诗词、文学名言'),
+                  _buildFeatureItem('📚 2000+ 名言', '收录投资、哲学、诗词、文学名言'),
                   _buildFeatureItem('🤖 AI 解读', 'LLM 驱动名言深度解析'),
                   _buildFeatureItem('✨ AI 生成', '使用 AI 生成新名言'),
                   _buildFeatureItem('📝 笔记功能', '记录你对名言的想法'),

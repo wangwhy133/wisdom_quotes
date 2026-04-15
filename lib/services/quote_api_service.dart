@@ -161,9 +161,9 @@ class QuoteApiService {
   static String _guessCategory(String content) {
     if (content.contains('投资') || content.contains('巴菲特') || content.contains('股票') || content.contains('财富')) {
       return 'investment';
-    } else if (content.contains('道') || content.contains('佛') || content.contains('禅')) {
-      return 'poetry';
     }
+    // 道/佛/禅 属于哲学思辨，归为经典名著更准确
+    // （app仅有 classicLiterature/poetry/investment 三个分类，无 philosophy）
     return 'classicLiterature';
   }
   

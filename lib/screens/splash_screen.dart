@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _controller.forward();
 
-    // Navigate to home after delay
+    // Navigate after delay — mounted check ensures no-op if widget disposed before timer fires
     Future.delayed(const Duration(seconds: 2), () {
       if (mounted) {
         Navigator.of(context).pushReplacement(

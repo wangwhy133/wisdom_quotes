@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/database.dart';
 import '../providers/providers.dart';
+import '../providers/model_providers.dart' show currentLlmProviderProvider;
 import '../services/llm_service.dart';
-import '../providers/model_providers.dart';
 
 class InterpretScreen extends ConsumerStatefulWidget {
   const InterpretScreen({super.key});
@@ -38,11 +38,11 @@ class _InterpretScreenState extends ConsumerState<InterpretScreen> {
 
   Future<void> _interpret() async {
     if (_quotes.isEmpty) return;
-    final providers = ref.read(modelProvidersProvider);
-    final provider = providers.isNotEmpty ? providers.firstWhere((p) => p.isDefault, orElse: () => providers.first) : null;
+    final provider = ref.read(currentLlmProviderProvider);
     if (provider == null) return;
-    
+
     setState(() => _isInterpreting = true);
+    // Refactor: provider always current via Riverpod, no manual setProvider needed
     LlmService().setProvider(provider);
 
     final quote = _quotes[_selectedIndex];
@@ -58,37 +58,42 @@ class _InterpretScreenState extends ConsumerState<InterpretScreen> {
     });
   }
 
+  // Bug 27 fix: was calling translateQuotes (translation API) but UI showed 'AI解读'
+  // Now calls interpretQuote for each quote and combines results
+  // Refactor: uses currentLlmProviderProvider for automatic provider sync
   Future<void> _interpretAll() async {
     if (_quotes.isEmpty) return;
-    final providers = ref.read(modelProvidersProvider);
-    final provider = providers.isNotEmpty ? providers.firstWhere((p) => p.isDefault, orElse: () => providers.first) : null;
+    final provider = ref.read(currentLlmProviderProvider);
     if (provider == null) return;
-    
+
     setState(() => _isInterpreting = true);
     LlmService().setProvider(provider);
 
-    final quotesData = _quotes.map((q) => {
-      'content': q.content,
-      'author': q.author,
-      'source': q.source ?? '',
-    }).toList();
-
-    final result = await LlmService().translateQuotes(
-      quotes: quotesData,
-      targetLang: 'zh',
-    );
+    final results = <String>[];
+    for (var i = 0; i < _quotes.length; i++) {
+      final quote = _quotes[i];
+      final interpretation = await LlmService().interpretQuote(
+        content: quote.content,
+        author: quote.author,
+        source: quote.source,
+      );
+      if (interpretation != null) {
+        results.add('${i + 1}. "${quote.content}"\n💡 $interpretation');
+      }
+    }
 
     setState(() {
-      _interpretation = result;
+      _interpretation = results.isEmpty
+          ? '解读失败，请检查AI配置'
+          : results.join('\n\n');
       _isInterpreting = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final providers = ref.watch(modelProvidersProvider);
-    final defaultProvider = providers.isNotEmpty ? providers.firstWhere((p) => p.isDefault, orElse: () => providers.first) : null;
-    if (defaultProvider == null || defaultProvider.apiKey.isEmpty) {
+    final provider = ref.watch(currentLlmProviderProvider);
+    if (provider == null || provider.apiKey.isEmpty) {
       return Scaffold(
         appBar: AppBar(title: const Text('名言解读')),
         body: Center(

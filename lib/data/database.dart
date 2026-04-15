@@ -122,7 +122,6 @@ class AppDatabase extends _$AppDatabase {
       QuotesCompanion.insert(content: '竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生。', author: '苏轼', source: const Value('《定风波》'), category: QuoteCategory.poetry, tags: const Value('豁达,人生')),
       QuotesCompanion.insert(content: '回首向来萧瑟处，归去，也无风雨也无晴。', author: '苏轼', source: const Value('《定风波》'), category: QuoteCategory.poetry, tags: const Value('淡然,超脱')),
       QuotesCompanion.insert(content: '人有悲欢离合，月有阴晴圆缺，此事古难全。', author: '苏轼', source: const Value('《水调歌头》'), category: QuoteCategory.poetry, tags: const Value('豁达,人生')),
-      QuotesCompanion.insert(content: '但愿人长久，千里共婵娟。', author: '苏轼', source: const Value('《水调歌头》'), category: QuoteCategory.poetry, tags: const Value('祝愿,团圆')),
       QuotesCompanion.insert(content: '春宵一刻值千金，花有清香月有阴。', author: '苏轼', source: const Value('《春宵》'), category: QuoteCategory.poetry, tags: const Value('时光,美好')),
       QuotesCompanion.insert(content: '不识庐山真面目，只缘身在此山中。', author: '苏轼', source: const Value('《题西林壁》'), category: QuoteCategory.poetry, tags: const Value('哲理,旁观')),
       QuotesCompanion.insert(content: '日啖荔枝三百颗，不辞长作岭南人。', author: '苏轼', source: const Value('《惠州一绝》'), category: QuoteCategory.poetry, tags: const Value('乐观,随遇而安')),

@@ -76,6 +76,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Future<void> _toggleNotification(bool value) async {
+    if (value) {
+      // Bug 1 fix: check notification permission before enabling
+      final hasPermission = await PermissionService.hasNotificationPermission();
+      if (!hasPermission) {
+        if (!mounted) return;
+        await PermissionService.showSettingsDialog(context);
+        await _loadSettings();
+        return;
+      }
+    }
+
     setState(() => _notifEnabled = value);
     await _saveSettings();
     if (value) {
@@ -90,6 +101,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Future<void> _toggleAlarm(bool value) async {
+    if (value) {
+      // Bug 1 fix: check exact alarm permission before enabling
+      final hasPermission = await PermissionService.hasExactAlarmPermission();
+      if (!hasPermission) {
+        if (!mounted) return;
+        await PermissionService.showSettingsDialog(context);
+        await _loadSettings();
+        return;
+      }
+    }
+
     setState(() => _alarmEnabled = value);
     await _saveSettings();
     if (value) {
@@ -102,10 +124,11 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         String? translated;
         final isChinese = RegExp(r'[\u4e00-\u9fff]').hasMatch(quote.content);
         translated = isChinese ? await translator.zhToEn(quote.content) : await translator.enToZh(quote.content);
-        await alarmService.scheduleAlarm(id: 999, hour: _alarmHour, minute: _alarmMinute, quote: quote, translatedContent: translated);
+        // scheduleAlarm already has matchDateTimeComponents: DateTimeComponents.time = daily recurrence
+        await alarmService.scheduleAlarm(id: AlarmService.dailyAlarmId, hour: _alarmHour, minute: _alarmMinute, quote: quote, translatedContent: translated);
       }
     } else {
-      await AlarmService().cancelAlarm(999);
+      await AlarmService().cancelAlarm(AlarmService.dailyAlarmId);
     }
   }
 
@@ -257,21 +280,24 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           Consumer(
             builder: (context, ref, _) {
               final themeMode = ref.watch(themeProvider);
-              return SwitchListTile(
-                title: const Text('暗黑模式'),
+              // Bug 20 fix: allow choosing light/dark/system instead of just dark/light toggle
+              return ListTile(
+                leading: Icon(
+                  themeMode == ThemeMode.dark ? Icons.dark_mode
+                    : themeMode == ThemeMode.light ? Icons.light_mode
+                    : Icons.brightness_auto,
+                  color: themeMode == ThemeMode.dark ? Colors.indigo
+                      : themeMode == ThemeMode.light ? Colors.orange
+                      : Colors.grey,
+                ),
+                title: const Text('主题模式'),
                 subtitle: Text(
-                  themeMode == ThemeMode.dark ? '已开启' : '已关闭',
+                  themeMode == ThemeMode.dark ? '暗黑模式'
+                    : themeMode == ThemeMode.light ? '浅色模式'
+                    : '跟随系统',
                 ),
-                secondary: Icon(
-                  themeMode == ThemeMode.dark ? Icons.dark_mode : Icons.light_mode,
-                  color: themeMode == ThemeMode.dark ? Colors.indigo : Colors.orange,
-                ),
-                value: themeMode == ThemeMode.dark,
-                onChanged: (value) {
-                  ref.read(themeProvider.notifier).setTheme(
-                    value ? ThemeMode.dark : ThemeMode.light,
-                  );
-                },
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => _showThemePicker(context, ref),
               );
             },
           ),
@@ -314,8 +340,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             onTap: _isExporting ? null : _exportQuotes,
           ),
           const Divider(),
-          _buildSectionHeader('关于'),
-          const ListTile(title: Text('版本'), subtitle: Text('1.1.4')),
+          _buildSectionHeader('系统信息'), // Bug 19 fix: was duplicate '关于'
+          const ListTile(title: Text('版本'), subtitle: Text('1.1.5')), // Bug 18 fix
           ListTile(
             title: const Text('名言总数'),
             subtitle: ref.watch(allQuotesProvider).when(
@@ -347,6 +373,54 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             },
           );
         },
+      ),
+    );
+  }
+
+  // Bug 20 fix: theme picker (light / dark / system)
+  void _showThemePicker(BuildContext context, WidgetRef ref) {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => ListView(
+        shrinkWrap: true,
+        children: [
+          ListTile(
+            leading: const Icon(Icons.brightness_auto, color: Colors.grey),
+            title: const Text('跟随系统'),
+            subtitle: const Text('根据系统设置自动切换'),
+            trailing: ref.read(themeProvider) == ThemeMode.system
+                ? const Icon(Icons.check, color: Colors.green)
+                : null,
+            onTap: () {
+              ref.read(themeProvider.notifier).setTheme(ThemeMode.system);
+              Navigator.pop(ctx);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.light_mode, color: Colors.orange),
+            title: const Text('浅色模式'),
+            subtitle: const Text('始终使用浅色主题'),
+            trailing: ref.read(themeProvider) == ThemeMode.light
+                ? const Icon(Icons.check, color: Colors.green)
+                : null,
+            onTap: () {
+              ref.read(themeProvider.notifier).setTheme(ThemeMode.light);
+              Navigator.pop(ctx);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.dark_mode, color: Colors.indigo),
+            title: const Text('暗黑模式'),
+            subtitle: const Text('始终使用深色主题'),
+            trailing: ref.read(themeProvider) == ThemeMode.dark
+                ? const Icon(Icons.check, color: Colors.green)
+                : null,
+            onTap: () {
+              ref.read(themeProvider.notifier).setTheme(ThemeMode.dark);
+              Navigator.pop(ctx);
+            },
+          ),
+        ],
       ),
     );
   }

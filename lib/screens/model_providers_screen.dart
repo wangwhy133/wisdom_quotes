@@ -118,14 +118,21 @@ class _ModelProvidersScreenState extends ConsumerState<ModelProvidersScreen> {
                       ],
                     ),
                   ),
-                  if (!isDefault)
-                    TextButton(
-                      onPressed: () {
-                        ref.read(modelProvidersProvider.notifier).setDefault(provider.id);
-                        LlmService().setProvider(provider.copyWith(isDefault: true));
-                      },
-                      child: const Text('设为默认'),
-                    ),
+                  TextButton(
+                    onPressed: isDefault
+                        ? null
+                        : () {
+                            ref.read(modelProvidersProvider.notifier).setDefault(provider.id);
+                            // Bug 5 fix: also update LlmService's current provider
+                            final updatedProviders = ref.read(modelProvidersProvider);
+                            final updated = updatedProviders.firstWhere(
+                              (p) => p.id == provider.id,
+                              orElse: () => provider.copyWith(isDefault: true),
+                            );
+                            LlmService().setProvider(updated);
+                          },
+                    child: Text(isDefault ? '当前默认' : '设为默认'),
+                  ),
                 ],
               ),
               const SizedBox(height: 12),
@@ -194,7 +201,7 @@ class _ModelProvidersScreenState extends ConsumerState<ModelProvidersScreen> {
       context: context,
       builder: (ctx) => AlertDialog(
         title: const Text('确认删除'),
-        content: Text('确定要删除 "${provider.name}" 吗？'),
+        content: Text('确定要删除「${provider.name}」吗？'),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
@@ -203,6 +210,13 @@ class _ModelProvidersScreenState extends ConsumerState<ModelProvidersScreen> {
           TextButton(
             onPressed: () {
               ref.read(modelProvidersProvider.notifier).remove(provider.id);
+              // Bug 22 fix: reset LlmService if last provider was deleted
+              final remaining = ref.read(modelProvidersProvider);
+              if (remaining.isEmpty) {
+                LlmService().setProvider(
+                  ModelProvider(id: '', name: '', baseUrl: '', apiKey: '', modelId: ''),
+                );
+              }
               Navigator.pop(ctx);
             },
             child: const Text('删除', style: TextStyle(color: Colors.red)),
@@ -299,7 +313,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
   }
 
   Future<void> _testConnection(BuildContext context) async {
-    if (_baseUrlController.text.isEmpty || _apiKeyController.text.isEmpty) {
+    if (_baseUrlController.text.trim().isEmpty || _apiKeyController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('请先填写 Base URL 和 API Key')),
       );
@@ -349,7 +363,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
   }
 
   Future<void> _fetchModels() async {
-    if (_baseUrlController.text.isEmpty || _apiKeyController.text.isEmpty) {
+    if (_baseUrlController.text.trim().isEmpty || _apiKeyController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('请先填写 Base URL 和 API Key')),
       );
@@ -387,10 +401,10 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
   }
 
   void _save() {
-    if (_nameController.text.isEmpty ||
-        _baseUrlController.text.isEmpty ||
-        _apiKeyController.text.isEmpty ||
-        _modelIdController.text.isEmpty) {
+    if (_nameController.text.trim().isEmpty ||
+        _baseUrlController.text.trim().isEmpty ||
+        _apiKeyController.text.trim().isEmpty ||
+        _modelIdController.text.trim().isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('请填写所有必填项')),
       );
@@ -496,7 +510,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
             ),
             const SizedBox(height: 12),
             OutlinedButton.icon(
-              onPressed: _apiKeyController.text.isEmpty || _baseUrlController.text.isEmpty
+              onPressed: _apiKeyController.text.trim().isEmpty || _baseUrlController.text.trim().isEmpty
                   ? null
                   : () => _testConnection(context),
               icon: const Icon(Icons.play_arrow),

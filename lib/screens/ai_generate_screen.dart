@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../providers/model_providers.dart';
+import '../providers/model_providers.dart' show currentLlmProviderProvider;
 import '../providers/providers.dart';
 import '../services/quote_generator_service.dart';
 import '../services/llm_service.dart';
@@ -36,20 +36,15 @@ class _AiGenerateScreenState extends ConsumerState<AiGenerateScreen> {
   }
 
   Future<void> _generateQuote({String? theme}) async {
-    final providers = ref.read(modelProvidersProvider);
-    if (providers.isEmpty) {
+    // Refactor: use currentLlmProviderProvider — provider always current, no manual selection
+    final provider = ref.read(currentLlmProviderProvider);
+    if (provider == null) {
       setState(() => _error = '请先添加AI模型配置');
       return;
     }
 
-    final defaultProvider = providers.firstWhere(
-      (p) => p.isDefault,
-      orElse: () => providers.first,
-    );
-
-    // 设置当前provider
-    LlmService().setProvider(defaultProvider);
-    QuoteGeneratorService().setProvider(defaultProvider);
+    LlmService().setProvider(provider);
+    QuoteGeneratorService().setProvider(provider);
 
     setState(() {
       _isGenerating = true;
@@ -93,7 +88,8 @@ class _AiGenerateScreenState extends ConsumerState<AiGenerateScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final providers = ref.watch(modelProvidersProvider);
+    // Refactor: single provider source for active LLM config
+    final provider = ref.watch(currentLlmProviderProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -105,7 +101,7 @@ class _AiGenerateScreenState extends ConsumerState<AiGenerateScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // 模型状态
-            if (providers.isEmpty)
+            if (provider == null)
               Card(
                 color: Colors.orange[50],
                 child: Padding(
@@ -138,7 +134,7 @@ class _AiGenerateScreenState extends ConsumerState<AiGenerateScreen> {
                       const Icon(Icons.check_circle, color: Colors.green),
                       const SizedBox(width: 12),
                       Text(
-                        '当前模型: ${providers.firstWhere((p) => p.isDefault, orElse: () => providers.first).name}',
+                        '当前模型: ${provider.name}',
                         style: const TextStyle(color: Colors.green),
                       ),
                     ],

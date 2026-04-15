@@ -19,11 +19,12 @@ class QuoteGeneratorService {
       _currentProvider!.apiKey.isNotEmpty &&
       _currentProvider!.baseUrl.isNotEmpty;
 
+  // Refactor: unified with LlmService._cleanBaseUrl — trim + strip any /v[N] suffix
   String _cleanBaseUrl(String baseUrl) {
-    return baseUrl
-        .replaceAll(RegExp(r'[/\\s]+$'), '')
-        .replaceAll(RegExp(r'/v1$'), '')
-        .replaceAll(RegExp(r'/v2$'), '');
+    String cleaned = baseUrl.trim();
+    cleaned = cleaned.replaceAll(RegExp(r'/v[0-9]+$'), '');
+    cleaned = cleaned.replaceAll(RegExp(r'[/\\s]+$'), '');
+    return cleaned;
   }
 
   /// 使用 AI 生成名言
@@ -82,7 +83,8 @@ class QuoteGeneratorService {
 
       // 如果失败，尝试 MiniMax 专用接口
       if (response.statusCode != 200) {
-        final miniMaxUri = Uri.parse('${_currentProvider!.baseUrl}/text/chatcompletion_v2');
+        // Refactor: also apply _cleanBaseUrl to fallback URL for consistency
+        final miniMaxUri = Uri.parse('${_cleanBaseUrl(_currentProvider!.baseUrl)}/text/chatcompletion_v2');
         response = await http.post(
           miniMaxUri,
           headers: {

@@ -1,6 +1,19 @@
 import 'dart:convert';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../services/llm_service.dart';
+import '../services/quote_generator_service.dart';
+
+// Bug 25 fix: obfuscate API keys before storing in SharedPreferences (lightweight, not crypto-grade)
+String _obfuscate(String input) => input.isEmpty ? '' : base64Encode(utf8.encode(input));
+String _deobfuscate(String input) {
+  if (input.isEmpty) return '';
+  try {
+    return utf8.decode(base64Decode(input));
+  } catch (_) {
+    return input; // fallback if not encoded
+  }
+}
 
 class ModelProvider {
   final String id;
@@ -23,7 +36,8 @@ class ModelProvider {
     'id': id,
     'name': name,
     'baseUrl': baseUrl,
-    'apiKey': apiKey,
+    // Bug 25 fix: obfuscate API key in storage
+    'apiKey': _obfuscate(apiKey),
     'modelId': modelId,
     'isDefault': isDefault,
   };
@@ -32,7 +46,8 @@ class ModelProvider {
     id: json['id'] ?? '',
     name: json['name'] ?? '',
     baseUrl: json['baseUrl'] ?? '',
-    apiKey: json['apiKey'] ?? '',
+    // Bug 25 fix: deobfuscate API key when loading
+    apiKey: _deobfuscate(json['apiKey'] ?? ''),
     modelId: json['modelId'] ?? '',
     isDefault: json['isDefault'] ?? false,
   );
@@ -98,13 +113,22 @@ class ModelProvidersNotifier extends StateNotifier<List<ModelProvider>> {
   }
 
   Future<void> remove(String id) async {
+    // Bug 32 fix: if removing current cached provider, switch cache to new default
+    final current = LlmService().currentProvider;
     state = state.where((e) => e.id != id).toList();
     await _save();
+    if (current?.id == id) {
+      final newDefault = defaultProvider;
+      if (newDefault != null) LlmService().setProvider(newDefault);
+    }
   }
 
   Future<void> setDefault(String id) async {
     state = state.map((e) => e.copyWith(isDefault: e.id == id)).toList();
     await _save();
+    // Bug 32 fix: sync LlmService cache when default changes
+    final newDefault = defaultProvider;
+    if (newDefault != null) LlmService().setProvider(newDefault);
   }
 
   ModelProvider? get defaultProvider {
@@ -118,4 +142,25 @@ class ModelProvidersNotifier extends StateNotifier<List<ModelProvider>> {
 
 final modelProvidersProvider = StateNotifierProvider<ModelProvidersNotifier, List<ModelProvider>>((ref) {
   return ModelProvidersNotifier();
+});
+
+/// Refactor: current active LLM provider — derived from modelProvidersProvider.
+/// This is the SINGLE SOURCE OF TRUTH for which provider is currently active.
+/// Screens should read this instead of maintaining their own provider selection logic.
+final currentLlmProviderProvider = Provider<ModelProvider?>((ref) {
+  final providers = ref.watch(modelProvidersProvider);
+  if (providers.isEmpty) return null;
+  try {
+    return providers.firstWhere((p) => p.isDefault);
+  } catch (_) {
+    return providers.first;
+  }
+});
+
+/// Refactor: QuoteGeneratorService provider derived from currentLlmProviderProvider.
+final quoteGeneratorProvider = Provider<QuoteGeneratorService>((ref) {
+  final svc = QuoteGeneratorService();
+  final provider = ref.watch(currentLlmProviderProvider);
+  if (provider != null) svc.setProvider(provider);
+  return svc;
 });

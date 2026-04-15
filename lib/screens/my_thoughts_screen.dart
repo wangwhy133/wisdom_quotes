@@ -13,6 +13,7 @@ class MyThoughtsScreen extends ConsumerStatefulWidget {
 class _MyThoughtsScreenState extends ConsumerState<MyThoughtsScreen> {
   bool _isLoading = true;
   List<Quote> _thoughts = [];
+  String? _error; // Bug 15 fix: track error state
 
   @override
   void initState() {
@@ -22,12 +23,20 @@ class _MyThoughtsScreenState extends ConsumerState<MyThoughtsScreen> {
 
   Future<void> _loadThoughts() async {
     setState(() => _isLoading = true);
-    final db = ref.read(databaseProvider);
-    final thoughts = await db.getAllMyThoughts();
-    setState(() {
-      _thoughts = thoughts;
-      _isLoading = false;
-    });
+    try {
+      final db = ref.read(databaseProvider);
+      final thoughts = await db.getAllMyThoughts();
+      setState(() {
+        _thoughts = thoughts;
+        _isLoading = false;
+        _error = null;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+        _error = e.toString();
+      });
+    }
   }
 
   Future<void> _addThought() async {
@@ -97,16 +106,7 @@ class _MyThoughtsScreenState extends ConsumerState<MyThoughtsScreen> {
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
-          : _thoughts.isEmpty
-              ? _buildEmptyState()
-              : ListView.builder(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: _thoughts.length,
-                  itemBuilder: (context, index) {
-                    final thought = _thoughts[index];
-                    return _buildThoughtCard(thought);
-                  },
-                ),
+          : _buildContent(),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _addThought,
         icon: const Icon(Icons.add),
@@ -149,6 +149,47 @@ class _MyThoughtsScreenState extends ConsumerState<MyThoughtsScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  // Bug 15 fix: handle error state (was showing blank screen)
+  Widget _buildContent() {
+    if (_error != null) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(32),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.error_outline, size: 64, color: Colors.red[400]),
+              const SizedBox(height: 16),
+              Text(
+                '加载失败',
+                style: TextStyle(fontSize: 18, color: Colors.grey[700], fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 8),
+              Text(_error!, style: TextStyle(fontSize: 13, color: Colors.grey[500]), textAlign: TextAlign.center),
+              const SizedBox(height: 16),
+              ElevatedButton.icon(
+                onPressed: _loadThoughts,
+                icon: const Icon(Icons.refresh),
+                label: const Text('重试'),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    if (_thoughts.isEmpty) {
+      return _buildEmptyState();
+    }
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: _thoughts.length,
+      itemBuilder: (context, index) {
+        final thought = _thoughts[index];
+        return _buildThoughtCard(thought);
+      },
     );
   }
 

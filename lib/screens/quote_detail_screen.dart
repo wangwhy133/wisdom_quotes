@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/database.dart';
 import '../providers/providers.dart';
-import '../providers/model_providers.dart';
+import '../providers/model_providers.dart' show currentLlmProviderProvider;
 import '../services/translation_service.dart';
 import '../services/llm_service.dart';
 
@@ -129,18 +129,14 @@ class _QuoteDetailScreenState extends ConsumerState<QuoteDetailScreen> {
   Future<void> _interpretQuote() async {
     if (_isInterpreting) return;
 
-    final providers = ref.read(modelProvidersProvider);
-    if (providers.isEmpty) {
+    // Refactor: use currentLlmProviderProvider — no manual default selection needed
+    final provider = ref.read(currentLlmProviderProvider);
+    if (provider == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('请先在设置中添加AI模型配置')),
       );
       return;
     }
-
-    final provider = providers.firstWhere(
-      (p) => p.isDefault,
-      orElse: () => providers.first,
-    );
 
     setState(() => _isInterpreting = true);
     LlmService().setProvider(provider);
@@ -181,9 +177,19 @@ class _QuoteDetailScreenState extends ConsumerState<QuoteDetailScreen> {
               isFav ? Icons.favorite : Icons.favorite_border,
               color: isFav ? Colors.red : null,
             ),
-            onPressed: () {
-              ref.read(databaseProvider).toggleFavorite(widget.quote.id, !isFav);
-              Navigator.pop(context);
+            onPressed: () async {
+              final newFav = !isFav;
+              await ref.read(databaseProvider).toggleFavorite(widget.quote.id, newFav);
+              setState(() {}); // Trigger rebuild to update heart icon
+              // Bug 13 fix: stay on page, show feedback snackbar
+              if (mounted) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(newFav ? '已添加到收藏' : '已取消收藏'),
+                    duration: const Duration(seconds: 1),
+                  ),
+                );
+              }
             },
           ),
           IconButton(
