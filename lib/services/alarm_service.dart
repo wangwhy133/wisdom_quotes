@@ -78,7 +78,7 @@ class AlarmService {
       category: AndroidNotificationCategory.alarm,
     );
 
-    const notificationDetails = NotificationDetails(android: androidDetails);
+    final notificationDetails = NotificationDetails(android: androidDetails);
 
     String truncatedBody = body;
     if (truncatedBody.length > 200) {

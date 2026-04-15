@@ -21,7 +21,7 @@ class WidgetService {
     
     // 通知 Android widget 更新
     try {
-      const platform = MethodChannel('wisdom_quotes/widget');
+      final platform = MethodChannel('wisdom_quotes/widget');
       await platform.invokeMethod('updateWidget', {'widgetId': widgetId});
     } catch (e) {
       // Widget channel 可能未初始化，忽略错误

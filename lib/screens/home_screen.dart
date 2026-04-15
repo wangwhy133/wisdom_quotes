@@ -8,6 +8,7 @@ import 'search_screen.dart';
 import 'favorites_screen.dart';
 import 'settings_screen.dart';
 import 'batch_translate_screen.dart';
+import 'ai_generate_screen.dart';
 import 'interpret_screen.dart';
 
 // Refactor: ConsumerWidget eliminates initState async race condition.

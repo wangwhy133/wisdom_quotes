@@ -81,7 +81,7 @@ class NotificationService {
       ),
     );
 
-    const notificationDetails = NotificationDetails(android: androidDetails);
+    final notificationDetails = NotificationDetails(android: androidDetails);
 
     await _notifications.zonedSchedule(
       0,

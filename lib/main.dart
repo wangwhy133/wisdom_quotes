@@ -8,6 +8,7 @@ import 'services/permission_service.dart';
 import 'providers/theme_provider.dart';
 import 'providers/model_providers.dart';
 import 'services/llm_service.dart';
+import 'services/quote_generator_service.dart';
 
 /// Global navigator key for notification tap navigation (Bug 2 fix)
 final GlobalKey<NavigatorState> notificationNavigatorKey = GlobalKey<NavigatorState>();

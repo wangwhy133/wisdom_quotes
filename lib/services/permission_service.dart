@@ -11,8 +11,8 @@ class PermissionService {
     // Exact alarm permission (critical for alarm)
     final alarmStatus = await Permission.scheduleExactAlarm.request();
 
-    // Storage permission (for import/export)
-    final storageStatus = await Permission.storage.request();
+    // Storage permission (for import/export) — requested but result not required for current logic
+    await Permission.storage.request();
 
     return notifStatus.isGranted || alarmStatus.isGranted;
   }
