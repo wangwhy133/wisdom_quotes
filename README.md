@@ -16,7 +16,7 @@
 
 ### About | 关于
 
-**Wisdom Quotes (智慧名言)** is a Flutter application featuring 2000+ curated quotes in Chinese and English, covering investment wisdom, philosophy, poetry, and classic literature.
+**Wisdom Quotes (智慧名言)** is a Flutter application featuring 600+ curated quotes in Chinese and English, covering investment wisdom, philosophy, poetry, and classic literature.
 
 ### Features | 功能
 
@@ -38,7 +38,7 @@
 
 ### Download | 下载
 
-**Latest Release:** [v1.0.1](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.0.1)
+**Latest Release:** [v1.0.7](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.0.7)
 
 📦 APK Download: `app-release.apk` (60.8MB)
 
@@ -58,8 +58,8 @@ Download quote collections from GitHub:
 
 | File | Quotes | Description |
 |:---|:---:|:---|
-| 📄 [quotes_cn.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_cn.json) | 1000+ | Chinese Quotes 名言合集 |
-| 📄 [quotes_en.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_en.json) | 1000+ | English Quotes 英文名言 |
+| 📄 [quotes_cn.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_cn.json) | 339 | Chinese Quotes 名言合集 |
+| 📄 [quotes_en.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_en.json) | 270 | English Quotes 英文名言 |
 
 ### API Support | API 支持
 
@@ -92,7 +92,7 @@ MIT License
 
 ### 关于
 
-**智慧名言** 是一款 Flutter 应用，收录 2000+ 条中英文精选名言，涵盖投资智慧、哲学思辨、诗词歌赋、经典名著。
+**智慧名言** 是一款 Flutter 应用，收录 600+ 条中英文精选名言，涵盖投资智慧、哲学思辨、诗词歌赋、经典名著。
 
 ### 功能
 
@@ -108,9 +108,9 @@ MIT License
 
 ### 下载
 
-**最新版本：** [v1.0.0](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.0.0)
+**最新版本：** [v1.0.7](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.0.7)
 
-📦 APK 下载: `app-release.apk` (60.6MB)
+📦 APK 下载: `app-release.apk` (60.8MB)
 
 ### 名言来源
 
