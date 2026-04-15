@@ -21,10 +21,13 @@ class LlmService {
 
   /// 清理baseUrl，避免双重路径
   String _cleanBaseUrl(String baseUrl) {
-    return baseUrl
-        .replaceAll(RegExp(r'[/\\s]+$'), '') // 移除末尾斜杠
-        .replaceAll(RegExp(r'/v1$'), '')       // 移除末尾的 /v1
-        .replaceAll(RegExp(r'/v2$'), '');       // 移除末尾的 /v2
+    // 先trim掉首尾空格，再处理路径
+    String cleaned = baseUrl.trim();
+    // 移除末尾的 /v1, /v2, /v3 等版本标记
+    cleaned = cleaned.replaceAll(RegExp(r'/v[0-9]+$'), '');
+    // 移除末尾斜杠和空格
+    cleaned = cleaned.replaceAll(RegExp(r'[/\\s]+$'), '');
+    return cleaned;
   }
 
   String _url(String path) {
