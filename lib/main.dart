@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/home_screen.dart';
 import 'services/notification_service.dart';
+import 'services/permission_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
   // Initialize notification service
   await NotificationService().initialize();
+  
+  // Request permissions
+  await PermissionService.requestAllPermissions();
   
   runApp(
     const ProviderScope(
