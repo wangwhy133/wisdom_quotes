@@ -44,9 +44,9 @@
 
 ### Download | 下载
 
-**Latest Release:** [v1.1.0](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.0)
+**Latest Release:** [v1.1.2](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.2)
 
-📦 APK Download: `app-release.apk` (61.2MB)
+📦 APK Download: `app-release.apk` (61.6MB)
 
 ### Quote Sources | 名言来源
 
@@ -120,9 +120,9 @@ MIT License
 
 ### 下载
 
-**最新版本：** [v1.1.0](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.0)
+**最新版本：** [v1.1.2](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.2)
 
-📦 APK 下载: `app-release.apk` (61.2MB)
+📦 APK 下载: `app-release.apk` (61.6MB)
 
 ### 名言来源
 
