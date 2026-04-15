@@ -20,9 +20,10 @@
 
 ### Features | 功能
 
-- 📚 **2000+ Quotes** — Chinese and English wisdom from investment masters, philosophers, poets
+- 📚 **600+ Quotes** — Chinese and English wisdom from investment masters, philosophers, poets
 - 🌍 **Bilingual** — Full Chinese and English support
 - 🤖 **AI Interpretation** — Powered by LLM for quote analysis
+- ✨ **AI Quote Generation** — Generate new quotes with AI
 - 🌐 **Batch Translation** — Translate quotes between Chinese and English
 - 🔔 **Daily Notifications** — Receive wisdom every day
 - ⏰ **Alarm Clock** — Bilingual quote display when alarm rings
@@ -37,9 +38,9 @@
 
 ### Download | 下载
 
-**Latest Release:** [v1.0.0](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.0.0)
+**Latest Release:** [v1.0.1](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.0.1)
 
-📦 APK Download: `app-release.apk` (60.6MB)
+📦 APK Download: `app-release.apk` (60.8MB)
 
 ### Quote Sources | 名言来源
 
@@ -95,9 +96,10 @@ MIT License
 
 ### 功能
 
-- 📚 **2000+ 名言** — 来自投资大师、哲学家、诗人、经典著作
+- 📚 **600+ 名言** — 来自投资大师、哲学家、诗人、经典著作
 - 🌍 **中英双语** — 完整的中英文支持
 - 🤖 **AI 解读** — LLM 驱动名言解析
+- ✨ **AI 名言生成** — 使用AI生成新的名言警句
 - 🌐 **批量翻译** — 中英文双向翻译
 - 🔔 **每日推送** — 每天接收智慧语录
 - ⏰ **闹钟双语播报** — 闹钟响起时双语显示名言
@@ -126,8 +128,8 @@ MIT License
 
 | 文件 | 数量 | 说明 |
 |:---|:---:|:---|
-| 📄 [quotes_cn.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_cn.json) | 1000+ | 中文名言合集 |
-| 📄 [quotes_en.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_en.json) | 1000+ | 英文名言合集 |
+| 📄 [quotes_cn.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_cn.json) | 339 | 中文名言合集 |
+| 📄 [quotes_en.json](https://raw.githubusercontent.com/wangwhy133/wisdom_quotes/main/assets/quotes_en.json) | 270 | 英文名言合集 |
 
 ### API 支持
 
