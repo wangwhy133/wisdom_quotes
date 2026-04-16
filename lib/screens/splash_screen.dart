@@ -88,8 +88,8 @@ class _SplashScreenState extends State<SplashScreen>
           children: [
             const Spacer(flex: 2),
             // Logo icon with animation
-            AnimatedBuilder(
-              animation: _controller,
+            ListenableBuilder(
+              listenable: _controller,
               builder: (context, child) {
                 return Opacity(
                   opacity: _fadeAnimation.value,
@@ -128,8 +128,8 @@ class _SplashScreenState extends State<SplashScreen>
             ),
             const SizedBox(height: 32),
             // App name with animation
-            AnimatedBuilder(
-              animation: _controller,
+            ListenableBuilder(
+              listenable: _controller,
               builder: (context, child) {
                 return Opacity(
                   opacity: _fadeAnimation.value,
@@ -165,8 +165,8 @@ class _SplashScreenState extends State<SplashScreen>
             ),
             const Spacer(flex: 2),
             // Brand
-            AnimatedBuilder(
-              animation: _controller,
+            ListenableBuilder(
+              listenable: _controller,
               builder: (context, child) {
                 return Opacity(
                   opacity: _fadeAnimation.value,
