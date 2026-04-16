@@ -20,19 +20,31 @@ void main() async {
   // Initialize logger first
   await LogService().initialize();
 
-  // Initialize notification service
-  await NotificationService().initialize();
+  // Initialize notification service (wrapped - may throw on some devices)
+  try {
+    await NotificationService().initialize();
+  } catch (e, st) {
+    LogService().error('NotificationService init failed', e, st);
+  }
+
+  // Request permissions
+  try {
+    await PermissionService.requestAllPermissions();
+  } catch (e, st) {
+    LogService().error('PermissionService init failed', e, st);
+  }
 
   // Global error handler
   FlutterError.onError = (details) {
     LogService().error('FlutterError', details.exception, details.stack);
   };
 
-  // Request permissions
-  await PermissionService.requestAllPermissions();
-
   // Initialize LlmService with saved default provider (Bug 4 fix)
-  await _initLlmService();
+  try {
+    await _initLlmService();
+  } catch (e, st) {
+    LogService().error('_initLlmService failed', e, st);
+  }
 
   runApp(
     ProviderScope(

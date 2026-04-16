@@ -20,25 +20,30 @@ class AlarmService {
 
   Future<void> initialize() async {
     if (_initialized) return;
-    tz_data.initializeTimeZones();
+    try {
+      tz_data.initializeTimeZones();
 
-    const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
-    const initSettings = InitializationSettings(android: androidSettings);
+      const androidSettings = AndroidInitializationSettings('@mipmap/ic_launcher');
+      const initSettings = InitializationSettings(android: androidSettings);
 
-    await _notifications.initialize(
-      initSettings,
-      onDidReceiveNotificationResponse: _onNotificationTap,
-    );
+      await _notifications.initialize(
+        initSettings,
+        onDidReceiveNotificationResponse: _onNotificationTap,
+      );
 
-    // 请求精确闹钟权限（Android 12+ 必须用户授权）
-    final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>();
-    if (androidPlugin != null) {
-      await androidPlugin.requestExactAlarmsPermission();
+      // 请求精确闹钟权限（Android 12+ 必须用户授权）
+      final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>();
+      if (androidPlugin != null) {
+        await androidPlugin.requestExactAlarmsPermission();
+      }
+
+      _initialized = true;
+      LogService().info('AlarmService initialized');
+    } catch (e, st) {
+      LogService().error('AlarmService initialize failed', e, st);
+      _initialized = true; // prevent repeated attempts
     }
-
-    _initialized = true;
-    LogService().info('AlarmService initialized');
   }
 
   void _onNotificationTap(NotificationResponse response) {
