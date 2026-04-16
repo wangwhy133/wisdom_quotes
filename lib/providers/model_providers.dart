@@ -22,6 +22,8 @@ class ModelProvider {
   final String apiKey;
   final String modelId;
   final bool isDefault;
+  /// 自定义Endpoint，留空则使用默认端点
+  final String endpoint;
 
   ModelProvider({
     required this.id,
@@ -30,6 +32,7 @@ class ModelProvider {
     required this.apiKey,
     required this.modelId,
     this.isDefault = false,
+    this.endpoint = '',
   });
 
   Map<String, dynamic> toJson() => {
@@ -40,6 +43,7 @@ class ModelProvider {
     'apiKey': _obfuscate(apiKey),
     'modelId': modelId,
     'isDefault': isDefault,
+    'endpoint': endpoint,
   };
 
   factory ModelProvider.fromJson(Map<String, dynamic> json) => ModelProvider(
@@ -50,6 +54,7 @@ class ModelProvider {
     apiKey: _deobfuscate(json['apiKey'] ?? ''),
     modelId: json['modelId'] ?? '',
     isDefault: json['isDefault'] ?? false,
+    endpoint: json['endpoint'] ?? '',
   );
 
   ModelProvider copyWith({
@@ -59,6 +64,7 @@ class ModelProvider {
     String? apiKey,
     String? modelId,
     bool? isDefault,
+    String? endpoint,
   }) {
     return ModelProvider(
       id: id ?? this.id,
@@ -67,6 +73,7 @@ class ModelProvider {
       apiKey: apiKey ?? this.apiKey,
       modelId: modelId ?? this.modelId,
       isDefault: isDefault ?? this.isDefault,
+      endpoint: endpoint ?? this.endpoint,
     );
   }
 }

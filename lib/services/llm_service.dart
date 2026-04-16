@@ -41,6 +41,16 @@ class LlmService {
     return '${_cleanBaseUrl(baseUrl)}$path';
   }
 
+  String _endpointForProvider(ModelProvider provider) {
+    if (provider.endpoint.isNotEmpty) {
+      final cleanBase = _cleanBaseUrl(provider.baseUrl);
+      return provider.endpoint
+          .replaceAll('{baseUrl}', cleanBase)
+          .replaceAll('{modelId}', provider.modelId);
+    }
+    return '${_cleanBaseUrl(provider.baseUrl)}/chat/completions';
+  }
+
   /// 测试模型连接是否正常
   Future<TestResult> testConnection(ModelProvider provider) async {
     if (provider.apiKey.isEmpty || provider.baseUrl.isEmpty) {
@@ -49,8 +59,7 @@ class LlmService {
 
     try {
       // 构建测试URL - 确保没有空格
-      final cleanUrl = _cleanBaseUrl(provider.baseUrl.trim());
-      final url = '$cleanUrl/chat/completions';
+      final url = _endpointForProvider(provider);
       
       // 验证URL没有空格
       if (url.contains(' ')) {

@@ -284,6 +284,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
   final _baseUrlController = TextEditingController();
   final _apiKeyController = TextEditingController();
   final _modelIdController = TextEditingController();
+  final _endpointController = TextEditingController();
   bool _showApiKey = false;
   bool _isFetchingModels = false;
   List<String> _availableModels = [];
@@ -298,6 +299,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
       _apiKeyController.text = widget.provider!.apiKey;
       _modelIdController.text = widget.provider!.modelId;
       _selectedModel = widget.provider!.modelId;
+      _endpointController.text = widget.provider!.endpoint;
     } else {
       _baseUrlController.text = 'https://api.minimax.chat/v1';
     }
@@ -309,6 +311,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
     _baseUrlController.dispose();
     _apiKeyController.dispose();
     _modelIdController.dispose();
+    _endpointController.dispose();
     super.dispose();
   }
 
@@ -379,6 +382,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
       baseUrl: _baseUrlController.text,
       apiKey: _apiKeyController.text,
       modelId: _modelIdController.text,
+      endpoint: _endpointController.text,
     );
     LlmService().setProvider(tempProvider);
 
@@ -418,6 +422,7 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
       apiKey: _apiKeyController.text,
       modelId: _modelIdController.text,
       isDefault: widget.provider?.isDefault ?? false,
+      endpoint: _endpointController.text,
     );
 
     if (widget.provider != null) {
@@ -507,6 +512,15 @@ class _ProviderFormState extends ConsumerState<_ProviderForm> {
                       : const Text('获取模型'),
                 ),
               ],
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: _endpointController,
+              decoration: const InputDecoration(
+                labelText: '自定义 Endpoint（可选）',
+                hintText: '留空使用默认，如：https://api.example.com/chat/completions',
+                border: OutlineInputBorder(),
+              ),
             ),
             const SizedBox(height: 12),
             OutlinedButton.icon(
