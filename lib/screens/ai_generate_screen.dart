@@ -4,6 +4,7 @@ import '../providers/model_providers.dart' show currentLlmProviderProvider;
 import '../providers/providers.dart';
 import '../services/quote_generator_service.dart';
 import '../services/llm_service.dart';
+import '../services/log_service.dart';
 
 class AiGenerateScreen extends ConsumerStatefulWidget {
   const AiGenerateScreen({super.key});
@@ -36,34 +37,49 @@ class _AiGenerateScreenState extends ConsumerState<AiGenerateScreen> {
   }
 
   Future<void> _generateQuote({String? theme}) async {
-    // Refactor: use currentLlmProviderProvider — provider always current, no manual selection
-    final provider = ref.read(currentLlmProviderProvider);
-    if (provider == null) {
-      setState(() => _error = '请先添加AI模型配置');
-      return;
-    }
-
-    LlmService().setProvider(provider);
-    QuoteGeneratorService().setProvider(provider);
-
-    setState(() {
-      _isGenerating = true;
-      _error = null;
-      _currentQuote = null;
-    });
-
-    final quote = await QuoteGeneratorService().generateQuote(
-      theme: theme ?? _themeController.text,
-    );
-
-    final lastErr = QuoteGeneratorService().lastError;
-    setState(() {
-      _isGenerating = false;
-      _currentQuote = quote;
-      if (quote == null) {
-        _error = lastErr ?? '生成失败，请检查AI模型配置是否正确';
+    try {
+      LogService().debug('ai_generate: _generateQuote called');
+      final provider = ref.read(currentLlmProviderProvider);
+      if (provider == null) {
+        setState(() => _error = '请先添加AI模型配置');
+        return;
       }
-    });
+
+      LlmService().setProvider(provider);
+      QuoteGeneratorService().setProvider(provider);
+
+      setState(() {
+        _isGenerating = true;
+        _error = null;
+        _currentQuote = null;
+      });
+
+      LogService().debug('ai_generate: calling generateQuote');
+      final quote = await QuoteGeneratorService().generateQuote(
+        theme: theme ?? _themeController.text,
+      );
+
+      LogService().debug('ai_generate: generateQuote returned ${quote != null}');
+      final lastErr = QuoteGeneratorService().lastError;
+      if (quote == null) {
+        LogService().error('AI生成名言失败', lastErr);
+      }
+      setState(() {
+        _isGenerating = false;
+        _currentQuote = quote;
+        if (quote == null) {
+          _error = lastErr ?? '生成失败，请检查AI模型配置是否正确';
+        }
+      });
+    } catch (e, st) {
+      LogService().error('ai_generate: _generateQuote unhandled exception', e, st);
+      if (mounted) {
+        setState(() {
+          _isGenerating = false;
+          _error = '发生异常: $e';
+        });
+      }
+    }
   }
 
   Future<void> _saveToLibrary() async {

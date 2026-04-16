@@ -38,15 +38,16 @@ class QuoteGeneratorService {
     String? category,
   }) async {
     _lastError = null;
+    LogService().debug('generateQuote start, theme=$theme, configured=$isConfigured');
     if (!isConfigured) {
       _lastError = '未配置 AI provider';
+      LogService().error('generateQuote: 未配置AI provider');
       return null;
     }
 
-    try {
-      String prompt;
-      if (theme != null && theme.isNotEmpty) {
-        prompt = '''请生成一条关于"$theme"的名言警句。
+    String prompt;
+    if (theme != null && theme.isNotEmpty) {
+      prompt = '''请生成一条关于"$theme"的名言警句。
 
 要求：
 1. 文字简洁有力，富有哲理
@@ -55,8 +56,8 @@ class QuoteGeneratorService {
 
 请以JSON格式返回，不要添加任何markdown标记：
 {"content": "名言内容", "author": "作者或佚名", "source": "来源(可选)", "tags": "标签1,标签2"}''';
-      } else {
-        prompt = '''请随机生成一条有深度的名言警句。
+    } else {
+      prompt = '''请随机生成一条有深度的名言警句。
 
 要求：
 1. 涵盖智慧、人生、哲学、投资等主题之一
@@ -66,51 +67,80 @@ class QuoteGeneratorService {
 
 请以JSON格式返回，不要添加任何markdown标记：
 {"content": "名言内容", "author": "作者或佚名", "source": "来源(可选)", "tags": "标签1,标签2"}''';
-      }
-
-      final endpoints = [
-        '${_cleanBaseUrl(_currentProvider!.baseUrl)}/chat/completions',
-        '${_cleanBaseUrl(_currentProvider!.baseUrl)}/v1/chat/completions',
-        '${_cleanBaseUrl(_currentProvider!.baseUrl)}/text/chatcompletion_v2',
-      ];
-
-      final body = json.encode({
-        'model': _currentProvider!.modelId,
-        'messages': [
-          {'role': 'user', 'content': prompt}
-        ],
-        'max_tokens': 300,
-        'temperature': 0.9,
-      });
-
-      http.Response? response;
-      for (var uriStr in endpoints) {
-        try {
-          response = await http.post(
-            Uri.parse(uriStr),
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ${_currentProvider!.apiKey}',
-            },
-            body: body,
-          ).timeout(const Duration(seconds: 30));
-          if (response.statusCode == 200) {
-            final data = json.decode(response.body);
-            final content = data['choices']?[0]?['message']?['content'];
-            if (content != null) {
-              return _parseQuote(content);
-            }
-            _lastError = '[$uriStr] content为空';
-          } else {
-            _lastError = '[$uriStr] HTTP ${response.statusCode}: ${response.body}';
-          }
-        } catch (e) {
-          _lastError = '[$uriStr] $e';
-        }
-      }
-    } catch (e) {
-      _lastError = 'generateQuote exception: $e';
     }
+
+    final endpoints = [
+      '${_cleanBaseUrl(_currentProvider!.baseUrl)}/chat/completions',
+      '${_cleanBaseUrl(_currentProvider!.baseUrl)}/v1/chat/completions',
+      '${_cleanBaseUrl(_currentProvider!.baseUrl)}/text/chatcompletion_v2',
+    ];
+
+    LogService().debug('generateQuote endpoints: $endpoints');
+    LogService().debug('generateQuote model: ${_currentProvider!.modelId}');
+
+    final body = json.encode({
+      'model': _currentProvider!.modelId,
+      'messages': [
+        {'role': 'user', 'content': prompt}
+      ],
+      'max_tokens': 300,
+      'temperature': 0.9,
+    });
+
+    for (var uriStr in endpoints) {
+      LogService().debug('generateQuote trying: $uriStr');
+      try {
+        final response = await http.post(
+          Uri.parse(uriStr),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ${_currentProvider!.apiKey}',
+          },
+          body: body,
+        ).timeout(const Duration(seconds: 30));
+
+        LogService().debug('generateQuote response ${response.statusCode} for $uriStr');
+        LogService().debug('generateQuote body: ${response.body.length} bytes');
+
+        if (response.statusCode == 200) {
+          try {
+            final data = json.decode(response.body) as Map<String, dynamic>;
+            LogService().debug('generateQuote parsed data keys: ${data.keys.toList()}');
+
+            final choices = data['choices'] as List?;
+            final content = choices?.isNotEmpty == true
+                ? (choices![0]['message']?['content'] as String?)
+                : null;
+
+            if (content != null && content.isNotEmpty) {
+              LogService().debug('generateQuote content found, length=${content.length}');
+              final quote = _parseQuote(content);
+              if (quote != null) {
+                LogService().info('generateQuote success: ${quote.content.substring(0, quote.content.length < 20 ? quote.content.length : 20)}...');
+                return quote;
+              } else {
+                LogService().warning('generateQuote _parseQuote returned null');
+                _lastError = '[_parseQuote failed]';
+              }
+            } else {
+              LogService().warning('generateQuote content为空 for $uriStr, body=${response.body.substring(0, response.body.length < 200 ? response.body.length : 200)}');
+              _lastError = '[$uriStr] content为空';
+            }
+          } catch (e, st) {
+            LogService().error('generateQuote parse error for $uriStr', e, st);
+            _lastError = '[$uriStr] parse error: $e';
+          }
+        } else {
+          LogService().warning('generateQuote HTTP ${response.statusCode} for $uriStr: ${response.body}');
+          _lastError = '[$uriStr] HTTP ${response.statusCode}: ${response.body}';
+        }
+      } catch (e, st) {
+        LogService().error('generateQuote request error for $uriStr', e, st);
+        _lastError = '[$uriStr] $e';
+      }
+    }
+
+    LogService().warning('generateQuote all endpoints failed, lastError=$_lastError');
     return null;
   }
 
@@ -127,7 +157,6 @@ class QuoteGeneratorService {
       jsonStr = jsonStr.trim();
 
       final Map<String, dynamic> map = json.decode(jsonStr);
-
       return GeneratedQuote(
         content: map['content'] ?? '',
         author: map['author'] ?? '佚名',
