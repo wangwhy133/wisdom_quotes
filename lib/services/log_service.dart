@@ -15,9 +15,18 @@ class LogService {
 
   Future<void> initialize() async {
     if (_initialized) return;
-    await _purgeOldLogs();
-    _initialized = true;
-    await _write(LogLevel.info, 'LogService initialized');
+    try {
+      // debug: test file write
+      final testPath = await _logFilePath;
+      print('[LogService] log file path: $testPath');
+      await _purgeOldLogs();
+      _initialized = true;
+      print('[LogService] initialized, writing first log');
+      await _write(LogLevel.info, 'LogService initialized');
+      print('[LogService] first log written');
+    } catch (e, st) {
+      print('[LogService] initialize FAILED: $e\n$st');
+    }
   }
 
   Future<String> get _logFilePath async {
@@ -39,9 +48,13 @@ class LogService {
       buf.writeln();
 
       final path = await _logFilePath;
+      print('[LogService] writing to: $path');
       final file = File(path);
-      await file.writeAsString('${buf.toString()}', mode: FileMode.append);
-    } catch (_) {}
+      await file.writeAsString(buf.toString(), mode: FileMode.append);
+      print('[LogService] write success');
+    } catch (e, st) {
+      print('[LogService] _write FAILED: $e\n$st');
+    }
   }
 
   Future<void> debug(String message) => _write(LogLevel.debug, message);
