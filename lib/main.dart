@@ -83,10 +83,12 @@ class WisdomQuotesApp extends ConsumerStatefulWidget {
   ConsumerState<WisdomQuotesApp> createState() => _WisdomQuotesAppState();
 }
 
-class _WisdomQuotesAppState extends ConsumerState<WisdomQuotesApp> {
+class _WisdomQuotesAppState extends ConsumerState<WisdomQuotesApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    LogService().info('WisdomQuotesApp initState');
     // Sync LlmService with the current default provider after providers load
     Future.microtask(() {
       final providers = ref.read(modelProvidersProvider);
@@ -96,8 +98,33 @@ class _WisdomQuotesAppState extends ConsumerState<WisdomQuotesApp> {
           orElse: () => providers.first,
         );
         LlmService().setProvider(defaultProvider);
+        QuoteGeneratorService().setProvider(defaultProvider);
+        LogService().info('LlmService synced with ${defaultProvider.name}');
       }
     });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    LogService().debug('AppLifecycleState: $state');
+    if (state == AppLifecycleState.resumed) {
+      // App resumed - check notification/alarm state
+      _checkScheduledItems();
+    }
+  }
+
+  Future<void> _checkScheduledItems() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      LogService().debug('[resumed] fd_notif_enabled=${prefs.getBool('fd_notif_enabled')}');
+      LogService().debug('[resumed] fd_alarm_enabled=${prefs.getBool('fd_alarm_enabled')}');
+    } catch (_) {}
   }
 
   @override
