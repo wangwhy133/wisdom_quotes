@@ -352,7 +352,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               Navigator.push(context, MaterialPageRoute(builder: (_) => const LogsScreen()));
             },
           ),
-          const ListTile(title: Text('版本'), subtitle: const Text('v1.1.9')), // Bug 18 fix
+          const ListTile(title: Text('版本'), subtitle: const Text('v1.2.7')), // Bug 18 fix
           ListTile(
             title: const Text('名言总数'),
             subtitle: ref.watch(allQuotesProvider).when(

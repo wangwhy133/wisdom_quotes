@@ -7,8 +7,8 @@ class AboutScreen extends StatelessWidget {
 
   String _getVersion() {
     // 从 pubspec.yaml 读取版本 (需要与 pubspec.yaml 保持同步)
-    // v1.1.9
-    return 'v1.1.9';
+    // v1.2.7
+    return 'v1.2.7';
   }
 
   Future<void> _launchUrl(String url) async {
@@ -68,7 +68,7 @@ class AboutScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'v1.1.9', // synced with pubspec.yaml
+                  'v1.2.7', // synced with pubspec.yaml
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[500],
