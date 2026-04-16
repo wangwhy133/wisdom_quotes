@@ -46,7 +46,7 @@
 
 ### Download | 下载
 
-**Latest Release:** [v1.1.5](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.5)
+**Latest Release:** [v1.1.8](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.8)
 
 📦 APK Download: `app-release.apk` (61.8MB)
 
@@ -90,6 +90,20 @@ flutter pub get
 flutter build apk --release
 ```
 
+### Changelog | 更新日志
+
+#### v1.1.8
+- **Android:** 注册 flutter_local_notifications 必需的 Boot Receiver（重启后闹钟/通知自动恢复）
+- 闹钟和通知均使用 `exactAllowWhileIdle` 准时模式
+
+#### v1.1.7
+- 修复 `requestExactAlarmsPermission` API 方法名
+- 修复 `fetchModels`/`interpretQuote` 中 response 空值访问
+
+#### v1.1.6
+- 修复智谱等第三方 API 端点兼容（`_cleanBaseUrl` 不再删除版本路径）
+- 通知调度改为 `exactAllowWhileIdle` 精确模式
+
 ### License | 许可证
 
 MIT License
@@ -124,7 +138,7 @@ MIT License
 
 ### 下载
 
-**最新版本：** [v1.1.5](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.5)
+**最新版本：** [v1.1.8](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.8)
 
 📦 APK 下载: `app-release.apk` (61.8MB)
 
