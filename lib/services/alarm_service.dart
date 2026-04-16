@@ -64,21 +64,8 @@ class AlarmService {
     required Quote quote,
     String? translatedContent,
   }) async {
-    // 先尝试清理已损坏的通知缓存，防止 cancel 时反序列化崩溃
-    try {
-      await _notifications.cancel(id);
-    } catch (e, st) {
-      _log.warning('[cancel id=$id] 首次调用失败，尝试清理缓存后重试: $e');
-      try {
-        final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
-        await androidPlugin?.deleteNotificationChannel('alarm_channel');
-        await Future.delayed(const Duration(milliseconds: 100));
-        await _notifications.cancel(id);
-      } catch (e2, st2) {
-        _log.error('[cancel id=$id] 清理后重试仍失败: $e2', e2, st2);
-      }
-    }
+    // 不再调用 cancel（它会触发 loadScheduledNotifications 读取损坏缓存导致崩溃）
+    // zonedSchedule 使用相同 id 会自动覆写旧通知
 
     final now = tz.TZDateTime.now(tz.local);
     var scheduledDate = tz.TZDateTime(
@@ -117,7 +104,7 @@ class AlarmService {
     }
 
     try {
-      await _notifications.zonedSchedule(
+  await _notifications.zonedSchedule(
         id,
         '☀️ 今日名言',
         truncatedBody,

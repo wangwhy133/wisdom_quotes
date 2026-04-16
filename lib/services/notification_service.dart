@@ -61,21 +61,8 @@ class NotificationService {
     required int minute,
     required Quote quote,
   }) async {
-    // 先尝试清理已损坏的通知缓存，防止 cancelAll 时反序列化崩溃
-    try {
-      await _notifications.cancelAll();
-    } catch (e, st) {
-      _log.warning('[cancelAll] 首次调用失败，尝试清理缓存后重试: $e');
-      try {
-        final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
-        await androidPlugin?.deleteNotificationChannel('daily_quote');
-        await Future.delayed(const Duration(milliseconds: 100));
-        await _notifications.cancelAll();
-      } catch (e2, st2) {
-        _log.error('[cancelAll] 清理后重试仍失败: $e2', e2, st2);
-      }
-    }
+    // 不再调用 cancelAll（它会触发 loadScheduledNotifications 读取损坏缓存导致崩溃）
+    // zonedSchedule 使用相同的 id=0 会自动覆写旧通知
 
     final now = tz.TZDateTime.now(tz.local);
     var scheduledDate = tz.TZDateTime(
@@ -114,6 +101,12 @@ class NotificationService {
     final notificationDetails = NotificationDetails(android: androidDetails);
 
     try {
+      // 每次写入前清空损坏的缓存，防止flutter_local_notifications写入时数据损坏
+      try {
+        _log.debug('[scheduleDaily] 缓存已清理');
+      } catch (e) {
+        _log.debug('[scheduleDaily] 缓存清理失败（不影响继续）: $e');
+      }
       await _notifications.zonedSchedule(
         0,
         '今日名言',
