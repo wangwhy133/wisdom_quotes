@@ -108,9 +108,17 @@ class QuoteGeneratorService {
             LogService().debug('generateQuote parsed data keys: ${data.keys.toList()}');
 
             final choices = data['choices'] as List?;
-            final content = choices?.isNotEmpty == true
+            String? content = choices?.isNotEmpty == true
                 ? (choices![0]['message']?['content'] as String?)
                 : null;
+            // Zhipu glm-4-flash: 答案在 reasoning_content 字段
+            if ((content == null || content.isEmpty) && choices?.isNotEmpty == true) {
+              final reasoningContent = choices![0]['message']?['reasoning_content'] as String?;
+              if (reasoningContent != null && reasoningContent.isNotEmpty) {
+                content = reasoningContent;
+                LogService().debug('generateQuote: 使用 reasoning_content (Zhipu)');
+              }
+            }
 
             if (content != null && content.isNotEmpty) {
               LogService().debug('generateQuote content found, length=${content.length}');

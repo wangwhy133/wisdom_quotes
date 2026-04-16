@@ -137,7 +137,12 @@ class LlmService {
           ).timeout(const Duration(seconds: 30));
           if (response!.statusCode == 200) {
             final data = json.decode(response.body);
-            return data['choices']?[0]?['message']?['content'];
+            String? text = data['choices']?[0]?['message']?['content'];
+            // Zhipu glm-4-flash: 答案在 reasoning_content
+            if ((text == null || text.isEmpty)) {
+              text = data['choices']?[0]?['message']?['reasoning_content'];
+            }
+            return text;
           }
           _lastError = '[$endpoint] HTTP ${response.statusCode}: ${response.body}';
         } catch (e) {
