@@ -38,9 +38,11 @@ class AlarmService {
     }
 
     _initialized = true;
+    LogService().info('AlarmService initialized');
   }
 
   void _onNotificationTap(NotificationResponse response) {
+    LogService().info('AlarmService: notification tapped, id=${response.id}, payload=${response.payload}');
     // Bug 2 fix: navigate to home screen on tap (use MaterialPageRoute since no named routes)
     notificationNavigatorKey.currentState?.pushAndRemoveUntil(
       MaterialPageRoute(builder: (_) => const HomeScreen()),
@@ -93,25 +95,31 @@ class AlarmService {
       truncatedBody = '${truncatedBody.substring(0, 200)}...';
     }
 
-    await _notifications.zonedSchedule(
-      id,
-      '☀️ 今日名言',
-      truncatedBody,
-      scheduledDate,
-      notificationDetails,
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time,
-    );
-    LogService().info('闹钟已设置 id=$id hour=$hour minute=$minute');
+    try {
+      await _notifications.zonedSchedule(
+        id,
+        '☀️ 今日名言',
+        truncatedBody,
+        scheduledDate,
+        notificationDetails,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        matchDateTimeComponents: DateTimeComponents.time,
+      );
+      LogService().info('闹钟已设置 id=$id hour=$hour minute=$minute');
+    } catch (e, st) {
+      LogService().error('闹钟设置失败 id=$id', e, st);
+    }
   }
 
   Future<void> cancelAlarm(int id) async {
     await _notifications.cancel(id);
+    LogService().info('闹钟已取消 id=$id');
   }
 
   Future<void> cancelAllAlarms() async {
     await _notifications.cancelAll();
+    LogService().info('所有闹钟已取消');
   }
 }

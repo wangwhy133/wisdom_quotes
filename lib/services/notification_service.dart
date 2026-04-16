@@ -38,9 +38,11 @@ class NotificationService {
     }
 
     _initialized = true;
+    LogService().info('NotificationService initialized');
   }
 
   void _onNotificationTap(NotificationResponse response) {
+    LogService().info('NotificationService: notification tapped, id=${response.id}');
     // Bug 2 fix: navigate to home screen on tap (use MaterialPageRoute since no named routes)
     notificationNavigatorKey.currentState?.pushAndRemoveUntil(
       MaterialPageRoute(builder: (_) => const HomeScreen()),
