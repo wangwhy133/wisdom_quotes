@@ -5,6 +5,7 @@ import 'package:timezone/data/latest.dart' as tz_data;
 import '../data/database.dart';
 import '../main.dart';
 import '../screens/home_screen.dart';
+import 'log_service.dart';
 
 class AlarmService {
   static final AlarmService _instance = AlarmService._internal();
@@ -103,6 +104,7 @@ class AlarmService {
           UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
     );
+    LogService().info('闹钟已设置 id=$id hour=$hour minute=$minute');
   }
 
   Future<void> cancelAlarm(int id) async {

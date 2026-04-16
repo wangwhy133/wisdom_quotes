@@ -18,6 +18,7 @@ import 'ai_generate_screen.dart';
 import 'my_thoughts_screen.dart';
 import 'notes_screen.dart';
 import 'about_screen.dart';
+import 'logs_screen.dart';
 import 'quote_apis_screen.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
@@ -342,6 +343,15 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
           const Divider(),
           _buildSectionHeader('系统信息'), // Bug 19 fix: was duplicate '关于'
+          ListTile(
+            leading: const Icon(Icons.bug_report),
+            title: const Text('运行日志'),
+            subtitle: const Text('查看近7天运行日志（用于排查问题）'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (_) => const LogsScreen()));
+            },
+          ),
           const ListTile(title: Text('版本'), subtitle: const Text('v1.1.9')), // Bug 18 fix
           ListTile(
             title: const Text('名言总数'),

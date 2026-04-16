@@ -5,6 +5,7 @@ import 'package:timezone/data/latest.dart' as tz_data;
 import '../data/database.dart';
 import '../main.dart';
 import '../screens/home_screen.dart';
+import 'log_service.dart';
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -101,6 +102,7 @@ class NotificationService {
           UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
     );
+    LogService().info('每日通知已设置 hour=$hour minute=$minute');
   }
 
   Future<void> cancelAll() async {

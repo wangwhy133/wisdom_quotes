@@ -9,6 +9,7 @@ import 'providers/theme_provider.dart';
 import 'providers/model_providers.dart';
 import 'services/llm_service.dart';
 import 'services/quote_generator_service.dart';
+import 'services/log_service.dart';
 
 /// Global navigator key for notification tap navigation (Bug 2 fix)
 final GlobalKey<NavigatorState> notificationNavigatorKey = GlobalKey<NavigatorState>();
@@ -16,8 +17,16 @@ final GlobalKey<NavigatorState> notificationNavigatorKey = GlobalKey<NavigatorSt
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Initialize logger first
+  await LogService().initialize();
+
   // Initialize notification service
   await NotificationService().initialize();
+
+  // Global error handler
+  FlutterError.onError = (details) {
+    LogService().error('FlutterError', details.exception, details.stack);
+  };
 
   // Request permissions
   await PermissionService.requestAllPermissions();

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../providers/model_providers.dart';
+import 'log_service.dart';
 
 class QuoteGeneratorService {
   static final QuoteGeneratorService _instance = QuoteGeneratorService._internal();
