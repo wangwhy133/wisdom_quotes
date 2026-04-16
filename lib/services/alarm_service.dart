@@ -33,7 +33,7 @@ class AlarmService {
     final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
     if (androidPlugin != null) {
-      await androidPlugin.requestExactAlarms();
+      await androidPlugin.requestExactAlarmsPermission();
     }
 
     _initialized = true;

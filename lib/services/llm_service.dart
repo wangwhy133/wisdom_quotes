@@ -120,7 +120,7 @@ class LlmService {
         '${_cleanBaseUrl(_currentProvider!.baseUrl)}/text/chatcompletion_v2',
       ];
       
-      var response;
+      http.Response? response;
       for (var endpoint in endpoints) {
         try {
           response = await http.post(
@@ -131,11 +131,11 @@ class LlmService {
             },
             body: body,
           ).timeout(const Duration(seconds: 30));
-          if (response.statusCode == 200) break;
+          if (response!.statusCode == 200) break;
         } catch (_) {}
       }
 
-      if (response.statusCode == 200) {
+      if (response != null && response.statusCode == 200) {
         final data = json.decode(response.body);
         return data['choices']?[0]?['message']?['content'];
       }
@@ -162,11 +162,11 @@ class LlmService {
               'Authorization': 'Bearer ${_currentProvider!.apiKey}',
             },
           ).timeout(const Duration(seconds: 10));
-          if (response.statusCode == 200) break;
+          if (response!.statusCode == 200) break;
         } catch (_) {}
       }
 
-      if (response.statusCode == 200) {
+      if (response != null && response.statusCode == 200) {
         final data = json.decode(response.body);
         if (data['data'] != null) {
           return (data['data'] as List).map((m) => m['id']?.toString() ?? '').where((s) => s.isNotEmpty).toList();
