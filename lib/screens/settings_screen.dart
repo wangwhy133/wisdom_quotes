@@ -252,6 +252,28 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               trailing: const Icon(Icons.chevron_right),
               onTap: () => _selectTime(),
             ),
+          ListTile(
+            leading: const Icon(Icons.send, color: Colors.green),
+            title: const Text('立即测试推送'),
+            subtitle: const Text('立刻发送一条测试通知（不等定时）'),
+            onTap: () async {
+              _log.debug('[settings] 测试推送开始');
+              try {
+                final notifService = NotificationService();
+                await notifService.initialize();
+                final db = ref.read(databaseProvider);
+                final quote = await db.getRandomQuote();
+                if (quote != null) {
+                  await notifService.scheduleDaily(hour: DateTime.now().hour, minute: DateTime.now().minute + 1, quote: quote);
+                  _log.info('[settings] 测试推送已发送');
+                  if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('测试推送已发送！请注意通知栏')));
+                }
+              } catch (e, st) {
+                _log.error('[settings] 测试推送失败', e, st);
+                if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('测试推送失败: $e')));
+              }
+            },
+          ),
           const Divider(),
           _buildSectionHeader('闹钟功能'),
           SwitchListTile(title: const Text('开启名言闹钟'), subtitle: const Text('闹钟响起时显示双语名言'), value: _alarmEnabled, onChanged: _toggleAlarm),
@@ -262,6 +284,28 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               trailing: const Icon(Icons.chevron_right),
               onTap: () => _selectTime(isAlarm: true),
             ),
+          ListTile(
+            leading: const Icon(Icons.alarm, color: Colors.orange),
+            title: const Text('立即测试闹钟'),
+            subtitle: const Text('立刻响一次闹钟（不等定时）'),
+            onTap: () async {
+              _log.debug('[settings] 测试闹钟开始');
+              try {
+                final alarmService = AlarmService();
+                await alarmService.initialize();
+                final db = ref.read(databaseProvider);
+                final quote = await db.getRandomQuote();
+                if (quote != null) {
+                  await alarmService.scheduleAlarm(id: 9999, hour: DateTime.now().hour, minute: DateTime.now().minute + 1, quote: quote, translatedContent: null);
+                  _log.info('[settings] 测试闹钟已发送 id=9999');
+                  if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('测试闹钟已设置！1分钟后响铃')));
+                }
+              } catch (e, st) {
+                _log.error('[settings] 测试闹钟失败', e, st);
+                if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('测试闹钟失败: $e')));
+              }
+            },
+          ),
           const Divider(),
           _buildSectionHeader('AI功能'),
           ListTile(
