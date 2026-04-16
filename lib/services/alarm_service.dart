@@ -64,7 +64,21 @@ class AlarmService {
     required Quote quote,
     String? translatedContent,
   }) async {
-    await _notifications.cancel(id);
+    // 先尝试清理已损坏的通知缓存，防止 cancel 时反序列化崩溃
+    try {
+      await _notifications.cancel(id);
+    } catch (e, st) {
+      _log.warning('[cancel id=$id] 首次调用失败，尝试清理缓存后重试: $e');
+      try {
+        final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
+        await androidPlugin?.deleteNotificationChannel('alarm_channel');
+        await Future.delayed(const Duration(milliseconds: 100));
+        await _notifications.cancel(id);
+      } catch (e2, st2) {
+        _log.error('[cancel id=$id] 清理后重试仍失败: $e2', e2, st2);
+      }
+    }
 
     final now = tz.TZDateTime.now(tz.local);
     var scheduledDate = tz.TZDateTime(
@@ -121,12 +135,20 @@ class AlarmService {
   }
 
   Future<void> cancelAlarm(int id) async {
-    await _notifications.cancel(id);
-    _log.info('闹钟已取消 id=$id');
+    try {
+      await _notifications.cancel(id);
+      _log.info('闹钟已取消 id=$id');
+    } catch (e, st) {
+      _log.warning('[cancelAlarm id=$id] 调用失败（可能是缓存损坏）: $e');
+    }
   }
 
   Future<void> cancelAllAlarms() async {
-    await _notifications.cancelAll();
-    _log.info('所有闹钟已取消');
+    try {
+      await _notifications.cancelAll();
+      _log.info('所有闹钟已取消');
+    } catch (e, st) {
+      _log.warning('[cancelAllAlarms] 调用失败（可能是缓存损坏）: $e');
+    }
   }
 }

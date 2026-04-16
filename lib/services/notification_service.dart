@@ -61,7 +61,21 @@ class NotificationService {
     required int minute,
     required Quote quote,
   }) async {
-    await _notifications.cancelAll();
+    // 先尝试清理已损坏的通知缓存，防止 cancelAll 时反序列化崩溃
+    try {
+      await _notifications.cancelAll();
+    } catch (e, st) {
+      _log.warning('[cancelAll] 首次调用失败，尝试清理缓存后重试: $e');
+      try {
+        final androidPlugin = _notifications.resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
+        await androidPlugin?.deleteNotificationChannel('daily_quote');
+        await Future.delayed(const Duration(milliseconds: 100));
+        await _notifications.cancelAll();
+      } catch (e2, st2) {
+        _log.error('[cancelAll] 清理后重试仍失败: $e2', e2, st2);
+      }
+    }
 
     final now = tz.TZDateTime.now(tz.local);
     var scheduledDate = tz.TZDateTime(
@@ -118,6 +132,10 @@ class NotificationService {
   }
 
   Future<void> cancelAll() async {
-    await _notifications.cancelAll();
+    try {
+      await _notifications.cancelAll();
+    } catch (e, st) {
+      _log.warning('[cancelAll] 调用失败（可能是缓存损坏）: $e');
+    }
   }
 }
