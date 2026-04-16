@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import '../providers/model_providers.dart';
 import 'log_service.dart';
 
+final _log = LogService()['QuoteGenerator'];
+
 class QuoteGeneratorService {
   static final QuoteGeneratorService _instance = QuoteGeneratorService._internal();
   factory QuoteGeneratorService() => _instance;
@@ -38,10 +40,10 @@ class QuoteGeneratorService {
     String? category,
   }) async {
     _lastError = null;
-    LogService().debug('generateQuote start, theme=$theme, configured=$isConfigured');
+    _log.debug('generateQuote start, theme=$theme, configured=$isConfigured');
     if (!isConfigured) {
       _lastError = '未配置 AI provider';
-      LogService().error('generateQuote: 未配置AI provider');
+      _log.error('generateQuote: 未配置AI provider');
       return null;
     }
 
@@ -75,8 +77,8 @@ class QuoteGeneratorService {
       '${_cleanBaseUrl(_currentProvider!.baseUrl)}/text/chatcompletion_v2',
     ];
 
-    LogService().debug('generateQuote endpoints: $endpoints');
-    LogService().debug('generateQuote model: ${_currentProvider!.modelId}');
+    _log.debug('generateQuote endpoints: $endpoints');
+    _log.debug('generateQuote model: ${_currentProvider!.modelId}');
 
     final body = json.encode({
       'model': _currentProvider!.modelId,
@@ -88,7 +90,7 @@ class QuoteGeneratorService {
     });
 
     for (var uriStr in endpoints) {
-      LogService().debug('generateQuote trying: $uriStr');
+      _log.debug('generateQuote trying: $uriStr');
       try {
         final response = await http.post(
           Uri.parse(uriStr),
@@ -99,13 +101,13 @@ class QuoteGeneratorService {
           body: body,
         ).timeout(const Duration(seconds: 30));
 
-        LogService().debug('generateQuote response ${response.statusCode} for $uriStr');
-        LogService().debug('generateQuote body: ${response.body.length} bytes');
+        _log.debug('generateQuote response ${response.statusCode} for $uriStr');
+        _log.debug('generateQuote body: ${response.body.length} bytes');
 
         if (response.statusCode == 200) {
           try {
             final data = json.decode(response.body) as Map<String, dynamic>;
-            LogService().debug('generateQuote parsed data keys: ${data.keys.toList()}');
+            _log.debug('generateQuote parsed data keys: ${data.keys.toList()}');
 
             final choices = data['choices'] as List?;
             String? content = choices?.isNotEmpty == true
@@ -116,39 +118,39 @@ class QuoteGeneratorService {
               final reasoningContent = choices![0]['message']?['reasoning_content'] as String?;
               if (reasoningContent != null && reasoningContent.isNotEmpty) {
                 content = reasoningContent;
-                LogService().debug('generateQuote: 使用 reasoning_content (Zhipu)');
+                _log.debug('generateQuote: 使用 reasoning_content (Zhipu)');
               }
             }
 
             if (content != null && content.isNotEmpty) {
-              LogService().debug('generateQuote content found, length=${content.length}');
+              _log.debug('generateQuote content found, length=${content.length}');
               final quote = _parseQuote(content);
               if (quote != null) {
-                LogService().info('generateQuote success: ${quote.content.substring(0, quote.content.length < 20 ? quote.content.length : 20)}...');
+                _log.info('generateQuote success: ${quote.content.substring(0, quote.content.length < 20 ? quote.content.length : 20)}...');
                 return quote;
               } else {
-                LogService().warning('generateQuote _parseQuote returned null');
+                _log.warning('generateQuote _parseQuote returned null');
                 _lastError = '[_parseQuote failed]';
               }
             } else {
-              LogService().warning('generateQuote content为空 for $uriStr, body=${response.body.substring(0, response.body.length < 200 ? response.body.length : 200)}');
+              _log.warning('generateQuote content为空 for $uriStr, body=${response.body.substring(0, response.body.length < 200 ? response.body.length : 200)}');
               _lastError = '[$uriStr] content为空';
             }
           } catch (e, st) {
-            LogService().error('generateQuote parse error for $uriStr', e, st);
+            _log.error('generateQuote parse error for $uriStr', e, st);
             _lastError = '[$uriStr] parse error: $e';
           }
         } else {
-          LogService().warning('generateQuote HTTP ${response.statusCode} for $uriStr: ${response.body}');
+          _log.warning('generateQuote HTTP ${response.statusCode} for $uriStr: ${response.body}');
           _lastError = '[$uriStr] HTTP ${response.statusCode}: ${response.body}';
         }
       } catch (e, st) {
-        LogService().error('generateQuote request error for $uriStr', e, st);
+        _log.error('generateQuote request error for $uriStr', e, st);
         _lastError = '[$uriStr] $e';
       }
     }
 
-    LogService().warning('generateQuote all endpoints failed, lastError=$_lastError');
+    _log.warning('generateQuote all endpoints failed, lastError=$_lastError');
     return null;
   }
 

@@ -7,6 +7,8 @@ import '../main.dart';
 import '../screens/home_screen.dart';
 import 'log_service.dart';
 
+final _log = LogService()['Alarm'];
+
 class AlarmService {
   static final AlarmService _instance = AlarmService._internal();
   factory AlarmService() => _instance;
@@ -39,15 +41,15 @@ class AlarmService {
       }
 
       _initialized = true;
-      LogService().info('AlarmService initialized');
+      _log.info('AlarmService initialized');
     } catch (e, st) {
-      LogService().error('AlarmService initialize failed', e, st);
+      _log.error('AlarmService initialize failed', e, st);
       _initialized = true; // prevent repeated attempts
     }
   }
 
   void _onNotificationTap(NotificationResponse response) {
-    LogService().info('AlarmService: notification tapped, id=${response.id}, payload=${response.payload}');
+    _log.info('AlarmService: notification tapped, id=${response.id}, payload=${response.payload}');
     // Bug 2 fix: navigate to home screen on tap (use MaterialPageRoute since no named routes)
     notificationNavigatorKey.currentState?.pushAndRemoveUntil(
       MaterialPageRoute(builder: (_) => const HomeScreen()),
@@ -112,19 +114,19 @@ class AlarmService {
             UILocalNotificationDateInterpretation.absoluteTime,
         matchDateTimeComponents: DateTimeComponents.time,
       );
-      LogService().info('闹钟已设置 id=$id hour=$hour minute=$minute');
+      _log.info('闹钟已设置 id=$id hour=$hour minute=$minute');
     } catch (e, st) {
-      LogService().error('闹钟设置失败 id=$id', e, st);
+      _log.error('闹钟设置失败 id=$id', e, st);
     }
   }
 
   Future<void> cancelAlarm(int id) async {
     await _notifications.cancel(id);
-    LogService().info('闹钟已取消 id=$id');
+    _log.info('闹钟已取消 id=$id');
   }
 
   Future<void> cancelAllAlarms() async {
     await _notifications.cancelAll();
-    LogService().info('所有闹钟已取消');
+    _log.info('所有闹钟已取消');
   }
 }

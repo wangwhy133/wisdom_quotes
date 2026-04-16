@@ -7,6 +7,8 @@ import '../main.dart';
 import '../screens/home_screen.dart';
 import 'log_service.dart';
 
+final _log = LogService()['Notification'];
+
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
   factory NotificationService() => _instance;
@@ -38,15 +40,15 @@ class NotificationService {
       }
 
       _initialized = true;
-      LogService().info('NotificationService initialized');
+      _log.info('NotificationService initialized');
     } catch (e, st) {
-      LogService().error('NotificationService initialize failed', e, st);
+      _log.error('NotificationService initialize failed', e, st);
       _initialized = true; // prevent repeated attempts
     }
   }
 
   void _onNotificationTap(NotificationResponse response) {
-    LogService().info('NotificationService: notification tapped, id=${response.id}');
+    _log.info('NotificationService: notification tapped, id=${response.id}');
     // Bug 2 fix: navigate to home screen on tap (use MaterialPageRoute since no named routes)
     notificationNavigatorKey.currentState?.pushAndRemoveUntil(
       MaterialPageRoute(builder: (_) => const HomeScreen()),
@@ -108,7 +110,7 @@ class NotificationService {
           UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
     );
-    LogService().info('每日通知已设置 hour=$hour minute=$minute');
+    _log.info('每日通知已设置 hour=$hour minute=$minute');
   }
 
   Future<void> cancelAll() async {

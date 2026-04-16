@@ -6,6 +6,8 @@ import '../services/quote_generator_service.dart';
 import '../services/llm_service.dart';
 import '../services/log_service.dart';
 
+final _log = LogService()['AiGenerate'];
+
 class AiGenerateScreen extends ConsumerStatefulWidget {
   const AiGenerateScreen({super.key});
 
@@ -38,7 +40,7 @@ class _AiGenerateScreenState extends ConsumerState<AiGenerateScreen> {
 
   Future<void> _generateQuote({String? theme}) async {
     try {
-      LogService().debug('ai_generate: _generateQuote called');
+      _log.debug('ai_generate: _generateQuote called');
       final provider = ref.read(currentLlmProviderProvider);
       if (provider == null) {
         setState(() => _error = '请先添加AI模型配置');
@@ -54,15 +56,15 @@ class _AiGenerateScreenState extends ConsumerState<AiGenerateScreen> {
         _currentQuote = null;
       });
 
-      LogService().debug('ai_generate: calling generateQuote');
+      _log.debug('ai_generate: calling generateQuote');
       final quote = await QuoteGeneratorService().generateQuote(
         theme: theme ?? _themeController.text,
       );
 
-      LogService().debug('ai_generate: generateQuote returned ${quote != null}');
+      _log.debug('ai_generate: generateQuote returned ${quote != null}');
       final lastErr = QuoteGeneratorService().lastError;
       if (quote == null) {
-        LogService().error('AI生成名言失败', lastErr);
+        _log.error('AI生成名言失败', lastErr);
       }
       setState(() {
         _isGenerating = false;
@@ -72,7 +74,7 @@ class _AiGenerateScreenState extends ConsumerState<AiGenerateScreen> {
         }
       });
     } catch (e, st) {
-      LogService().error('ai_generate: _generateQuote unhandled exception', e, st);
+      _log.error('ai_generate: _generateQuote unhandled exception', e, st);
       if (mounted) {
         setState(() {
           _isGenerating = false;

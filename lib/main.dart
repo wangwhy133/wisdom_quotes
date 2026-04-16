@@ -11,6 +11,8 @@ import 'services/llm_service.dart';
 import 'services/quote_generator_service.dart';
 import 'services/log_service.dart';
 
+final _log = LogService()['App'];
+
 /// Global navigator key for notification tap navigation (Bug 2 fix)
 final GlobalKey<NavigatorState> notificationNavigatorKey = GlobalKey<NavigatorState>();
 
@@ -24,26 +26,26 @@ void main() async {
   try {
     await NotificationService().initialize();
   } catch (e, st) {
-    LogService().error('NotificationService init failed', e, st);
+    _log.error('NotificationService init failed', e, st);
   }
 
   // Request permissions
   try {
     await PermissionService.requestAllPermissions();
   } catch (e, st) {
-    LogService().error('PermissionService init failed', e, st);
+    _log.error('PermissionService init failed', e, st);
   }
 
   // Global error handler
   FlutterError.onError = (details) {
-    LogService().error('FlutterError', details.exception, details.stack);
+    _log.error('FlutterError', details.exception, details.stack);
   };
 
   // Initialize LlmService with saved default provider (Bug 4 fix)
   try {
     await _initLlmService();
   } catch (e, st) {
-    LogService().error('_initLlmService failed', e, st);
+    _log.error('_initLlmService failed', e, st);
   }
 
   runApp(
@@ -88,7 +90,7 @@ class _WisdomQuotesAppState extends ConsumerState<WisdomQuotesApp> with WidgetsB
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    LogService().info('WisdomQuotesApp initState');
+    _log.info('WisdomQuotesApp initState');
     // Sync LlmService with the current default provider after providers load
     Future.microtask(() {
       final providers = ref.read(modelProvidersProvider);
@@ -99,7 +101,7 @@ class _WisdomQuotesAppState extends ConsumerState<WisdomQuotesApp> with WidgetsB
         );
         LlmService().setProvider(defaultProvider);
         QuoteGeneratorService().setProvider(defaultProvider);
-        LogService().info('LlmService synced with ${defaultProvider.name}');
+        _log.info('LlmService synced with ${defaultProvider.name}');
       }
     });
   }
@@ -112,7 +114,7 @@ class _WisdomQuotesAppState extends ConsumerState<WisdomQuotesApp> with WidgetsB
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    LogService().debug('AppLifecycleState: $state');
+    _log.debug('AppLifecycleState: $state');
     if (state == AppLifecycleState.resumed) {
       // App resumed - check notification/alarm state
       _checkScheduledItems();
@@ -122,8 +124,8 @@ class _WisdomQuotesAppState extends ConsumerState<WisdomQuotesApp> with WidgetsB
   Future<void> _checkScheduledItems() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      LogService().debug('[resumed] fd_notif_enabled=${prefs.getBool('fd_notif_enabled')}');
-      LogService().debug('[resumed] fd_alarm_enabled=${prefs.getBool('fd_alarm_enabled')}');
+      _log.debug('[resumed] fd_notif_enabled=${prefs.getBool('fd_notif_enabled')}');
+      _log.debug('[resumed] fd_alarm_enabled=${prefs.getBool('fd_alarm_enabled')}');
     } catch (_) {}
   }
 

@@ -13,6 +13,7 @@ import '../services/notification_service.dart';
 import '../services/permission_service.dart';
 import '../services/translation_service.dart';
 import '../services/log_service.dart';
+
 import '../services/alarm_service.dart';
 import 'model_providers_screen.dart';
 import 'ai_generate_screen.dart';
@@ -21,6 +22,8 @@ import 'notes_screen.dart';
 import 'about_screen.dart';
 import 'logs_screen.dart';
 import 'quote_apis_screen.dart';
+
+final _log = LogService()['Settings'];
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -79,12 +82,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Future<void> _toggleNotification(bool value) async {
-    LogService().debug('[settings] _toggleNotification($value) hour=$_hour minute=$_minute');
+    _log.debug('[settings] _toggleNotification($value) hour=$_hour minute=$_minute');
     if (value) {
       // Bug 1 fix: check notification permission before enabling
       final hasPermission = await PermissionService.hasNotificationPermission();
       if (!hasPermission) {
-        LogService().warning('[settings] 通知权限未授权');
+        _log.warning('[settings] 通知权限未授权');
         if (!mounted) return;
         await PermissionService.showSettingsDialog(context);
         await _loadSettings();
@@ -100,24 +103,24 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       final db = ref.read(databaseProvider);
       final quote = await db.getRandomQuote();
       if (quote != null) {
-        LogService().info('[settings] 开启每日通知 hour=$_hour minute=$_minute quote=${quote.content.substring(0, quote.content.length < 20 ? quote.content.length : 20)}...');
+        _log.info('[settings] 开启每日通知 hour=$_hour minute=$_minute quote=${quote.content.substring(0, quote.content.length < 20 ? quote.content.length : 20)}...');
         await notifService.scheduleDaily(hour: _hour, minute: _minute, quote: quote);
       } else {
-        LogService().warning('[settings] 每日通知无可用名言');
+        _log.warning('[settings] 每日通知无可用名言');
       }
     } else {
-      LogService().info('[settings] 关闭每日通知');
+      _log.info('[settings] 关闭每日通知');
       await NotificationService().cancelAll();
     }
   }
 
   Future<void> _toggleAlarm(bool value) async {
-    LogService().debug('[settings] _toggleAlarm($value) hour=$_alarmHour minute=$_alarmMinute');
+    _log.debug('[settings] _toggleAlarm($value) hour=$_alarmHour minute=$_alarmMinute');
     if (value) {
       // Bug 1 fix: check exact alarm permission before enabling
       final hasPermission = await PermissionService.hasExactAlarmPermission();
       if (!hasPermission) {
-        LogService().warning('[settings] 精确闹钟权限未授权');
+        _log.warning('[settings] 精确闹钟权限未授权');
         if (!mounted) return;
         await PermissionService.showSettingsDialog(context);
         await _loadSettings();
@@ -137,13 +140,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         String? translated;
         final isChinese = RegExp(r'[\u4e00-\u9fff]').hasMatch(quote.content);
         translated = isChinese ? await translator.zhToEn(quote.content) : await translator.enToZh(quote.content);
-        LogService().info('[settings] 开启闹钟 hour=$_alarmHour minute=$_alarmMinute quote=${quote.content.substring(0, quote.content.length < 20 ? quote.content.length : 20)}...');
+        _log.info('[settings] 开启闹钟 hour=$_alarmHour minute=$_alarmMinute quote=${quote.content.substring(0, quote.content.length < 20 ? quote.content.length : 20)}...');
         await alarmService.scheduleAlarm(id: AlarmService.dailyAlarmId, hour: _alarmHour, minute: _alarmMinute, quote: quote, translatedContent: translated);
       } else {
-        LogService().warning('[settings] 闹钟无可用名言');
+        _log.warning('[settings] 闹钟无可用名言');
       }
     } else {
-      LogService().info('[settings] 关闭闹钟');
+      _log.info('[settings] 关闭闹钟');
       await AlarmService().cancelAlarm(AlarmService.dailyAlarmId);
     }
   }
