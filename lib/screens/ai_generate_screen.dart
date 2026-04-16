@@ -56,11 +56,12 @@ class _AiGenerateScreenState extends ConsumerState<AiGenerateScreen> {
       theme: theme ?? _themeController.text,
     );
 
+    final lastErr = QuoteGeneratorService().lastError;
     setState(() {
       _isGenerating = false;
       _currentQuote = quote;
       if (quote == null) {
-        _error = '生成失败，请检查AI模型配置是否正确';
+        _error = lastErr ?? '生成失败，请检查AI模型配置是否正确';
       }
     });
   }

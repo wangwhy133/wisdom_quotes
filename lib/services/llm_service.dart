@@ -8,6 +8,9 @@ class LlmService {
   LlmService._internal();
 
   ModelProvider? _currentProvider;
+  String? _lastError;
+
+  String? get lastError => _lastError;
 
   void setProvider(ModelProvider provider) {
     _currentProvider = provider;
@@ -121,6 +124,7 @@ class LlmService {
       ];
       
       http.Response? response;
+      _lastError = null;
       for (var endpoint in endpoints) {
         try {
           response = await http.post(
@@ -131,15 +135,18 @@ class LlmService {
             },
             body: body,
           ).timeout(const Duration(seconds: 30));
-          if (response!.statusCode == 200) break;
-        } catch (_) {}
+          if (response!.statusCode == 200) {
+            final data = json.decode(response.body);
+            return data['choices']?[0]?['message']?['content'];
+          }
+          _lastError = '[$endpoint] HTTP ${response.statusCode}: ${response.body}';
+        } catch (e) {
+          _lastError = '[$endpoint] $e';
+        }
       }
-
-      if (response != null && response.statusCode == 200) {
-        final data = json.decode(response.body);
-        return data['choices']?[0]?['message']?['content'];
-      }
-    } catch (_) {}
+    } catch (e) {
+      _lastError = 'interpretQuote exception: $e';
+    }
     return null;
   }
 

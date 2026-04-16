@@ -147,6 +147,11 @@ class _QuoteDetailScreenState extends ConsumerState<QuoteDetailScreen> {
         author: widget.quote.author,
         source: widget.quote.source,
       );
+      if (_interpretation == null && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('解读失败: ${LlmService().lastError ?? "未知错误"}')),
+        );
+      }
       setState(() {});
     } catch (e) {
       if (mounted) {
