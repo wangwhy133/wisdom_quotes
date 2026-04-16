@@ -92,8 +92,9 @@ class _FileHandler {
   final String path;
   IOSink? _sink;
   File? _file;
+  final String? _crashPath; // crash-safe synchronous error log
 
-  _FileHandler(this.path);
+  _FileHandler(this.path, [this._crashPath]);
 
   Future<void> _ensureOpen() async {
     if (_sink != null) return;
@@ -107,6 +108,17 @@ class _FileHandler {
     try {
       await _ensureOpen();
       _sink!.writeln(jsonEncode(r.toJson()));
+    } catch (_) {}
+    // Also write errors synchronously to crash-safe file
+    if (r.level.index >= _LogLevel.error.index && _crashPath != null) {
+      _syncWriteCrash(r);
+    }
+  }
+
+  void _syncWriteCrash(_StructuredRecord r) {
+    try {
+      final f = File(_crashPath!);
+      f.writeAsStringSync('${jsonEncode(r.toJson())}\n', mode: FileMode.append);
     } catch (_) {}
   }
 
@@ -179,16 +191,23 @@ class LogService {
 
   // 快捷访问：LogService()['QuoteGenerator'].info(...)
   _Logger operator [](String name) {
-    if (!_initialized) return _root;
-    return _loggers.putIfAbsent(name, () => _Logger(name, _memHandler, _fileHandler));
+    final mem = _initialized ? _memHandler : _fallbackMem;
+    final file = _initialized ? _fileHandler : _fallbackFile;
+    return _loggers.putIfAbsent(name, () => _Logger(name, mem, file));
   }
 
+  static final _fallbackMem = _MemoryHandler();
+  static _FileHandler? _fallbackFile; // not used but declared
+
   // 全局快捷方法（兼容旧代码）
-  void debug(String msg) => _root.debug(msg);
-  void info(String msg)  => _root.info(msg);
-  void warning(String msg) => _root.warning(msg);
+  void debug(String msg) => (_initialized ? _root : _noopLogger).debug(msg);
+  void info(String msg)  => (_initialized ? _root : _noopLogger).info(msg);
+  void warning(String msg) => (_initialized ? _root : _noopLogger).warning(msg);
   void error(String msg, [Object? e, StackTrace? st]) =>
-      _root.error(msg, e, st);
+      (_initialized ? _root : _noopLogger).error(msg, e, st);
+
+  // Noop logger for use before initialization
+  static final _noopLogger = _Logger('noop', _MemoryHandler(), null);
 
   Future<void> initialize() async {
     if (_initialized) return;
@@ -199,7 +218,7 @@ class LogService {
     try {
       final dir = await getApplicationDocumentsDirectory();
       filePath = '${dir.path}/$_logFileName';
-      _fileHandler = _FileHandler(filePath);
+      _fileHandler = _FileHandler(filePath, '${filePath}.crash');
     } catch (_) {
       _fileHandler = _FileHandler('/dev/null');
     }

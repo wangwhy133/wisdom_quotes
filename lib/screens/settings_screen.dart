@@ -104,13 +104,21 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       final quote = await db.getRandomQuote();
       if (quote != null) {
         _log.info('[settings] 开启每日通知 hour=$_hour minute=$_minute quote=${quote.content.substring(0, quote.content.length < 20 ? quote.content.length : 20)}...');
-        await notifService.scheduleDaily(hour: _hour, minute: _minute, quote: quote);
+        try {
+          await notifService.scheduleDaily(hour: _hour, minute: _minute, quote: quote);
+        } catch (e, st) {
+          _log.error('[settings] scheduleDaily失败: $e', e, st);
+        }
       } else {
         _log.warning('[settings] 每日通知无可用名言');
       }
     } else {
       _log.info('[settings] 关闭每日通知');
-      await NotificationService().cancelAll();
+      try {
+        await NotificationService().cancelAll();
+      } catch (e, st) {
+        _log.error('[settings] cancelAll失败', e, st);
+      }
     }
   }
 
@@ -141,13 +149,21 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         final isChinese = RegExp(r'[\u4e00-\u9fff]').hasMatch(quote.content);
         translated = isChinese ? await translator.zhToEn(quote.content) : await translator.enToZh(quote.content);
         _log.info('[settings] 开启闹钟 hour=$_alarmHour minute=$_alarmMinute quote=${quote.content.substring(0, quote.content.length < 20 ? quote.content.length : 20)}...');
-        await alarmService.scheduleAlarm(id: AlarmService.dailyAlarmId, hour: _alarmHour, minute: _alarmMinute, quote: quote, translatedContent: translated);
+        try {
+          await alarmService.scheduleAlarm(id: AlarmService.dailyAlarmId, hour: _alarmHour, minute: _alarmMinute, quote: quote, translatedContent: translated);
+        } catch (e, st) {
+          _log.error('[settings] scheduleAlarm失败: $e', e, st);
+        }
       } else {
         _log.warning('[settings] 闹钟无可用名言');
       }
     } else {
       _log.info('[settings] 关闭闹钟');
-      await AlarmService().cancelAlarm(AlarmService.dailyAlarmId);
+      try {
+        await AlarmService().cancelAlarm(AlarmService.dailyAlarmId);
+      } catch (e, st) {
+        _log.error('[settings] cancelAlarm失败', e, st);
+      }
     }
   }
 

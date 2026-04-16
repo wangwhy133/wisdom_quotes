@@ -99,18 +99,22 @@ class NotificationService {
 
     final notificationDetails = NotificationDetails(android: androidDetails);
 
-    await _notifications.zonedSchedule(
-      0,
-      '今日名言',
-      '$truncatedContent\n— ${quote.author}',
-      scheduledDate,
-      notificationDetails,
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time,
-    );
-    _log.info('每日通知已设置 hour=$hour minute=$minute');
+    try {
+      await _notifications.zonedSchedule(
+        0,
+        '今日名言',
+        '$truncatedContent\n— ${quote.author}',
+        scheduledDate,
+        notificationDetails,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        matchDateTimeComponents: DateTimeComponents.time,
+      );
+      _log.info('每日通知已设置 hour=$hour minute=$minute');
+    } catch (e, st) {
+      _log.error('每日通知设置失败: $e', e, st);
+    }
   }
 
   Future<void> cancelAll() async {
