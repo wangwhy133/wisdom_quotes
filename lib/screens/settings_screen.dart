@@ -342,7 +342,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
           const Divider(),
           _buildSectionHeader('系统信息'), // Bug 19 fix: was duplicate '关于'
-          const ListTile(title: Text('版本'), subtitle: Text('1.1.5')), // Bug 18 fix
+          const ListTile(title: Text('版本'), subtitle: const Text('v1.1.9')), // Bug 18 fix
           ListTile(
             title: const Text('名言总数'),
             subtitle: ref.watch(allQuotesProvider).when(

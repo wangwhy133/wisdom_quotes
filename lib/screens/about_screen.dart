@@ -6,13 +6,9 @@ class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
   String _getVersion() {
-    // 从 pubspec 获取版本
-    try {
-      final channel = const MethodChannel('flutter/app');
-      return 'v1.1.5'; // Bug 18 fix: sync with pubspec.yaml
-    } catch (e) {
-      return 'v1.1.5'; // Bug 18 fix
-    }
+    // 从 pubspec.yaml 读取版本 (需要与 pubspec.yaml 保持同步)
+    // v1.1.9
+    return 'v1.1.9';
   }
 
   Future<void> _launchUrl(String url) async {
@@ -72,7 +68,7 @@ class AboutScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'v1.1.5', // Bug 18 fix
+                  'v1.1.9', // synced with pubspec.yaml
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[500],
