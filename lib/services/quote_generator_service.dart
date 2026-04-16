@@ -25,7 +25,10 @@ class QuoteGeneratorService {
 
   String _cleanBaseUrl(String baseUrl) {
     String cleaned = baseUrl.trim();
-    cleaned = cleaned.replaceAll(RegExp(r'/[\s]+$'), '');
+    // 移除末尾的 /v1, /v2, /v3 等版本标记
+    cleaned = cleaned.replaceAll(RegExp(r'/v[0-9]+$'), '');
+    // 移除末尾斜杠和空格
+    cleaned = cleaned.replaceAll(RegExp(r'[/\\s]+$'), '');
     return cleaned;
   }
 
