@@ -26,8 +26,8 @@ class LlmService {
   String _cleanBaseUrl(String baseUrl) {
     // 先trim掉首尾空格，再处理路径
     String cleaned = baseUrl.trim();
-    // 移除末尾的 /v1, /v2, /v3 等版本标记
-    cleaned = cleaned.replaceAll(RegExp(r'/v[0-9]+$'), '');
+    // 只移除末尾的 /v1 版本前缀（/v2 /v3 /v4 是API路径的一部分不剥离）
+    cleaned = cleaned.replaceAll(RegExp(r'/v1$'), '');
     // 移除末尾斜杠和空格
     cleaned = cleaned.replaceAll(RegExp(r'[/\\s]+$'), '');
     return cleaned;
