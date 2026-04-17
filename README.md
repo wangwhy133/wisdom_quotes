@@ -46,7 +46,7 @@
 
 ### Download | 下载
 
-**Latest Release:** [v1.1.8](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.8)
+**Latest Release:** [v1.3.12](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.3.12)
 
 📦 APK Download: `app-release.apk` (61.8MB)
 
@@ -80,7 +80,7 @@ Download quote collections from GitHub:
 
 - Flutter 3.41+
 - Drift + Riverpod (State Management)
-- flutter_local_notifications
+- 原生 Android AlarmManager API
 - OpenAI / MiniMax API
 
 ### Build | 编译
@@ -203,7 +203,7 @@ MIT License
 
 ### 下载
 
-**最新版本：** [v1.1.8](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.1.8)
+**最新版本：** [v1.3.12](https://github.com/wangwhy133/wisdom_quotes/releases/tag/v1.3.12)
 
 📦 APK 下载: `app-release.apk` (61.8MB)
 
@@ -237,7 +237,7 @@ MIT License
 
 - Flutter 3.41+
 - Drift + Riverpod (状态管理)
-- flutter_local_notifications
+- 原生 Android AlarmManager API
 - OpenAI / MiniMax API
 
 ### 编译
