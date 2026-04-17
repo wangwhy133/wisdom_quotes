@@ -62,7 +62,7 @@ class AlarmNotificationReceiver : BroadcastReceiver() {
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        val id = intent.getIntExtra(KEY_NOTIFICATION_ID, 0)
+        val id = intent.getIntExtra(KEY_NOTIFICATION_ID, 1)
         val title = intent.getStringExtra(KEY_TITLE) ?: "今日名言"
         val body = intent.getStringExtra(KEY_BODY) ?: ""
         val channelId = intent.getStringExtra(KEY_CHANNEL) ?: "daily_quote"

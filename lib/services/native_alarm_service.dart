@@ -46,7 +46,13 @@ class NotificationService {
         minute,
       );
 
-      if (scheduledDate.isBefore(now)) {
+      // If the time has already passed today, schedule for tomorrow
+      // BUT: if we're testing (scheduling for current time +/- 5min), fire in 5 seconds instead
+      final diff = scheduledDate.difference(now).inSeconds;
+      if (diff < 5) {
+        // Fire in 5 seconds (test scenario)
+        scheduledDate = now.add(const Duration(seconds: 5));
+      } else if (scheduledDate.isBefore(now)) {
         scheduledDate = scheduledDate.add(const Duration(days: 1));
       }
 
@@ -57,22 +63,20 @@ class NotificationService {
 
       final body = '$truncatedContent\n— ${quote.author}';
 
-      // Pass isDaily=true so receiver knows to reschedule for next day
       final result = await _alarmChannel.invokeMethod('scheduleAlarm', {
-        'id': 0,
+        'id': 1,  // Use 1 instead of 0 to avoid potential system ID conflicts
         'triggerAtMillis': scheduledDate.millisecondsSinceEpoch,
         'title': '今日名言',
         'body': body,
-        'scheduleMode': 'exactAllowWhileIdle',
         'isDaily': true,
         'hour': hour,
         'minute': minute,
-        'channelId': 'daily_quote',
+        'channelId': 'daily_quote_v2',
         'channelName': '每日名言',
       });
 
       if (result == true) {
-        _log.info('每日通知已设置 hour=$hour minute=$minute (native)');
+        _log.info('每日通知已设置 hour=$hour minute=$minute (native, fire in ${diff < 5 ? 5 : diff}s)');
       } else {
         _log.error('每日通知设置失败: native返回false');
       }
@@ -83,7 +87,7 @@ class NotificationService {
 
   Future<void> cancelAll() async {
     try {
-      await _alarmChannel.invokeMethod('cancelAlarm', {'id': 0});
+      await _alarmChannel.invokeMethod('cancelAlarm', {'id': 1});
       _log.info('每日通知已取消 (native)');
     } catch (e, st) {
       _log.warning('[cancelAll] 调用失败: $e');

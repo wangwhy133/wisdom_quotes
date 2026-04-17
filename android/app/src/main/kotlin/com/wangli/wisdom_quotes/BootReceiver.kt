@@ -62,7 +62,7 @@ class BootReceiver : BroadcastReceiver() {
             }
 
             val flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, flags)
+            val pendingIntent = PendingIntent.getBroadcast(context, 1, intent, flags)
 
             // Calculate next trigger time
             val calendar = java.util.Calendar.getInstance().apply {

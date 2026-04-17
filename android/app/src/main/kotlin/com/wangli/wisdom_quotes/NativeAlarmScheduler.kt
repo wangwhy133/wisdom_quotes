@@ -24,7 +24,6 @@ class NativeAlarmSchedulerPlugin(private val context: Context) {
                     val triggerAtMillis = call.argument<Long>("triggerAtMillis") ?: 0L
                     val title = call.argument<String>("title") ?: ""
                     val body = call.argument<String>("body") ?: ""
-                    val scheduleMode = call.argument<String>("scheduleMode") ?: "exactAllowWhileIdle"
                     val isDaily = call.argument<Boolean>("isDaily") ?: false
                     val hour = call.argument<Int>("hour") ?: 0
                     val minute = call.argument<Int>("minute") ?: 0
@@ -32,7 +31,7 @@ class NativeAlarmSchedulerPlugin(private val context: Context) {
                     val channelName = call.argument<String>("channelName") ?: "每日名言"
 
                     val success = scheduleAlarm(
-                        id, triggerAtMillis, title, body, scheduleMode,
+                        id, triggerAtMillis, title, body,
                         isDaily, hour, minute, channelId, channelName
                     )
                     result.success(success)
@@ -55,7 +54,6 @@ class NativeAlarmSchedulerPlugin(private val context: Context) {
         triggerAtMillis: Long,
         title: String,
         body: String,
-        scheduleMode: String,
         isDaily: Boolean,
         hour: Int,
         minute: Int,
@@ -88,11 +86,29 @@ class NativeAlarmSchedulerPlugin(private val context: Context) {
             // Cancel any existing alarm with same ID first
             alarmManager.cancel(pendingIntent)
 
-            // Use setAlarmClock for highest delivery guarantee (shows in lock screen)
-            alarmManager.setAlarmClock(
-                AlarmManager.AlarmClockInfo(triggerAtMillis, pendingIntent),
-                pendingIntent
-            )
+            // Use setExactAndAllowWhileIdle for reliable delivery
+            // (setAlarmClock shows icon but may not work well when app is in foreground)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                if (alarmManager.canScheduleExactAlarms()) {
+                    alarmManager.setExactAndAllowWhileIdle(
+                        AlarmManager.RTC_WAKEUP,
+                        triggerAtMillis,
+                        pendingIntent
+                    )
+                } else {
+                    alarmManager.setAndAllowWhileIdle(
+                        AlarmManager.RTC_WAKEUP,
+                        triggerAtMillis,
+                        pendingIntent
+                    )
+                }
+            } else {
+                alarmManager.setExactAndAllowWhileIdle(
+                    AlarmManager.RTC_WAKEUP,
+                    triggerAtMillis,
+                    pendingIntent
+                )
+            }
             true
         } catch (e: Exception) {
             android.util.Log.e("NativeAlarmScheduler", "scheduleAlarm failed: $e")
