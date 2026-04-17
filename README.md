@@ -92,6 +92,71 @@ flutter build apk --release
 
 ### Changelog | 更新日志
 
+#### v1.3.12
+- **AlarmNotificationReceiver 增加详细日志**：方便排查通知触发状态
+- 添加 `setFullScreenIntent` 和 `VISIBILITY_PUBLIC` 提升通知可见性
+
+#### v1.3.11
+- **测试推送改为 10 秒后触发**：新建 `scheduleTestNotification()` 方法，不再推到明天的固定时间点
+- **测试闹钟改为当前时间 +1 分钟**：避免触发时间已过被系统跳过
+
+#### v1.3.10
+- **改用 `setExactAndAllowWhileIdle`**：替代 `setAlarmClock`，提升通知可靠性
+- **测试场景 5 秒后触发**：避免 `triggerAtMillis` 已过导致通知被系统隐藏
+- **通知 ID 改为 1**：避免 ID=0 被系统其他通知占用
+- 新课程 ID `daily_quote_v2`：强制创建新课程避免旧缓存影响
+
+#### v1.3.9
+- **Android 13+ 运行时通知权限**：MainActivity 启动时主动申请 `POST_NOTIFICATIONS` 权限
+- 权限被拒绝时自动跳转设置页面引导用户开启
+
+#### v1.3.8
+- **alarm_service.dart 改用原生 AlarmManager**：闹钟调度彻底抛弃 flutter_local_notifications，避免 `Missing type parameter` 崩溃
+- 推送和闹钟均使用同一套原生方案
+
+#### v1.3.7
+- **完全绕过 flutter_local_notifications**：改用 Android 原生 AlarmManager API，彻底摆脱插件缓存损坏导致的崩溃
+- **AlarmNotificationReceiver**：Kotlin 广播接收器，支持每天自动重排
+- **BootReceiver**：设备重启后自动重新调度已保存的每日通知
+
+#### v1.3.5
+- **ClearPluginCacheApp**：Android Application 子类，在 Flutter 引擎启动前清理插件损坏的 SharedPreferences 缓存
+- ⚠️ 修改 Application 类后必须卸载重装才能生效
+
+#### v1.3.4
+- 增加 try-catch 保护 `cancel`/`cancelAll` 调用，防止缓存损坏导致的崩溃扩散
+
+#### v1.3.3
+- 设置页面新增「立即测试推送」和「立即测试闹钟」按钮，支持即时验证
+
+#### v1.3.2
+- **LogService 防崩溃**：初始化前使用 noop logger 防止空指针
+- **ERROR 日志同步写文件**：崩溃时写 `.crash` 文件
+- **scheduleDaily/scheduleAlarm 加 try-catch**：隔离插件异常
+
+#### v1.3.0
+- **修复首次启动闪退**：将 Splash Screen 中废弃的 `AnimatedBuilder` 替换为 `ListenableBuilder`（Flutter 3.16+）
+
+#### v1.2.8
+- 全面日志覆盖升级，所有运行数据均记录到日志
+
+#### v1.2.7
+- 首版正式发布
+
+#### v1.2.6
+- 新增自定义 endpoint 配置功能，支持用户指定完整 API 地址
+
+#### v1.2.5
+- 修复智谱 glm-4-flash 模型 `reasoning_content` 字段解析问题
+- 修复双重版本前缀问题（`_cleanBaseUrl` 不再错误删除 `/v4`）
+
+#### v1.2.3
+- 修复 `_cleanBaseUrl` 错误剥离 Zhipu `/v4` 前缀导致路径不匹配
+- 确认 baipiao 代理返回空 content 为多提供商架构共性缺陷
+
+#### v1.2.1
+- 修复 `_cleanBaseUrl` 未剥离版本前缀导致 URL 双重版本号问题
+
 #### v1.1.8
 - **Android:** 注册 flutter_local_notifications 必需的 Boot Receiver（重启后闹钟/通知自动恢复）
 - 闹钟和通知均使用 `exactAllowWhileIdle` 准时模式
