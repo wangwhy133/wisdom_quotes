@@ -36,20 +36,14 @@ class AlarmService {
     String? translatedContent,
   }) async {
     try {
-      // Cancel any existing alarm first (native cancel is safe)
       await _alarmChannel.invokeMethod('cancelAlarm', {'id': id});
 
       final now = DateTime.now();
-      var scheduledDate = DateTime(
-        now.year,
-        now.month,
-        now.day,
-        hour,
-        minute,
-      );
+      var scheduledDate = DateTime(now.year, now.month, now.day, hour, minute);
 
-      if (scheduledDate.isBefore(now)) {
-        scheduledDate = scheduledDate.add(const Duration(days: 1));
+      // If time has passed, schedule for next occurrence
+      if (scheduledDate.isBefore(now) || scheduledDate.isAtSameMomentAs(now)) {
+        scheduledDate = scheduledDate.add(const Duration(minutes: 1));
       }
 
       String body = '"${quote.content}"\n— ${quote.author}';
@@ -62,14 +56,12 @@ class AlarmService {
         truncatedBody = '${truncatedBody.substring(0, 200)}...';
       }
 
-      // isDaily=true → receiver will auto-reschedule for next day
       final result = await _alarmChannel.invokeMethod('scheduleAlarm', {
         'id': id,
         'triggerAtMillis': scheduledDate.millisecondsSinceEpoch,
         'title': '☀️ 今日名言',
         'body': truncatedBody,
-        'scheduleMode': 'exactAllowWhileIdle',
-        'isDaily': true,
+        'isDaily': false,
         'hour': hour,
         'minute': minute,
         'channelId': 'alarm_channel',

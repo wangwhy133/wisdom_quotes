@@ -261,13 +261,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               try {
                 final notifService = NotificationService();
                 await notifService.initialize();
-                final db = ref.read(databaseProvider);
-                final quote = await db.getRandomQuote();
-                if (quote != null) {
-                  await notifService.scheduleDaily(hour: DateTime.now().hour, minute: DateTime.now().minute + 1, quote: quote);
-                  _log.info('[settings] 测试推送已发送');
-                  if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('测试推送已发送！请注意通知栏')));
-                }
+                // Always fire a test notification after 10 seconds
+                await notifService.scheduleTestNotification(seconds: 10);
+                _log.info('[settings] 测试推送已发送');
+                if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('测试推送已发送！请注意通知栏（10秒内）')));
               } catch (e, st) {
                 _log.error('[settings] 测试推送失败', e, st);
                 if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('测试推送失败: $e')));
@@ -296,7 +293,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 final db = ref.read(databaseProvider);
                 final quote = await db.getRandomQuote();
                 if (quote != null) {
-                  await alarmService.scheduleAlarm(id: 9999, hour: DateTime.now().hour, minute: DateTime.now().minute + 1, quote: quote, translatedContent: null);
+                  await alarmService.scheduleAlarm(id: 9999, hour: DateTime.now().hour, minute: DateTime.now().minute, quote: quote, translatedContent: null);
                   _log.info('[settings] 测试闹钟已发送 id=9999');
                   if (mounted) ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('测试闹钟已设置！1分钟后响铃')));
                 }
